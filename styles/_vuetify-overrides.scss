@@ -1,0 +1,27 @@
+// Vuetify Overrides
+
+.v-application {
+  font-family: 'Manrope', sans-serif !important;
+}
+
+.theme--light.v-divider {
+  border-color: unset;
+}
+
+.container {
+  width: unset;
+  padding: 1.5rem;
+}
+
+.v-application p {
+  margin-bottom: 0 !important;
+}
+
+.v-bottom-sheet.v-dialog {
+  position: absolute;
+  top: 80px;
+}
+
+.v-overlay {
+  z-index: 1 !important;
+}

@@ -1,0 +1,51 @@
+@import '~/assets/variables.scss';
+
+.btn {
+  width: 160px !important;
+  height: 48px !important;
+  border-radius: 0 !important;
+  letter-spacing: 1px !important;
+  font-size: 13px !important;
+
+  &--orange {
+    color: white !important;
+    background-color: $orange !important;
+    transition: all 0.2s ease;
+
+    &:hover {
+      color: white !important;
+      background-color: $orange--light !important;
+    }
+  }
+
+  &--black {
+    color: white !important;
+    background-color: $black !important;
+  }
+
+  &--border {
+    border: 1px solid $black;
+    color: $black !important;
+    background-color: transparent !important;
+    transition: all 0.2s ease;
+
+    &:hover {
+      color: white !important;
+      background-color: $black !important;
+    }
+  }
+
+  &--text {
+    width: inherit !important;
+    height: 30px !important;
+    background-color: transparent !important;
+    box-shadow: unset !important;
+    font-weight: bold;
+    opacity: 0.7;
+    transition: all 0.2s ease;
+
+    &:hover {
+      color: $orange !important;
+    }
+  }
+}

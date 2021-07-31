@@ -1,0 +1,45 @@
+@import '~/styles/mixins.scss';
+@import '~/styles/import.scss';
+.category__navigation {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+  place-items: center;
+  gap: 3rem;
+  padding-bottom: 7.5rem;
+
+  .img {
+    position: absolute;
+    width: 130px;
+    top: -3rem;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .speakers {
+    width: 140px;
+  }
+
+  .earphones {
+    width: 150px;
+  }
+
+  .card {
+    &__container {
+      padding: 1rem;
+      margin: 1rem;
+    }
+    &__title {
+      @include Title(null, 15px, 1.07px);
+      margin-bottom: 0.5rem;
+    }
+
+    &__wrapper {
+      height: 133px;
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+      text-align: center;
+      flex-direction: column;
+    }
+  }
+}

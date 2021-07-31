@@ -1,0 +1,39 @@
+// Mixins
+
+@mixin Subtitle($color, $opacity, $font-size) {
+  color: $color;
+  opacity: $opacity;
+  font-size: $font-size;
+  font-weight: normal;
+  font-stretch: normal;
+  letter-spacing: 10px;
+  text-transform: uppercase;
+}
+
+@mixin Title($color, $size, $l-spacing) {
+  font-size: $size;
+  font-weight: bold;
+  line-height: 1.11;
+  letter-spacing: $l-spacing;
+  color: $color;
+  text-transform: uppercase;
+}
+
+@mixin Paragraph($color, $opacity, $size) {
+  opacity: $opacity;
+  font-size: $size;
+  font-weight: 200;
+  line-height: 1.67;
+  color: $color;
+}
+
+@mixin Button($bg-color, $text-color, $border, $border-color) {
+  width: 160px !important;
+  height: 48px !important;
+  background-color: $bg-color !important;
+  color: $text-color !important;
+  border: $border solid $border-color;
+  border-radius: 0 !important;
+  letter-spacing: 1px !important;
+  font-size: 13px !important;
+}
