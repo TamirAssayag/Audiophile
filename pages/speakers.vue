@@ -9,6 +9,9 @@
 import PageHeader from '../components/Layout/UI/PageHeader.vue'
 export default {
   components: { PageHeader },
+  head: {
+    title: 'Speakers',
+  },
 }
 </script>
 
