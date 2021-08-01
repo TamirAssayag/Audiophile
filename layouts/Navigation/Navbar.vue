@@ -1,8 +1,8 @@
 <template>
   <nav>
     <div class="navbar">
-      <v-app-bar absolute color="black" height="80" elevation="2">
-        <v-btn icon @click.stop="drawer = !drawer">
+      <v-app-bar absolute color="black" height="80" elevation="2" width="100%">
+        <v-btn icon @click="drawer = !drawer">
           <InlineSvg
             :src="getImageUrl('shared/tablet/icon-hamburger.svg')"
             alt="Menu"
@@ -10,7 +10,9 @@
             aria-label="Menu"
           />
         </v-btn>
-        <InlineSvg :src="getImageUrl('logo.svg')" />
+        <nuxt-link to="/">
+          <InlineSvg :src="getImageUrl('logo.svg')" />
+        </nuxt-link>
         <v-btn icon>
           <InlineSvg
             :src="getImageUrl('shared/desktop/icon-cart.svg')"
@@ -38,6 +40,10 @@ export default {
 
   watch: {
     group() {
+      this.drawer = false
+    },
+
+    $route() {
       this.drawer = false
     },
   },

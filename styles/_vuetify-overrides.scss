@@ -3,6 +3,11 @@
 .v-application {
   background-color: $bg !important;
   font-family: 'Manrope', sans-serif !important;
+
+  & a {
+    color: unset !important;
+    text-decoration: none;
+  }
 }
 
 .theme--light.v-divider {

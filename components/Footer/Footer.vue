@@ -2,14 +2,24 @@
   <div class="footer">
     <div class="footer__container">
       <div class="footer__logo">
-        <InlineSvg :src="getImageUrl('logo.svg')" />
+        <nuxt-link to="/">
+          <InlineSvg :src="getImageUrl('logo.svg')" />
+        </nuxt-link>
       </div>
 
       <ul class="footer__menu">
-        <li class="footer__menu--item">Home</li>
-        <li class="footer__menu--item">Headphones</li>
-        <li class="footer__menu--item">Speakers</li>
-        <li class="footer__menu--item">Earphones</li>
+        <nuxt-link to="/">
+          <li class="footer__menu--item" :to="'/'">Home</li>
+        </nuxt-link>
+        <nuxt-link to="/headphones">
+          <li class="footer__menu--item">Headphones</li>
+        </nuxt-link>
+        <nuxt-link to="/speakers">
+          <li class="footer__menu--item">Speakers</li>
+        </nuxt-link>
+        <nuxt-link to="/earphones">
+          <li class="footer__menu--item">Earphones</li>
+        </nuxt-link>
       </ul>
 
       <div class="footer__about">

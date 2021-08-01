@@ -12,6 +12,7 @@
 
   &__logo {
     margin-top: 48px;
+    cursor: pointer;
   }
 
   &__menu {
@@ -25,6 +26,11 @@
       letter-spacing: 2px;
       font-weight: bold;
       font-size: 13px;
+      transition: color 0.2s ease;
+      cursor: pointer;
+      &:hover {
+        color: $orange;
+      }
     }
   }
 
@@ -43,8 +49,16 @@
   }
 
   &__social {
+    cursor: pointer;
     svg {
       margin: 0 0.5rem;
+
+      path {
+        transition: all 0.2s ease !important;
+        &:hover {
+          fill: $orange;
+        }
+      }
     }
     justify-items: center;
     align-self: center;

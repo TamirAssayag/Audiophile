@@ -55,7 +55,6 @@ export default {
 </script>
 
 <style lang="scss">
-@import '~/styles/mixins.scss';
 .products {
   &__container {
     display: grid;
