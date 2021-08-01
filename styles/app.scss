@@ -3,3 +3,7 @@
 @import './import.scss';
 @import './vuetify-overrides.scss';
 @import './UI/Button.scss';
+
+.page__container {
+  min-height: 100vh;
+}

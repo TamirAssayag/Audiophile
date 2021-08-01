@@ -1,6 +1,7 @@
 <template>
   <div class="headphones">
     <PageHeader> Headphones </PageHeader>
+    <div class="page__container"></div>
   </div>
 </template>
 

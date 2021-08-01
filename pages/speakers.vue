@@ -1,6 +1,7 @@
 <template>
   <div class="speakers">
     <PageHeader> Speakers </PageHeader>
+    <div class="page__container"></div>
   </div>
 </template>
 
