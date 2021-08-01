@@ -1,0 +1,53 @@
+.footer {
+  background-color: $black;
+  min-height: 654px;
+  color: $bg;
+  text-align: center;
+  &__container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  &__logo {
+    margin-top: 48px;
+  }
+
+  &__menu {
+    list-style-type: none;
+    padding: 0 !important;
+
+    &--item {
+      margin: 1rem 0;
+      text-transform: uppercase;
+      line-height: 1.92;
+      letter-spacing: 2px;
+      font-weight: bold;
+      font-size: 13px;
+    }
+  }
+
+  &__about {
+    p {
+      line-height: 1.67;
+      font-size: 15px;
+      opacity: 0.5;
+    }
+    padding: 0 1.5rem;
+  }
+
+  &__copyright {
+    opacity: 0.5;
+    font-size: 15px;
+  }
+
+  &__social {
+    svg {
+      margin: 0 0.5rem;
+    }
+    justify-items: center;
+    align-self: center;
+    gap: 1rem;
+  }
+}

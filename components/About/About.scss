@@ -1,0 +1,31 @@
+@import '~/styles/mixins.scss';
+
+.about {
+  margin: 7.5rem 0;
+  text-align: center;
+
+  &__image {
+    img {
+      width: 327px;
+      border-radius: 8px;
+    }
+  }
+  &__title {
+    margin: 40px 0 32px;
+    h1 {
+      @include Title(black, 28px, 1px);
+
+      span {
+        color: $orange;
+      }
+    }
+  }
+
+  &__content {
+    p {
+      opacity: 0.5;
+      line-height: 1.67;
+      font-size: 15px;
+    }
+  }
+}

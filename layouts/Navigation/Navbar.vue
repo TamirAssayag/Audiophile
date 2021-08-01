@@ -21,7 +21,7 @@
         </v-btn>
       </v-app-bar>
     </div>
-    <v-bottom-sheet v-model="drawer" @keydown.esc="drawer = false" absolute>
+    <v-bottom-sheet v-model="drawer" @keydown.esc="drawer = false">
       <div class="mobile__menu">
         <Categories />
       </div>
