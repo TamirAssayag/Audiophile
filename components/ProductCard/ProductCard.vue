@@ -18,11 +18,7 @@
         </p>
       </div>
       <div class="product__button">
-        <v-btn
-          class="btn btn--orange"
-          elevation="0"
-          :to="$route.path + '/' + data.slug"
-        >
+        <v-btn class="btn btn--orange" elevation="0" @click="directToProduct">
           See Product
         </v-btn>
       </div>
@@ -36,6 +32,12 @@ export default {
     data: {
       type: null,
       default: '',
+    },
+  },
+
+  methods: {
+    directToProduct() {
+      this.$router.push(this.$route.path + '/' + this.data.slug)
     },
   },
 }

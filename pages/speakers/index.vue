@@ -3,7 +3,11 @@
     <PageHeader :title="'speakers'" />
     <div class="page__container">
       <template v-for="product in speakers">
-        <Product v-if="speakers.length" :key="product._uid" :data="product" />
+        <ProductCard
+          v-if="speakers.length"
+          :key="product._uid"
+          :data="product"
+        />
       </template>
       <h1 v-if="!speakers.length" class="no-content">
         There are no speakers yet...
@@ -14,9 +18,9 @@
 
 <script>
 import PageHeader from '../../components/Layout/UI/PageHeader.vue'
-import Product from '~/components/Product/Product.vue'
+import ProductCard from '~/components/ProductCard/ProductCard.vue'
 export default {
-  components: { PageHeader, Product },
+  components: { PageHeader, ProductCard },
   asyncData(context) {
     return context.app.$storyapi
       .get('cdn/stories', {

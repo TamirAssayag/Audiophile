@@ -3,7 +3,11 @@
     <PageHeader :title="'earphones'" />
     <div class="page__container">
       <template v-for="product in earphones">
-        <Product v-if="earphones.length" :key="product._uid" :data="product" />
+        <ProductCard
+          v-if="earphones.length"
+          :key="product._uid"
+          :data="product"
+        />
       </template>
       <h1 v-if="!earphones.length" class="no-content">
         There are no earphones yet...
@@ -14,9 +18,9 @@
 
 <script>
 import PageHeader from '../../components/Layout/UI/PageHeader.vue'
-import Product from '~/components/Product/Product.vue'
+import ProductCard from '~/components/ProductCard/ProductCard.vue'
 export default {
-  components: { PageHeader, Product },
+  components: { PageHeader, ProductCard },
   asyncData(context) {
     return context.app.$storyapi
       .get('cdn/stories', {

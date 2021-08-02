@@ -3,7 +3,7 @@
     <PageHeader :title="'Headphones'" />
     <div class="page__container">
       <template v-for="product in headphones">
-        <Product :key="product._uid" :data="product" />
+        <ProductCard :key="product._uid" :data="product" />
       </template>
     </div>
   </div>
@@ -11,9 +11,9 @@
 
 <script>
 import PageHeader from '../../components/Layout/UI/PageHeader.vue'
-import Product from '~/components/Product/Product.vue'
+import ProductCard from '~/components/ProductCard/ProductCard.vue'
 export default {
-  components: { PageHeader, Product },
+  components: { PageHeader, ProductCard },
   asyncData(context) {
     return context.app.$storyapi
       .get('cdn/stories', {

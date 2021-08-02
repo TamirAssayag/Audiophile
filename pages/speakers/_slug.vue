@@ -1,14 +1,14 @@
 <template>
   <section>
-    <Product :data="story" />
+    <ProductCard :data="story" />
   </section>
 </template>
 
 <script>
-import Product from '~/components/Product/Product.vue'
+import ProductCard from '~/components/ProductCard/ProductCard.vue'
 export default {
   components: {
-    Product,
+    ProductCard,
   },
   asyncData(context) {
     // Load the JSON from the API
