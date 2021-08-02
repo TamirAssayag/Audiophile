@@ -21,6 +21,7 @@ import PageHeader from '../../components/Layout/UI/PageHeader.vue'
 import ProductCard from '~/components/ProductCard/ProductCard.vue'
 export default {
   components: { PageHeader, ProductCard },
+
   asyncData(context) {
     return context.app.$storyapi
       .get('cdn/stories', {
@@ -44,23 +45,27 @@ export default {
         }
       })
   },
+
   data: () => ({
     stories: [],
   }),
+
+  async fetch(context) {
+    const products = await context.app.$storyapi.get(`cdn/stories/`, {
+      starts_with: 'earphones/',
+      version: 'draft',
+    })
+    context.store.commit('products/setProducts', products.data.stories)
+  },
+
   head: {
     title: 'Earphones',
   },
 
   computed: {
     earphones() {
-      return [...this.stories].reverse()
+      return [...this.products].reverse()
     },
   },
 }
 </script>
-
-<style lang="scss">
-.headphones {
-  margin-bottom: calc(7.5rem - 24px);
-}
-</style>

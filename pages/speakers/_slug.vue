@@ -2,6 +2,7 @@
   <section>
     <GoBack />
     <ProductCard :data="story" />
+    {{ singleProduct }}
   </section>
 </template>
 

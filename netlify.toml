@@ -1,0 +1,5 @@
+[build]
+  base = "audiophile/"
+  publish = "dist/"
+  command = "echo 'npm run generate'"
+
