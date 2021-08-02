@@ -56,12 +56,12 @@ export default {
     // https://go.nuxtjs.dev/content
     '@nuxt/content',
     '@nuxtjs/style-resources',
+    '@nuxtjs/netlify-files',
     '@nuxtjs/dotenv',
   ],
 
   router: {
     base: '/',
-    name: 'Home',
   },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
