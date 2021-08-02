@@ -28,7 +28,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 64px;
+  margin-bottom: 40px;
   &--title {
     @include Title(null, 28px, 2px);
   }

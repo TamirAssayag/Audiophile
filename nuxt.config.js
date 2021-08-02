@@ -66,6 +66,11 @@ export default {
     '@nuxtjs/dotenv',
   ],
 
+  loading: {
+    color: '#d87d4a',
+    height: '1px',
+  },
+
   router: {
     base: '/',
   },

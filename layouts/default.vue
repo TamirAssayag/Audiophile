@@ -1,7 +1,7 @@
 <template>
   <v-app light>
     <Navbar />
-    <Nuxt />
+    <Nuxt keep-alive :keep-alive-props="{ max: 10 }" />
     <div v-if="!checkRoute('index')" class="container">
       <Categories />
       <About />
