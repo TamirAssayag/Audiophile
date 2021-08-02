@@ -3,7 +3,11 @@
     <div class="single--product">
       <div class="product__container">
         <div class="product__image">
-          <img :src="data.content.image" />
+          <v-img
+            :src="data.content.image"
+            :title="data.content.title"
+            :alt="data.content.title"
+          />
         </div>
         <div class="product__header">
           <span
