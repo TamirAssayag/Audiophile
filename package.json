@@ -13,10 +13,12 @@
   "dependencies": {
     "@nuxt/content": "^1.14.0",
     "@nuxtjs/axios": "^5.13.6",
+    "@nuxtjs/dotenv": "^1.4.1",
     "core-js": "^3.15.1",
     "include-media": "^1.4.10",
     "nuxt": "^2.15.7",
     "sass": "^1.32.8",
+    "storyblok-nuxt": "^2.0.1",
     "vue-inline-svg": "^2.0.0",
     "vue-screen": "^1.5.5",
     "vuetify": "^2.5.5"

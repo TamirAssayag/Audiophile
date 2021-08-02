@@ -34,7 +34,6 @@
     width: 300px;
 
     &__subtitle {
-      @include Subtitle(white, 0.5, 14px);
       margin-bottom: 1rem;
     }
 

@@ -52,9 +52,13 @@ export default {
 
 <style lang="scss">
 nav {
+  position: relative;
+  height: 80px;
   .navbar {
-    height: 80px;
-
+    position: fixed;
+    z-index: 999;
+    inset: 0;
+    max-height: 80px;
     .v-toolbar__content {
       display: flex !important;
       align-items: center !important;

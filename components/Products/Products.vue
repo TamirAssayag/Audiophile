@@ -56,6 +56,7 @@ export default {
 
 <style lang="scss">
 .products {
+  margin-bottom: 7.5rem;
   &__container {
     display: grid;
     place-items: center;

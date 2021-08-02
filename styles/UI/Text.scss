@@ -1,0 +1,17 @@
+.subtitle {
+  opacity: 0.5;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  letter-spacing: 10px;
+  text-transform: uppercase;
+
+  &--orange {
+    color: $orange;
+    opacity: 1;
+  }
+
+  &--white {
+    color: white;
+  }
+}

@@ -1,15 +1,5 @@
 // Mixins
 
-@mixin Subtitle($color, $opacity, $font-size) {
-  color: $color;
-  opacity: $opacity;
-  font-size: $font-size;
-  font-weight: normal;
-  font-stretch: normal;
-  letter-spacing: 10px;
-  text-transform: uppercase;
-}
-
 @mixin Title($color, $size, $l-spacing) {
   font-size: $size;
   font-weight: bold;
@@ -22,7 +12,6 @@
 @mixin Paragraph($color, $opacity, $size) {
   opacity: $opacity;
   font-size: $size;
-  font-weight: 200;
   line-height: 1.67;
   color: $color;
 }

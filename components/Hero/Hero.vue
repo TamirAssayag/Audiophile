@@ -5,7 +5,9 @@
         <img :src="getImageUrl(displayHeroImg())" class="hero__image" />
         <div class="hero__wrapper">
           <div class="hero__header">
-            <div class="hero__header__subtitle">New Product</div>
+            <div class="hero__header__subtitle subtitle subtitle--white">
+              New Product
+            </div>
             <div class="hero__header__title">XX99 Mark II Headphones</div>
             <div class="hero__header__description">
               Experience natural, lifelike audio and exceptional build quality

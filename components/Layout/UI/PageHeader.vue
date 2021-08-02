@@ -1,13 +1,22 @@
 <template>
   <div class="page__header">
     <h1 class="page__header--title">
-      <slot />
+      {{ title }}
     </h1>
   </div>
 </template>
 
 <script>
-export default {}
+export default {
+  name: 'PageHeader',
+
+  props: {
+    title: {
+      type: String,
+      default: '',
+    },
+  },
+}
 </script>
 
 <style lang="scss">
@@ -19,7 +28,7 @@ export default {}
   display: flex;
   align-items: center;
   justify-content: center;
-
+  margin-bottom: 64px;
   &--title {
     @include Title(null, 28px, 2px);
   }
