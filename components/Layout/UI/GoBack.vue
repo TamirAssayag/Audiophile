@@ -1,14 +1,23 @@
 <template>
   <div class="goback">
-    <v-btn text class="btn btn--goback" @click="goBack()"> Go Back </v-btn>
+    <NuxtLink :to="path">
+      <v-btn text class="btn btn--goback"> Go Back </v-btn>
+    </NuxtLink>
   </div>
 </template>
 
 <script>
 export default {
+  data: () => ({
+    path: '/',
+  }),
+  created() {
+    if (this.$nuxt?.context?.from?.path)
+      this.path = this.$nuxt.context.from.path
+  },
   methods: {
     goBack() {
-      return this.$router.go(-1)
+      return this.$router.back()
     },
   },
 }

@@ -1,29 +1,29 @@
 <template>
   <section class="category__navigation">
     <div v-for="item in items" :key="item.title">
-      <Card :bg-color="'#f1f1f1'">
-        <template #image>
-          <img
-            :src="getImageUrl(item.image)"
-            :class="`img ${item.slug}`"
-            :alt="item.title"
-            :aria-label="item.title"
-            :title="item.title"
-          />
-        </template>
-        <template #title>
-          <h4>{{ item.title }}</h4>
-        </template>
-        <template #btn>
-          <NuxtLink :to="item.slug">
+      <NuxtLink :to="item.slug">
+        <Card :bg-color="'#f1f1f1'">
+          <template #image>
+            <img
+              :src="getImageUrl(item.image)"
+              :class="`img ${item.slug}`"
+              :alt="item.title"
+              :aria-label="item.title"
+              :title="item.title"
+            />
+          </template>
+          <template #title>
+            <h4>{{ item.title }}</h4>
+          </template>
+          <template #btn>
             <v-btn class="btn btn--text"
               >SHOP &nbsp;
               <InlineSvg
                 :src="getImageUrl('shared/desktop/icon-arrow-right.svg')"
             /></v-btn>
-          </NuxtLink>
-        </template>
-      </Card>
+          </template>
+        </Card>
+      </NuxtLink>
     </div>
   </section>
 </template>
