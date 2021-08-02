@@ -15,11 +15,13 @@
           <h4>{{ item.title }}</h4>
         </template>
         <template #btn>
-          <v-btn class="btn btn--text" :to="item.slug"
-            >SHOP &nbsp;
-            <InlineSvg
-              :src="getImageUrl('shared/desktop/icon-arrow-right.svg')"
-          /></v-btn>
+          <NuxtLink :to="item.slug">
+            <v-btn class="btn btn--text"
+              >SHOP &nbsp;
+              <InlineSvg
+                :src="getImageUrl('shared/desktop/icon-arrow-right.svg')"
+            /></v-btn>
+          </NuxtLink>
         </template>
       </Card>
     </div>
