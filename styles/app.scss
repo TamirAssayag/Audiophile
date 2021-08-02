@@ -16,3 +16,40 @@
   text-transform: uppercase;
   font-size: 1rem;
 }
+
+.title {
+  &--uppercase {
+    text-transform: uppercase;
+  }
+}
+
+.rich {
+  &__p + &__p {
+    margin-top: 1.5rem;
+  }
+}
+
+.quantity-toggle {
+  display: flex;
+  height: 48px;
+
+  input {
+    border: 0;
+    width: calc(2.5rem + 3.1px);
+    text-align: center;
+    padding: 0 0.5rem;
+    background-color: #f1f1f1;
+    font-weight: bold;
+    outline: none;
+  }
+
+  button {
+    padding: 1rem;
+    background: #f1f1f1;
+    color: rgb(163, 163, 163);
+    font-size: 1rem;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: bold;
+  }
+}

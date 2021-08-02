@@ -1,6 +1,6 @@
 <template>
-  <div v-editable="data.content" class="product">
-    <div class="product__container">
+  <div v-editable="data.content" class="product product--card">
+    <div class="product--card__container">
       <div class="product__image">
         <img :src="data.content.image" />
       </div>
@@ -10,7 +10,9 @@
           class="product__header__subtitle subtitle subtitle--orange"
           >NEW PRODUCT</span
         >
-        <div class="product__header__title">{{ data.content.title }}</div>
+        <div class="product__header__title">
+          <h1 class="title--uppercase">{{ data.content.title }}</h1>
+        </div>
       </div>
       <div class="product__description">
         <p>
@@ -27,6 +29,7 @@
 </template>
 
 <script>
+import './../Product/Product.scss'
 export default {
   props: {
     data: {
@@ -44,30 +47,11 @@ export default {
 </script>
 
 <style lang="scss">
-.product {
+.product--card {
   min-height: 700px;
   margin-bottom: 7.5rem;
   &__container {
     text-align: center;
-  }
-
-  &__image {
-    img {
-      width: 327px;
-      border-radius: 8px;
-    }
-  }
-
-  &__header {
-    margin: 2rem 0 0;
-
-    &__title {
-      margin-top: 1.5rem;
-      @include Title(black, 28px, 1px);
-    }
-  }
-  &__description {
-    @include Paragraph(black, 0.5, 15px);
     padding: 1.5rem;
   }
 }

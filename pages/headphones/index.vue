@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import PageHeader from '../../components/Layout/UI/PageHeader.vue'
+import PageHeader from '~/components/Layout/UI/PageHeader.vue'
 import ProductCard from '~/components/ProductCard/ProductCard.vue'
 export default {
   components: { PageHeader, ProductCard },

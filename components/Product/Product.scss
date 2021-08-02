@@ -1,0 +1,76 @@
+.product {
+  &__image {
+    img {
+      width: 327px;
+      border-radius: 8px;
+    }
+  }
+
+  h1 {
+    margin: 1.5rem 0;
+  }
+
+  &__header {
+    margin: 2rem 0 0;
+
+    &__title {
+      h1 {
+        font-size: 28px;
+      }
+    }
+  }
+  &__description {
+    @include Paragraph(black, 0.5, 15px);
+  }
+
+  &__button {
+    margin: 1.5rem 0;
+
+    &__container {
+      display: flex;
+      gap: 1rem;
+    }
+  }
+
+  &__price {
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 1.29px;
+    padding: 1.5rem 0 0;
+  }
+
+  &__features {
+    margin: 5.5rem 0;
+
+    p {
+      @include Paragraph(black, 0.5, 15px);
+    }
+  }
+
+  &__inthebox {
+    margin-bottom: 4rem;
+    ul {
+      padding: 0;
+      list-style: none;
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    li {
+      font-size: 15px;
+      font-weight: bold;
+      line-height: 1.67;
+      text-align: left;
+      color: #d87d4a;
+      &:nth-child(2) {
+        @include Paragraph(black, 0.5, 15px);
+        font-weight: normal;
+      }
+    }
+  }
+
+  &__mayalsolike--title {
+    margin: 1.5rem 0 40px !important;
+  }
+}

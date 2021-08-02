@@ -64,7 +64,6 @@ nav {
     .v-toolbar__content {
       display: flex !important;
       align-items: center !important;
-      width: 100% !important;
       justify-content: space-between;
       padding: 1.5rem;
     }
