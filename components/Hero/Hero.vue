@@ -13,7 +13,11 @@
               Experience natural, lifelike audio and exceptional build quality
               made for the passionate music enthusiast.
             </div>
-            <v-btn class="hero__header__btn btn btn--orange">See Product</v-btn>
+            <NuxtLink to="/headphones/x99-mark-ii">
+              <v-btn class="hero__header__btn btn btn--orange"
+                >See Product</v-btn
+              >
+            </NuxtLink>
           </div>
         </div>
       </div>

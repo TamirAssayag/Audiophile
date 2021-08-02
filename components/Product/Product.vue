@@ -43,7 +43,7 @@
         <div class="product__features">
           <h1 class="title--uppercase">Features</h1>
           <div class="product__features__content">
-            <rich-text-renderer :document="data.content.features" />
+            <rich-text-renderer :document="data.content.features || {}" />
           </div>
         </div>
         <div class="product__inthebox">

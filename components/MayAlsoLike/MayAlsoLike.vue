@@ -10,9 +10,9 @@
       :title="blok.content.title"
     />
     <h1 class="title--uppercase text--center">{{ blok.content.title }}</h1>
-    <v-btn class="btn btn--orange" elevation="0" @click="directToProduct">
-      See Product
-    </v-btn>
+    <NuxtLink :to="'/' + blok.full_slug">
+      <v-btn class="btn btn--orange" elevation="0"> See Product </v-btn>
+    </NuxtLink>
   </div>
 </template>
 
@@ -23,12 +23,6 @@ export default {
     blok: {
       type: null,
       default: null,
-    },
-  },
-
-  methods: {
-    directToProduct() {
-      this.$router.push(this.blok.full_slug)
     },
   },
 }

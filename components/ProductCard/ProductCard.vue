@@ -20,9 +20,9 @@
         </p>
       </div>
       <div class="product__button">
-        <v-btn class="btn btn--orange" elevation="0" @click="directToProduct">
-          See Product
-        </v-btn>
+        <NuxtLink :to="$route.path + '/' + data.slug">
+          <v-btn class="btn btn--orange" elevation="0"> See Product </v-btn>
+        </NuxtLink>
       </div>
     </div>
   </div>

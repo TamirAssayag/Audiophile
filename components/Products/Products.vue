@@ -20,15 +20,19 @@
           </p>
         </template>
         <template #btn>
-          <v-btn elevation="0" class="btn btn--black">SEE PRODUCT</v-btn>
+          <NuxtLink to="/speakers/zx9-speaker">
+            <v-btn elevation="0" class="btn btn--black">SEE PRODUCT</v-btn>
+          </NuxtLink>
         </template>
       </Card>
       <Card :bg-color="cardColors[1]">
         <template #title>
-          <h1>ZX9 Speaker</h1>
+          <h1>ZX7 Speaker</h1>
         </template>
         <template #btn>
-          <v-btn elevation="0" class="btn btn--border">SEE PRODUCT</v-btn>
+          <NuxtLink to="/speakers/zx7-speaker">
+            <v-btn elevation="0" class="btn btn--border">SEE PRODUCT</v-btn>
+          </NuxtLink>
         </template>
       </Card>
       <Card :bg-color="cardColors[1]"> </Card>
@@ -37,7 +41,9 @@
           <h1>YX1 EARPHONES</h1>
         </template>
         <template #btn>
-          <v-btn elevation="0" class="btn btn--border">SEE PRODUCT</v-btn>
+          <NuxtLink to="/earphones/yx1-wireless-earphones">
+            <v-btn elevation="0" class="btn btn--border">SEE PRODUCT</v-btn>
+          </NuxtLink>
         </template>
       </Card>
     </div>
