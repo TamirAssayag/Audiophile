@@ -1,15 +1,19 @@
 <template>
   <section>
+    <GoBack />
     <ProductCard :data="story" />
   </section>
 </template>
 
 <script>
+import GoBack from '../../components/Layout/UI/GoBack.vue'
 import ProductCard from '~/components/ProductCard/ProductCard.vue'
 export default {
   components: {
     ProductCard,
+    GoBack,
   },
+
   asyncData(context) {
     // Load the JSON from the API
     return context.app.$storyapi

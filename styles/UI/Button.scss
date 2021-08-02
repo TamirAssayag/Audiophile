@@ -48,4 +48,13 @@
       color: $orange !important;
     }
   }
+
+  &--goback {
+    font-size: 15px;
+    line-height: 1.67;
+    color: #000000;
+    height: 30px !important;
+    width: inherit !important;
+    text-transform: capitalize;
+  }
 }
