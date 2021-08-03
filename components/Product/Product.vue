@@ -64,7 +64,7 @@
 
           <div class="product__inthebox">
             <h1 class="title--uppercase">In The Box</h1>
-            <template v-if="data.content.in_the_box.length">
+            <template v-if="inTheBoxLength()">
               <div
                 v-for="item in data.content.in_the_box"
                 :key="item._uid"
@@ -80,7 +80,7 @@
           </div>
         </div>
       </div>
-      <div v-if="checkIfImagesExist()" class="product__images">
+      <div v-if="productImageLength()" class="product__images">
         <div class="product__images__image">
           <v-img :src="data.content.product_images[0].image" />
           <v-img :src="data.content.product_images[1].image" />
@@ -110,8 +110,11 @@ export default {
   },
 
   methods: {
-    checkIfImagesExist() {
+    productImageLength() {
       return this.data.content?.product_images?.length
+    },
+    inTheBoxLength() {
+      return this.data.content?.in_the_box?.length
     },
   },
 }
