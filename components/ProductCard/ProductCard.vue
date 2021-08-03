@@ -57,6 +57,10 @@ export default {
   &__container {
     text-align: center;
     padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
 }
 </style>

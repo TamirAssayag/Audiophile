@@ -1,7 +1,7 @@
 <template>
   <section class="category__navigation">
     <div v-for="item in items" :key="item.title">
-      <NuxtLink :to="item.slug">
+      <NuxtLink :to="'/' + item.slug">
         <Card :bg-color="'#f1f1f1'">
           <template #image>
             <img

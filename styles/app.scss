@@ -29,27 +29,12 @@
   }
 }
 
-.quantity-toggle {
-  display: flex;
-  height: 48px;
+.modal-open {
+  overflow-y: hidden;
+  overflow-x: hidden;
+  max-height: 100vh;
 
-  input {
-    border: 0;
-    width: calc(2.5rem + 3.1px);
-    text-align: center;
-    padding: 0 0.5rem;
-    background-color: #f1f1f1;
-    font-weight: bold;
-    outline: none;
-  }
-
-  button {
-    padding: 1rem;
-    background: #f1f1f1;
-    color: rgb(163, 163, 163);
-    font-size: 1rem;
-    cursor: pointer;
-    font-size: 13px;
-    font-weight: bold;
+  @include media('>=md') {
+    padding-right: 4px;
   }
 }

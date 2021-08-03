@@ -40,3 +40,10 @@
 .v-overlay {
   z-index: 1 !important;
 }
+
+.v-menu {
+  &__content {
+    left: 50% !important;
+    transform: translateX(-50%);
+  }
+}

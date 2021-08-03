@@ -2,16 +2,44 @@
   text-align: center;
   margin-bottom: 7.5rem;
 
+  @include media('>=md') {
+    text-align: left;
+  }
+
+  &__container {
+    @include media('>=md') {
+      display: flex;
+      flex-direction: row-reverse;
+      align-items: center;
+      gap: 7.8rem;
+    }
+  }
+
+  &__text {
+    @include media('>=md') {
+      justify-items: flex-start;
+    }
+  }
+
   &__image {
     img {
       width: 327px;
       border-radius: 8px;
+      @include media('>=md') {
+        width: 540px;
+      }
     }
   }
   &__title {
     margin: 40px 0 32px;
+
     h1 {
       @include Title(black, 28px, 1px);
+
+      @include media('>=md') {
+        font-size: 40px;
+        width: 400px;
+      }
 
       span {
         color: $orange;
@@ -24,6 +52,10 @@
       opacity: 0.5;
       line-height: 1.67;
       font-size: 15px;
+
+      @include media('>=md') {
+        width: 445px;
+      }
     }
   }
 }

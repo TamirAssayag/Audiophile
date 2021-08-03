@@ -13,7 +13,7 @@
         <nuxt-link to="/">
           <InlineSvg :src="getImageUrl('logo.svg')" />
         </nuxt-link>
-        <v-btn icon>
+        <v-btn icon @click="toggleCartDialog">
           <InlineSvg
             :src="getImageUrl('shared/desktop/icon-cart.svg')"
             alt="Cart"
@@ -28,16 +28,21 @@
         <Categories />
       </div>
     </v-bottom-sheet>
+    <CartModal :is-open="dialog" @onClose="closeCartDialog" />
     <v-divider />
   </nav>
 </template>
 <script>
+import CartModal from '~/components/Modals/CartModal/CartModal.vue'
 export default {
   name: 'Navbar',
+
+  components: { CartModal },
 
   data: () => ({
     drawer: false,
     group: null,
+    dialog: false,
   }),
 
   watch: {
@@ -47,6 +52,21 @@ export default {
 
     $route() {
       this.drawer = false
+    },
+  },
+
+  methods: {
+    toggleCartDialog() {
+      this.dialog = !this.dialog
+      if (this.dialog === true) {
+        return document.querySelector('body').classList.add('modal-open')
+      } else {
+        return document.querySelector('body').classList.remove('modal-open')
+      }
+    },
+    closeCartDialog() {
+      this.dialog = false
+      return document.querySelector('body').classList.remove('modal-open')
     },
   },
 }

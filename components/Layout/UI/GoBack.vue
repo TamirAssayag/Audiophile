@@ -27,6 +27,10 @@ export default {
 .goback {
   padding: 1rem 1.5rem;
 
+  @include media('>=md') {
+    padding: 5rem 1.5rem 3.5rem;
+  }
+
   .v-btn:not(.v-btn--round).v-size--default {
     padding: 0 !important;
   }

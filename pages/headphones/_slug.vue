@@ -1,10 +1,12 @@
 <template>
-  <section>
+  <section class="product__page">
     <GoBack />
     <Product :data="story" />
-    <template v-for="rel in rels">
-      <MayAlsoLike :key="rel.name" :blok="rel" />
-    </template>
+    <div class="product__page__maylike">
+      <template v-for="(rel, index) in rels">
+        <MayAlsoLike :key="rel.id + index" :blok="rel" />
+      </template>
+    </div>
   </section>
 </template>
 

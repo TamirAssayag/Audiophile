@@ -1,4 +1,3 @@
-@import '~/styles/import.scss';
 .category__navigation {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -6,6 +5,10 @@
   gap: 3rem;
   padding-bottom: 7.5rem;
   width: 100%;
+
+  @include media('>=md') {
+    padding-bottom: 10rem;
+  }
 
   .img {
     position: absolute;

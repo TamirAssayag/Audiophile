@@ -2,7 +2,7 @@
   <main>
     <div class="hero">
       <div class="hero__container">
-        <v-img :src="getImageUrl(displayHeroImg())" class="hero__image" />
+        <img :src="getImageUrl(displayHeroImg())" class="hero__image" />
         <div class="hero__wrapper">
           <div class="hero__header">
             <div class="hero__header__subtitle subtitle subtitle--white">
@@ -34,9 +34,9 @@ export default {
 
   methods: {
     displayHeroImg() {
-      if (this.$screen.lg) {
+      if (this.$screen.desktop) {
         return 'home/desktop/image-hero.jpg'
-      } else if (this.$screen.md) {
+      } else if (this.$screen.tablet) {
         return 'home/tablet/image-header.jpg'
       } else {
         return 'home/mobile/image-header.jpg'

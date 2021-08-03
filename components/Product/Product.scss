@@ -1,9 +1,55 @@
 .product {
+  &__wrapper {
+    @include media('>=md') {
+      display: flex;
+      gap: 3rem;
+    }
+
+    @include media('>=lg') {
+      gap: 7.8rem;
+    }
+  }
+
+  &__page {
+    @include media('>=md') {
+      padding: 0 125px;
+      margin: auto;
+
+      &__maylike {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1.8rem;
+      }
+    }
+  }
+
   &__image {
     .v-image {
       width: 327px;
       max-width: 100%;
       border-radius: 8px;
+
+      @include media('>=md') {
+        height: 400px;
+        width: 470px;
+      }
+
+      @include media('>=lg') {
+        height: 560px;
+        width: 540px;
+      }
+    }
+  }
+
+  &__content--wrapper {
+    @include media('>=md') {
+      margin-top: 5.5rem;
+      display: flex;
+      gap: 3rem;
+      h1 {
+        font-size: 32px;
+      }
     }
   }
 
@@ -17,6 +63,9 @@
     &__title {
       h1 {
         font-size: 28px;
+        @include media('>=lg') {
+          font-size: 3rem;
+        }
       }
     }
   }
@@ -43,6 +92,12 @@
   &__features {
     margin: 5.5rem 0;
 
+    @include media('>=md') {
+      width: 70%;
+      margin-top: 0;
+      margin-bottom: 5.5rem;
+    }
+
     p {
       @include Paragraph(black, 0.5, 15px);
     }
@@ -50,6 +105,11 @@
 
   &__inthebox {
     margin-bottom: 4rem;
+
+    @include media('>=md') {
+      margin: 0;
+    }
+
     ul {
       padding: 0;
       list-style: none;
@@ -71,7 +131,46 @@
     }
   }
 
+  &__images {
+    margin-bottom: 7.5rem;
+    @include media('>=md') {
+      display: flex;
+      align-items: center;
+    }
+
+    .v-image {
+      margin: 1.4rem;
+      border-radius: 8px;
+      height: 174px;
+      width: 327px;
+
+      @include media('>=md') {
+        min-width: 445px;
+        min-height: 280px;
+      }
+    }
+
+    &__image_aside {
+      padding: 0 1.5rem;
+      .v-image {
+        width: 327px;
+        height: 368px;
+        margin: 0;
+      }
+      @include media('>=md') {
+        .v-image {
+          width: 635px;
+          height: 592px;
+          margin: 0;
+        }
+      }
+    }
+  }
+
   &__mayalsolike--title {
     margin: 1.5rem 0 40px !important;
+    @include media('>=md') {
+      font-size: 32px;
+    }
   }
 }
