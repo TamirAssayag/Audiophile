@@ -1,17 +1,25 @@
 <template>
   <section>
     <GoBack />
-    <ProductCard :data="story" />
+    <Product :data="story" />
+    <div class="product__page__maylike">
+      <template v-for="(rel, index) in rels">
+        <MayAlsoLike :key="rel.id + index" :blok="rel" />
+      </template>
+    </div>
   </section>
 </template>
 
 <script>
 import GoBack from '~/components/Layout/UI/GoBack.vue'
-import ProductCard from '~/components/ProductCard/ProductCard.vue'
+import Product from '~/components/Product/Product.vue'
+import MayAlsoLike from '~/components/MayAlsoLike/MayAlsoLike.vue'
+
 export default {
   components: {
-    ProductCard,
     GoBack,
+    Product,
+    MayAlsoLike,
   },
   asyncData(context) {
     // Load the JSON from the API

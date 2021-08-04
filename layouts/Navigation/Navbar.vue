@@ -10,16 +10,20 @@
             aria-label="Menu"
           />
         </v-btn>
-        <nuxt-link to="/">
+        <NuxtLink to="/">
           <InlineSvg :src="getImageUrl('logo.svg')" />
-        </nuxt-link>
+        </NuxtLink>
         <v-btn icon @click="toggleCartDialog">
           <InlineSvg
             :src="getImageUrl('shared/desktop/icon-cart.svg')"
             alt="Cart"
             title="Cart"
             aria-label="Cart"
+            class="cart__icon"
           />
+          <div class="cart__amount">
+            <h4 class="text--bold text--white">3</h4>
+          </div>
         </v-btn>
       </v-app-bar>
     </div>
@@ -86,6 +90,20 @@ nav {
       align-items: center !important;
       justify-content: space-between;
       padding: 1.5rem;
+    }
+
+    .cart__icon {
+      position: relative;
+    }
+    .cart__amount {
+      position: absolute;
+      height: 20px;
+      width: 20px;
+      background-color: $orange;
+      border-radius: 50%;
+      top: 0px;
+      left: -8px;
+      font-weight: bold;
     }
   }
 }
