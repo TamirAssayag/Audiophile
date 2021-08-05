@@ -77,6 +77,9 @@ export default {
 
   router: {
     base: '/',
+    scrollBehavior() {
+      return { x: 0, y: 0 }
+    },
   },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
