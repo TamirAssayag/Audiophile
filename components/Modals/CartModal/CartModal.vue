@@ -1,3 +1,4 @@
+he
 <template>
   <div class="cart-modal">
     <v-overlay v-model="showPopup" z-index="1" />
@@ -16,50 +17,77 @@
     >
       <div class="cart-modal__container">
         <div class="cart-modal__header">
-          <h1 class="title--uppercase">Cart (3)</h1>
-          <span>Remove all</span>
+          <h1 class="title--uppercase">Cart ({{ cartLength }})</h1>
+          <span v-if="cart.length" @click="deleteAll">Remove all</span>
         </div>
-        <div class="cart-modal__items">
-          <div class="cart-modal__items__container">
-            <v-img
-              width="64"
-              :src="
-                getImageUrl('shared/desktop/image-xx99-mark-two-headphones.jpg')
-              "
-              alt="Item"
-            />
-            <div class="cart-modal__items__details">
-              <div class="title--uppercase text--bold">XX99 MK II</div>
-              <p class="text--bold text--half-opacity">$ 2,999</p>
-            </div>
-            <div class="card-modal__quantity">
-              <QuantityToggle />
+        <v-slide-y-transition v-if="cart.length" group appear>
+          <div v-for="item in cart" :key="item._uid" class="cart-modal__items">
+            <div class="cart-modal__items__container">
+              <img width="64" :src="getImageUrl(item.image)" alt="Item" />
+              <div class="cart-modal__items__details">
+                <div class="title--uppercase text--bold">
+                  {{ item.name }}
+                </div>
+                <p class="text--bold text--half-opacity">
+                  $ {{ parseInt(item.price).toLocaleString() }}
+                </p>
+              </div>
+              <div class="card-modal__quantity">
+                <QuantityToggle
+                  :quantity="item.quantity.toString()"
+                  @increment="
+                    incrementQuantity({
+                      _uid: item._uid,
+                    })
+                  "
+                  @decrement="
+                    decrementQuantity({
+                      _uid: item._uid,
+                    })
+                  "
+                />
+              </div>
             </div>
           </div>
-        </div>
+        </v-slide-y-transition>
+        <v-slide-y-transition v-else appear>
+          <p class="mt-2 text--half-opacity">Cart is empty...</p>
+        </v-slide-y-transition>
       </div>
-      <div class="cart-modal__down">
-        <div
-          class="cart-modal__total d-flex justify-space-between align-center"
-        >
-          <h4 class="text--half-opacity title--uppercase">Total</h4>
-          <h3 class="cart-modal__price">$ 2,999</h3>
+      <v-slide-y-transition v-if="cart.length" appear>
+        <div class="cart-modal__down">
+          <div
+            class="cart-modal__total d-flex justify-space-between align-center"
+          >
+            <h4 class="text--half-opacity title--uppercase">Total</h4>
+            <h3 class="cart-modal__price">
+              $ {{ grandTotal.toLocaleString() }}
+            </h3>
+          </div>
+          <v-btn class="btn btn--orange" width="100%" elevation="0"
+            >Checkout</v-btn
+          >
         </div>
-        <v-btn class="btn btn--orange" width="100%" elevation="0"
-          >Checkout</v-btn
-        >
-      </div>
+      </v-slide-y-transition>
     </v-menu>
   </div>
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 import QuantityToggle from '../../Layout/UI/QuantityToggle.vue'
 export default {
+  name: 'CartModal',
   components: { QuantityToggle },
   props: {
     isOpen: Boolean,
   },
+
+  data: () => ({
+    enabled: true,
+    quantity: 1,
+  }),
+
   computed: {
     showPopup: {
       get() {
@@ -68,6 +96,20 @@ export default {
       set(isOpen) {
         this.$emit('onClose', isOpen)
       },
+    },
+  },
+
+  methods: {
+    ...mapActions({
+      incrementQuantity: 'products/incrementQuantity',
+      decrementQuantity: 'products/decrementQuantity',
+      removeAllCartItems: 'products/removeAllCartItems',
+    }),
+    itemClick(e) {
+      console.log(e, 'item click')
+    },
+    deleteAll() {
+      this.removeAllCartItems()
     },
   },
 }

@@ -2,7 +2,7 @@
   <section class="about">
     <div class="about__container">
       <div class="about__image">
-        <img :src="getImageUrl('shared/mobile/image-best-gear.jpg')" alt="" />
+        <img :src="getImageUrl(displayAboutImage)" alt="" />
       </div>
       <div class="about__text">
         <div class="about__title">
@@ -27,6 +27,18 @@
 import './About.scss'
 export default {
   name: 'About',
+
+  computed: {
+    displayAboutImage() {
+      if (this.$screen.desktop) {
+        return 'shared/desktop/image-best-gear.jpg'
+      } else if (this.$screen.tablet) {
+        return 'shared/tablet/image-best-gear.jpg'
+      } else {
+        return 'shared/mobile/image-best-gear.jpg'
+      }
+    },
+  },
 }
 </script>
 

@@ -8,6 +8,7 @@
 
   @include media('>=md') {
     padding-bottom: 10rem;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
   }
 
   .img {
@@ -27,6 +28,15 @@
   }
 
   .card {
+    @include media('>=md') {
+      width: 223px;
+      height: 165px;
+    }
+
+    @include media('>=lg') {
+      width: 464px;
+    }
+
     &__container {
       padding: 1rem;
       margin: 1rem;

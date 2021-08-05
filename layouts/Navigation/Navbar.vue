@@ -22,7 +22,7 @@
             class="cart__icon"
           />
           <div class="cart__amount">
-            <h4 class="text--bold text--white">3</h4>
+            <h4 class="text--bold text--white">{{ cartLength }}</h4>
           </div>
         </v-btn>
       </v-app-bar>

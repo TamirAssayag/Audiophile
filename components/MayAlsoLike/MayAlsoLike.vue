@@ -58,8 +58,12 @@ export default {
 
     @include media('>=md') {
       min-height: unset;
-      min-width: 350px;
+      min-width: 0;
       margin-bottom: 10rem;
+    }
+
+    @include media('>=lg') {
+      min-width: 350px;
     }
 
     img {

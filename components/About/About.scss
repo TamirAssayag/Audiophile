@@ -7,17 +7,27 @@
   }
 
   &__container {
-    @include media('>=md') {
+    @include media('>=lg') {
       display: flex;
       flex-direction: row-reverse;
       align-items: center;
+      justify-content: center;
       gap: 7.8rem;
+    }
+
+    @include media('>=md') {
+      text-align: center;
     }
   }
 
   &__text {
-    @include media('>=md') {
+    @include media('>=lg') {
       justify-items: flex-start;
+    }
+    @include media('>=md') {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
     }
   }
 
@@ -25,8 +35,15 @@
     img {
       width: 327px;
       border-radius: 8px;
+
       @include media('>=md') {
+        width: 100%;
+        height: 300px;
+      }
+
+      @include media('>=lg') {
         width: 540px;
+        height: 588px;
       }
     }
   }
@@ -38,6 +55,9 @@
 
       @include media('>=md') {
         font-size: 40px;
+        width: 573px;
+      }
+      @include media('>=lg') {
         width: 400px;
       }
 

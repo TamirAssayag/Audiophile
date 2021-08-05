@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section class="product__page">
     <GoBack />
     <Product :data="story" />
     <div class="product__page__maylike">

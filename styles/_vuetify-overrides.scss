@@ -26,6 +26,17 @@
 .container {
   width: unset;
   padding: 1.5rem;
+
+  @include media('>=md') {
+    width: 768px;
+    max-width: 768px;
+    margin: auto;
+  }
+  @include media('>=lg') {
+    width: 1440px;
+    max-width: 1440px;
+    margin: auto;
+  }
 }
 
 .v-application p {
@@ -43,6 +54,8 @@
 
 .v-menu {
   &__content {
+    border-radius: 8px !important;
+    box-shadow: unset !important;
     left: 50% !important;
     transform: translateX(-50%);
   }

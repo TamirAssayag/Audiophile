@@ -4,8 +4,8 @@
       <div class="product__container">
         <div class="product__wrapper">
           <div class="product__image">
-            <v-img
-              :src="data.content.image"
+            <img
+              :src="displayProductImage"
               :title="data.content.title"
               :alt="data.content.title"
             />
@@ -40,8 +40,12 @@
             </div>
             <div class="product__button">
               <div class="product__button__container">
-                <QuantityToggle />
-                <v-btn class="btn btn--orange" elevation="0">
+                <QuantityToggle
+                  :quantity="quantity.toString()"
+                  @increment="incrementQuantity()"
+                  @decrement="decrementQuantity()"
+                />
+                <v-btn class="btn btn--orange" elevation="0" @click="addToCart">
                   Add to cart
                 </v-btn>
               </div>
@@ -97,6 +101,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 import QuantityToggle from '../Layout/UI/QuantityToggle.vue'
 import './../Product/Product.scss'
 export default {
@@ -109,12 +114,49 @@ export default {
     },
   },
 
+  data: () => ({
+    quantity: 1,
+  }),
+
+  computed: {
+    displayProductImage() {
+      if (this.$screen.desktop) {
+        return this.getImageUrl(this.data.content.image, {
+          width: '540',
+          height: '560',
+        })
+      } else if (this.$screen.tablet) {
+        return this.getImageUrl(this.data.content.image, {
+          width: '281',
+          height: '400',
+        })
+      } else {
+        return this.getImageUrl(this.data.content.image, {
+          width: '327',
+          height: '327',
+        })
+      }
+    },
+  },
+
   methods: {
+    ...mapActions({
+      addProductToCart: 'products/addProductToCart',
+    }),
     productImageLength() {
       return this.data.content?.product_images?.length
     },
     inTheBoxLength() {
       return this.data.content?.in_the_box?.length
+    },
+    addToCart() {
+      this.addProductToCart({
+        name: this.data.name,
+        product: this.data.content,
+        quantity: this.quantity,
+        _uid: this.data.content._uid,
+      })
+      this.quantity = 1
     },
   },
 }

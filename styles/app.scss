@@ -17,6 +17,11 @@
   font-size: 1rem;
 }
 
+.slide-item-container {
+  width: 500px;
+  overflow: hidden;
+}
+
 .title {
   &--uppercase {
     text-transform: uppercase;

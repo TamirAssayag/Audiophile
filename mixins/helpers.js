@@ -5,10 +5,22 @@ export default {
     logConsole(param) {
       console.log(param)
     },
+    incrementQuantity() {
+      if (this.quantity) this.quantity++
+    },
+    decrementQuantity() {
+      if (this.quantity === 1) return
+      if (this.quantity) this.quantity--
+    },
   },
   computed: {
     ...mapGetters({
       products: 'products/products',
+      cart: 'products/cart',
+      grandTotal: 'products/getGrandTotal',
     }),
+    cartLength() {
+      return this.cart?.length ? this.cart.length : '0'
+    },
   },
 }
