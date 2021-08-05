@@ -13,7 +13,7 @@
         <NuxtLink to="/">
           <InlineSvg :src="getImageUrl('logo.svg')" />
         </NuxtLink>
-        <v-btn icon @click="toggleCartDialog">
+        <v-btn icon text @click="toggleCartDialog">
           <InlineSvg
             :src="getImageUrl('shared/desktop/icon-cart.svg')"
             alt="Cart"
@@ -21,9 +21,11 @@
             aria-label="Cart"
             class="cart__icon"
           />
-          <div class="cart__amount">
-            <h4 class="text--bold text--white">{{ cartLength }}</h4>
-          </div>
+          <v-slide-x-reverse-transition v-if="cart.length" appear>
+            <div class="cart__amount">
+              <h4 class="text--bold text--white">{{ cartLength }}</h4>
+            </div>
+          </v-slide-x-reverse-transition>
         </v-btn>
       </v-app-bar>
     </div>
@@ -33,7 +35,6 @@
       </div>
     </v-bottom-sheet>
     <CartModal :is-open="dialog" @onClose="closeCartDialog" />
-    <v-divider />
   </nav>
 </template>
 <script>
@@ -104,6 +105,7 @@ nav {
       top: 0px;
       left: -8px;
       font-weight: bold;
+      z-index: 2;
     }
   }
 }

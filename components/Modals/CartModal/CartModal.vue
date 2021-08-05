@@ -51,7 +51,7 @@ he
           </div>
         </v-slide-y-transition>
         <v-slide-y-transition v-else appear>
-          <p class="mt-2 text--half-opacity">Cart is empty...</p>
+          <p class="mt-2 text--half-opacity">Empty Cart...</p>
         </v-slide-y-transition>
       </div>
       <v-slide-y-transition v-if="cart.length" appear>

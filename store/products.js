@@ -51,33 +51,30 @@ const mutations = {
   },
 }
 
-const saveCartItemsToLocalStorage = (state) => {
-  localStorage.setItem('cart', JSON.stringify(state))
+const saveToLocalStorage = (key, value) => {
+  localStorage.setItem(key, JSON.stringify(value))
 }
 
 const actions = {
-  setProducts({ commit }, entries) {
-    commit('setProducts', entries)
-  },
   setCart({ commit, state }, entries) {
     commit('setCart', entries)
-    saveCartItemsToLocalStorage(state.cart)
+    saveToLocalStorage('cart', state.cart)
   },
   addProductToCart({ commit, state }, { name, product, quantity, _uid }) {
     commit('addProductToCart', { name, product, quantity, _uid })
-    saveCartItemsToLocalStorage(state.cart)
+    saveToLocalStorage('cart', state.cart)
   },
   incrementQuantity({ commit, state }, { _uid }) {
     commit('incrementQuantity', { _uid })
-    saveCartItemsToLocalStorage(state.cart)
+    saveToLocalStorage('cart', state.cart)
   },
   decrementQuantity({ commit, state }, { _uid }) {
     commit('decrementQuantity', { _uid })
-    saveCartItemsToLocalStorage(state.cart)
+    saveToLocalStorage('cart', state.cart)
   },
   removeAllCartItems({ commit, state }) {
     commit('removeAllCartItems')
-    saveCartItemsToLocalStorage(state.cart)
+    saveToLocalStorage('cart', state.cart)
   },
 }
 
