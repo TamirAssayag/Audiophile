@@ -2,7 +2,6 @@
   &__image {
     .v-image {
       width: 327px;
-      max-width: 100%;
       border-radius: 8px;
     }
   }
@@ -115,10 +114,10 @@
     }
 
     &__image {
-      .v-image {
-        height: 400px;
-        width: 470px;
-      }
+    }
+
+    &__description {
+      width: 500px;
     }
 
     &__content--wrapper {
@@ -154,11 +153,6 @@
       display: flex;
       align-items: center;
 
-      .v-image {
-        min-width: 277px;
-        min-height: 174px;
-      }
-
       &__image_aside {
         padding: 0;
 
@@ -179,7 +173,8 @@
 
   @include media('>=lg') {
     &__wrapper {
-      gap: 7.8rem;
+      height: 560px;
+      gap: 5.8rem;
     }
 
     &__content--wrapper {

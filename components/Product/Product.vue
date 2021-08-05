@@ -4,11 +4,22 @@
       <div class="product__container">
         <div class="product__wrapper">
           <div class="product__image">
-            <img
+            <v-img
+              :key="$screen.md + displayProductImage"
               :src="displayProductImage"
               :title="data.content.title"
               :alt="data.content.title"
-            />
+              contain
+            >
+              <template #placeholder>
+                <v-row class="fill-height ma-0" align="center" justify="center">
+                  <v-progress-circular
+                    color="black"
+                    indeterminate
+                  ></v-progress-circular>
+                </v-row>
+              </template>
+            </v-img>
           </div>
           <div class="product__wrapper__content">
             <div class="product__header">

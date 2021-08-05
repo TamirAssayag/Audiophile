@@ -32,6 +32,8 @@
   }
 
   &__image {
+    display: flex;
+    align-items: center;
     img {
       width: 327px;
       border-radius: 8px;

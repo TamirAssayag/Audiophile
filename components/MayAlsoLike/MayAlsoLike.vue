@@ -1,11 +1,14 @@
 <template>
   <div class="product__may-like">
-    <img
-      :key="$screen.desktop"
-      :src="displayMayLikeImage"
-      :alt="blok.content.title"
-      :title="blok.content.title"
-    />
+    <client-only>
+      <img
+        :key="$screen.md + displayMayLikeImage"
+        :src="displayMayLikeImage"
+        :alt="blok.content.title"
+        :title="blok.content.title"
+        contain
+      />
+    </client-only>
 
     <h1 class="title--uppercase text--center">{{ blok.name }}</h1>
     <NuxtLink :to="'/' + blok.full_slug">
@@ -23,11 +26,6 @@ export default {
       default: null,
     },
   },
-
-  data: () => ({
-    img: null,
-  }),
-
   computed: {
     displayMayLikeImage() {
       if (this.$screen.desktop) {

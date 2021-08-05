@@ -2,7 +2,12 @@
   <section class="about">
     <div class="about__container">
       <div class="about__image">
-        <img :src="getImageUrl(displayAboutImage)" alt="" />
+        <client-only>
+          <img
+            :key="$screen.md + displayAboutImage"
+            :src="getImageUrl(displayAboutImage)"
+          />
+        </client-only>
       </div>
       <div class="about__text">
         <div class="about__title">
