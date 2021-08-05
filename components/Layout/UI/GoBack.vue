@@ -28,6 +28,10 @@ export default {
   padding: 1rem 1.5rem;
 
   @include media('>=md') {
+    padding: 2rem 1.5rem;
+  }
+
+  @include media('>=lg') {
     padding: 5rem 1.5rem 3.5rem;
   }
 

@@ -58,5 +58,13 @@
     box-shadow: unset !important;
     left: 50% !important;
     transform: translateX(-50%);
+    z-index: 999 !important;
+  }
+}
+
+.v-snack {
+  top: -25px;
+  &__content {
+    text-align: center !important;
   }
 }

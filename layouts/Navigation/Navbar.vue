@@ -23,7 +23,7 @@
           />
           <v-slide-x-reverse-transition v-if="cart.length" appear>
             <div class="cart__amount">
-              <h4 class="text--bold text--white">{{ cartLength }}</h4>
+              <h4 class="text--bold text--white">{{ getTotalCartItems }}</h4>
             </div>
           </v-slide-x-reverse-transition>
         </v-btn>
@@ -34,10 +34,16 @@
         <Categories />
       </div>
     </v-bottom-sheet>
-    <CartModal :is-open="dialog" @onClose="closeCartDialog" />
+    <CartModal
+      :is-open="dialog"
+      @onClose="closeCartDialog"
+      @onDelete="deleteAllCartItems"
+      @onDecrement="decrementItemQuantity"
+    />
   </nav>
 </template>
 <script>
+import { mapActions } from 'vuex'
 import CartModal from '~/components/Modals/CartModal/CartModal.vue'
 export default {
   name: 'Navbar',
@@ -58,9 +64,20 @@ export default {
     $route() {
       this.drawer = false
     },
+
+    cart(value) {
+      if (!value.length) {
+        this.closeCartDialog()
+      }
+    },
   },
 
   methods: {
+    ...mapActions({
+      incrementQuantity: 'products/incrementQuantity',
+      decrementQuantity: 'products/decrementQuantity',
+      removeAllCartItems: 'products/removeAllCartItems',
+    }),
     toggleCartDialog() {
       this.dialog = !this.dialog
       if (this.dialog === true) {
@@ -72,6 +89,14 @@ export default {
     closeCartDialog() {
       this.dialog = false
       return document.querySelector('body').classList.remove('modal-open')
+    },
+    deleteAllCartItems() {
+      this.removeAllCartItems()
+    },
+    decrementItemQuantity(id) {
+      this.decrementQuantity({
+        _uid: id,
+      })
     },
   },
 }

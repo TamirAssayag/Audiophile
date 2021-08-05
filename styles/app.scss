@@ -38,8 +38,4 @@
   overflow-y: hidden;
   overflow-x: hidden;
   max-height: 100vh;
-
-  @include media('>=md') {
-    padding-right: 4px;
-  }
 }

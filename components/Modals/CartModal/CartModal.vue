@@ -17,34 +17,32 @@ he
     >
       <div class="cart-modal__container">
         <div class="cart-modal__header">
-          <h1 class="title--uppercase">Cart ({{ cartLength }})</h1>
-          <span v-if="cart.length" @click="deleteAll">Remove all</span>
+          <h1 class="title--uppercase">Cart ({{ getTotalCartItems }})</h1>
+          <span v-if="cart.length" @click="$emit('onDelete')">Remove all</span>
         </div>
         <v-slide-y-transition v-if="cart.length" group appear>
           <div v-for="item in cart" :key="item._uid" class="cart-modal__items">
-            <div class="cart-modal__items__container">
-              <img width="64" :src="getImageUrl(item.image)" alt="Item" />
-              <div class="cart-modal__items__details">
-                <div class="title--uppercase text--bold">
-                  {{ item.name }}
+            <div class="cart-modal__list-item">
+              <div class="cart-modal__list-item__wrapper">
+                <img width="64" :src="getImageUrl(item.image)" alt="Item" />
+                <div class="cart-modal__list-item__details">
+                  <div class="title--uppercase text--bold">
+                    {{ item.name }}
+                  </div>
+                  <p class="text--bold text--half-opacity">
+                    $ {{ parseInt(item.price).toLocaleString() }}
+                  </p>
                 </div>
-                <p class="text--bold text--half-opacity">
-                  $ {{ parseInt(item.price).toLocaleString() }}
-                </p>
               </div>
               <div class="card-modal__quantity">
                 <QuantityToggle
-                  :quantity="item.quantity.toString()"
+                  :quantity="quantityControl(item.quantity)"
                   @increment="
                     incrementQuantity({
                       _uid: item._uid,
                     })
                   "
-                  @decrement="
-                    decrementQuantity({
-                      _uid: item._uid,
-                    })
-                  "
+                  @decrement="$emit('onDecrement', item._uid)"
                 />
               </div>
             </div>
@@ -102,14 +100,12 @@ export default {
   methods: {
     ...mapActions({
       incrementQuantity: 'products/incrementQuantity',
-      decrementQuantity: 'products/decrementQuantity',
-      removeAllCartItems: 'products/removeAllCartItems',
     }),
     itemClick(e) {
       console.log(e, 'item click')
     },
-    deleteAll() {
-      this.removeAllCartItems()
+    quantityControl(quantity) {
+      if (typeof quantity === 'number') return quantity.toString()
     },
   },
 }
@@ -153,19 +149,22 @@ export default {
     }
   }
 
-  &__items {
+  &__list-item {
     margin-top: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin: 1.5rem 0;
 
-    &__container {
+    &__wrapper {
       display: flex;
       align-items: center;
-      justify-content: space-between;
       gap: 1rem;
-      margin: 1.5rem 0;
-    }
 
-    .v-image {
-      border-radius: 8px;
+      img {
+        border-radius: 8px;
+      }
     }
   }
 

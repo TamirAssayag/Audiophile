@@ -6,7 +6,7 @@ export default {
       console.log(param)
     },
     incrementQuantity() {
-      if (this.quantity) this.quantity++
+      if (this.quantity && this.quantity <= 19) this.quantity++
     },
     decrementQuantity() {
       if (this.quantity === 1) return
@@ -17,10 +17,9 @@ export default {
     ...mapGetters({
       products: 'products/products',
       cart: 'products/cart',
+      msg: 'products/msg',
       grandTotal: 'products/getGrandTotal',
+      getTotalCartItems: 'products/getTotalCartItems',
     }),
-    cartLength() {
-      return this.cart?.length ? this.cart.length : '0'
-    },
   },
 }

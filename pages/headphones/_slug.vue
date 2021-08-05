@@ -3,7 +3,7 @@
     <GoBack />
     <Product :data="story" />
     <div class="product__page__maylike">
-      <template v-for="(rel, index) in rels">
+      <template v-for="(rel, index) in relations">
         <MayAlsoLike :key="rel.id + index" :blok="rel" />
       </template>
     </div>
@@ -25,17 +25,16 @@ export default {
     // .get(`cdn/stories/cc4ebb9e-398d-4748-96e5-3e4700166333?find_by=uuid`, {})
 
     // Load the JSON from the API
+    const url = `cdn/stories/headphones/${context.params.slug}`
     return context.app.$storyapi
-      .get(
-        `cdn/stories/headphones/${context.params.slug}?&resolve_relations=more_products`,
-        {}
-      )
+      .get(url, {
+        resolve_relations: 'Product.more_products',
+      })
       .then((res) => {
         return res.data
       })
       .catch((res) => {
         if (!res.response) {
-          console.error(res)
           context.error({
             statusCode: 404,
             message: 'Failed to receive content form api',
@@ -53,5 +52,12 @@ export default {
     rels: { content: {} },
     story: { content: {} },
   }),
+  computed: {
+    relations() {
+      return this.rels
+        .filter((rel) => rel.slug !== this.$route.params.slug)
+        .slice(0, 3)
+    },
+  },
 }
 </script>

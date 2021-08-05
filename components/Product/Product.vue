@@ -69,15 +69,17 @@
           <div class="product__inthebox">
             <h1 class="title--uppercase">In The Box</h1>
             <template v-if="inTheBoxLength()">
-              <div
-                v-for="item in data.content.in_the_box"
-                :key="item._uid"
-                class="product__inthebox--item"
-              >
-                <ul>
-                  <li>{{ item.amount }}x</li>
-                  <li>{{ item.text }}</li>
-                </ul>
+              <div class="product__inthebox--wrapper">
+                <div
+                  v-for="item in data.content.in_the_box"
+                  :key="item._uid"
+                  class="product__inthebox--item"
+                >
+                  <ul>
+                    <li>{{ item.amount }}x</li>
+                    <li>{{ item.text }}</li>
+                  </ul>
+                </div>
               </div>
             </template>
             <p v-else class="text--half-opacity">Items hasn't set yet...</p>

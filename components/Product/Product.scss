@@ -1,65 +1,10 @@
 .product {
-  &__wrapper {
-    @include media('>=md') {
-      display: flex;
-      gap: 3rem;
-    }
-
-    @include media('>=lg') {
-      gap: 7.8rem;
-    }
-  }
-
-  &__page {
-    @include media('>=md') {
-      margin: auto;
-      width: 768px;
-      max-width: 768px;
-
-      &__maylike {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-    }
-
-    @include media('>=lg') {
-      width: 1440px;
-      max-width: 1440px;
-    }
-  }
-
   &__image {
     .v-image {
       width: 327px;
       max-width: 100%;
       border-radius: 8px;
-
-      @include media('>=md') {
-        height: 400px;
-        width: 470px;
-      }
-
-      @include media('>=lg') {
-        height: 560px;
-        width: 540px;
-      }
     }
-  }
-
-  &__content--wrapper {
-    @include media('>=md') {
-      margin-top: 5.5rem;
-      display: flex;
-      gap: 3rem;
-      h1 {
-        font-size: 32px;
-      }
-    }
-  }
-
-  h1 {
-    margin: 1.5rem 0;
   }
 
   &__header {
@@ -67,13 +12,12 @@
 
     &__title {
       h1 {
+        margin: 1.5rem 0;
         font-size: 28px;
-        @include media('>=lg') {
-          font-size: 3rem;
-        }
       }
     }
   }
+
   &__description {
     @include Paragraph(black, 0.5, 15px);
   }
@@ -97,12 +41,6 @@
   &__features {
     margin: 5.5rem 0;
 
-    @include media('>=md') {
-      width: 70%;
-      margin-top: 0;
-      margin-bottom: 5.5rem;
-    }
-
     p {
       @include Paragraph(black, 0.5, 15px);
     }
@@ -110,10 +48,6 @@
 
   &__inthebox {
     margin-bottom: 4rem;
-
-    @include media('>=md') {
-      margin: 0;
-    }
 
     ul {
       padding: 0;
@@ -138,59 +72,164 @@
 
   &__images {
     margin-bottom: 7.5rem;
-    @include media('>=md') {
-      display: flex;
-      align-items: center;
-    }
 
     .v-image {
       margin: 1.4rem;
       border-radius: 8px;
       height: 174px;
       width: 327px;
-
-      @include media('>=md') {
-        min-width: 277px;
-        min-height: 174px;
-      }
-
-      @include media('>=lg') {
-        min-width: 445px;
-        min-height: 280px;
-      }
     }
 
     &__image_aside {
       padding: 0 1.5rem;
 
-      @include media('>=md') {
-        padding: 0;
-      }
-
       .v-image {
         width: 327px;
         height: 368px;
         margin: 0;
-
-        @include media('>=md') {
-          width: 395px;
-          height: 368px;
-          margin: 0;
-        }
-
-        @include media('>=lg') {
-          width: 635px;
-          height: 592px;
-          margin: 0;
-        }
       }
     }
   }
 
   &__mayalsolike--title {
     margin: 1.5rem 0 40px !important;
-    @include media('>=md') {
+  }
+
+  @include media('>=md') {
+    &__wrapper {
+      display: flex;
+      gap: 3rem;
+    }
+
+    &__page {
+      margin: auto;
+      width: 768px;
+      max-width: 768px;
+
+      &__maylike {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 1.4rem;
+      }
+    }
+
+    &__image {
+      .v-image {
+        height: 400px;
+        width: 470px;
+      }
+    }
+
+    &__content--wrapper {
+      margin-top: 5.5rem;
+
+      h1 {
+        font-size: 32px;
+      }
+    }
+
+    &__features {
+      margin-top: 0;
+      margin-bottom: 5.5rem;
+
+      h1 {
+        margin: 1.5rem 0;
+      }
+    }
+
+    &__inthebox {
+      margin-bottom: 2.5rem;
+      display: flex;
+      align-items: center;
+      width: 500px;
+      justify-content: space-between;
+      h1 {
+        align-self: flex-start;
+        white-space: nowrap;
+      }
+    }
+
+    &__images {
+      display: flex;
+      align-items: center;
+
+      .v-image {
+        min-width: 277px;
+        min-height: 174px;
+      }
+
+      &__image_aside {
+        padding: 0;
+
+        .v-image {
+          width: 395px;
+          height: 368px;
+          margin: 0;
+        }
+      }
+    }
+
+    &__mayalsolike--title {
       font-size: 32px;
+    }
+  }
+
+  // Media Queries
+
+  @include media('>=lg') {
+    &__wrapper {
+      gap: 7.8rem;
+    }
+
+    &__content--wrapper {
+      display: flex;
+      gap: 3rem;
+    }
+
+    &__inthebox {
+      display: block;
+
+      h1 {
+        margin: 1.5rem 0;
+      }
+    }
+
+    &__page {
+      width: 1440px;
+      max-width: 1440px;
+    }
+
+    &__image {
+      .v-image {
+        height: 560px;
+        width: 540px;
+      }
+    }
+    &__header {
+      &__title {
+        h1 {
+          font-size: 3rem;
+        }
+      }
+    }
+    &__images {
+      .v-image {
+        min-width: 445px;
+        min-height: 280px;
+      }
+
+      &__image_aside {
+        .v-image {
+          width: 635px;
+          height: 592px;
+          margin: 0;
+        }
+      }
+    }
+
+    &__features {
+      width: 70%;
     }
   }
 }
