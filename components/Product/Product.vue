@@ -4,22 +4,15 @@
       <div class="product__container">
         <div class="product__wrapper">
           <div class="product__image">
-            <v-img
-              :key="$screen.md + displayProductImage"
-              :src="displayProductImage"
+            <NuxtImg
+              :key="$screen.tablet + productImageSettings.width"
+              provider="storyblok"
+              :src="data.content.image"
               :title="data.content.title"
               :alt="data.content.title"
-              contain
-            >
-              <template #placeholder>
-                <v-row class="fill-height ma-0" align="center" justify="center">
-                  <v-progress-circular
-                    color="black"
-                    indeterminate
-                  ></v-progress-circular>
-                </v-row>
-              </template>
-            </v-img>
+              :width="productImageSettings.width"
+              :height="productImageSettings.height"
+            />
           </div>
           <div class="product__wrapper__content">
             <div class="product__header">
@@ -98,12 +91,14 @@
         </div>
       </div>
       <div v-if="productImageLength()" class="product__images">
-        <div class="product__images__image">
-          <v-img :src="data.content.product_images[0].image" />
-          <v-img :src="data.content.product_images[1].image" />
-        </div>
-        <div class="product__images__image_aside">
-          <v-img :src="data.content.product_images[2].image" />
+        <div class="product__images__wrapper">
+          <div class="product__images__wrapper--left">
+            <NuxtImg :src="data.content.product_images[0].image" />
+            <NuxtImg :src="data.content.product_images[1].image" />
+          </div>
+          <div class="product__images__wrapper--right">
+            <NuxtImg :src="data.content.product_images[2].image" />
+          </div>
         </div>
       </div>
       <h1 class="title--uppercase text--center product__mayalsolike--title">
@@ -132,22 +127,22 @@ export default {
   }),
 
   computed: {
-    displayProductImage() {
+    productImageSettings() {
       if (this.$screen.desktop) {
-        return this.getImageUrl(this.data.content.image, {
+        return {
           width: '540',
           height: '560',
-        })
+        }
       } else if (this.$screen.tablet) {
-        return this.getImageUrl(this.data.content.image, {
+        return {
           width: '281',
           height: '400',
-        })
+        }
       } else {
-        return this.getImageUrl(this.data.content.image, {
+        return {
           width: '327',
           height: '327',
-        })
+        }
       }
     },
   },

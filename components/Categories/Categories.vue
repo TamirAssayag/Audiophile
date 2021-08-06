@@ -4,8 +4,9 @@
       <NuxtLink :to="'/' + item.slug">
         <Card :bg-color="'#f1f1f1'">
           <template #image>
-            <img
-              :src="getImageUrl(item.image)"
+            <NuxtImg
+              provider="static"
+              :src="item.image"
               :class="`img ${item.slug}`"
               :alt="item.title"
               :aria-label="item.title"
@@ -18,9 +19,8 @@
           <template #btn>
             <v-btn class="btn btn--text"
               >SHOP &nbsp;
-              <InlineSvg
-                :src="getImageUrl('shared/desktop/icon-arrow-right.svg')"
-            /></v-btn>
+              <IconRight />
+            </v-btn>
           </template>
         </Card>
       </NuxtLink>
@@ -30,9 +30,10 @@
 
 <script>
 import Card from '../Layout/UI/Card.vue'
+import IconRight from '~/static/images/shared/desktop/icon-arrow-right.svg?inline'
 import './Categories.scss'
 export default {
-  components: { Card },
+  components: { Card, IconRight },
   data: () => ({
     items: [
       {

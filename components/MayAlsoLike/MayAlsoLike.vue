@@ -1,15 +1,16 @@
 <template>
   <div class="product__may-like">
-    <client-only>
-      <img
-        :key="$screen.md + displayMayLikeImage"
-        :src="displayMayLikeImage"
+    <div class="product__may-like--image">
+      <NuxtImg
+        :key="$screen.md + displayMayLikeImage.width"
+        provider="storyblok"
+        :src="blok.content.image"
         :alt="blok.content.title"
         :title="blok.content.title"
-        contain
+        :width="displayMayLikeImage.width"
+        :height="displayMayLikeImage.height"
       />
-    </client-only>
-
+    </div>
     <h1 class="title--uppercase text--center">{{ blok.name }}</h1>
     <NuxtLink :to="'/' + blok.full_slug">
       <v-btn class="btn btn--orange" elevation="0"> See Product </v-btn>
@@ -29,19 +30,19 @@ export default {
   computed: {
     displayMayLikeImage() {
       if (this.$screen.desktop) {
-        return this.getImageUrl(this.blok.content.image, {
+        return {
           width: '350',
           height: '318',
-        })
+        }
       } else if (this.$screen.tablet) {
-        return this.getImageUrl(this.blok.content.image, {
+        return {
           width: '223',
           height: '318',
-        })
+        }
       } else {
-        return this.getImageUrl(this.blok.content.image, {
+        return {
           full: '/fit-in/327x120/filters:fill(F1F1F1)',
-        })
+        }
       }
     },
   },

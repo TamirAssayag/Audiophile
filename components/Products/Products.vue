@@ -3,8 +3,9 @@
     <div class="products__container">
       <Card :bg-color="cardColors[0]">
         <template #image>
-          <img
-            :src="getImageUrl('home/mobile/image-speaker-zx9.png')"
+          <NuxtImg
+            provider="static"
+            src="home/mobile/image-speaker-zx9.png"
             alt="ZX9 Speaker"
             title="ZX9 Speaker"
             aria-label="ZX9 Speaker"
@@ -68,7 +69,7 @@ export default {
     place-items: center;
     .card {
       min-height: 600px;
-      background-image: url('../../assets/images/circles.svg');
+      background-image: url('../../static/images/circles.svg');
       background-repeat: no-repeat;
       background-size: contain;
       margin-bottom: 1.5rem;
@@ -117,7 +118,7 @@ export default {
 
       &:nth-of-type(2) {
         min-height: 320px;
-        background-image: url('../../assets/images/home/mobile/image-speaker-zx7.jpg');
+        background-image: url('../../static/images/home/mobile/image-speaker-zx7.jpg');
         background-repeat: no-repeat;
         background-size: contain;
         filter: contrast(1.25);
@@ -156,7 +157,7 @@ export default {
 
       &:nth-of-type(3) {
         min-height: 200px;
-        background-image: url('../../assets/images/home/mobile/image-earphones-yx1.jpg');
+        background-image: url('../../static/images/home/mobile/image-earphones-yx1.jpg');
         background-repeat: no-repeat;
         background-size: contain;
         filter: contrast(1.1);

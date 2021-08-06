@@ -3,9 +3,10 @@
     <div class="hero">
       <div class="hero__container">
         <client-only>
-          <img
+          <NuxtImg
             :key="$screen.md + displayHeroImg"
-            :src="getImageUrl(displayHeroImg())"
+            provider="static"
+            :src="displayHeroImg()"
             class="hero__image"
           />
         </client-only>

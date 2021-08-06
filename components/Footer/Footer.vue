@@ -3,7 +3,7 @@
     <div class="footer__container">
       <div class="footer__logo">
         <NuxtLink to="/">
-          <InlineSvg :src="getImageUrl('logo.svg')" />
+          <AudiophileLogo />
         </NuxtLink>
       </div>
 
@@ -34,9 +34,9 @@
       <div class="footer__copyright">Copyright 2021. All Rights Reserved</div>
 
       <div class="footer__social">
-        <InlineSvg :src="getImageUrl('shared/desktop/icon-facebook.svg')" />
-        <InlineSvg :src="getImageUrl('shared/desktop/icon-twitter.svg')" />
-        <InlineSvg :src="getImageUrl('shared/desktop/icon-instagram.svg')" />
+        <FacebookIcon />
+        <TwitterIcon />
+        <InstagramIcon />
       </div>
     </div>
   </div>
@@ -44,8 +44,19 @@
 
 <script>
 import './Footer.scss'
+import AudiophileLogo from '~/static/images/logo.svg?inline'
+import FacebookIcon from '~/static/images/shared/desktop/icon-facebook.svg?inline'
+import TwitterIcon from '~/static/images/shared/desktop/icon-twitter.svg?inline'
+import InstagramIcon from '~/static/images/shared/desktop/icon-instagram.svg?inline'
+
 export default {
   name: 'Footer',
+  components: {
+    AudiophileLogo,
+    FacebookIcon,
+    TwitterIcon,
+    InstagramIcon,
+  },
 }
 </script>
 

@@ -34,7 +34,7 @@ export default {
             )
           }
         }
-        return require(`~/assets/images/${imagePath}`)
+        return require(`~/static/images/${imagePath}`)
       } catch (err) {
         return ''
       }

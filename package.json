@@ -15,6 +15,7 @@
     "@nuxt/content": "^1.14.0",
     "@nuxtjs/axios": "^5.13.6",
     "@nuxtjs/dotenv": "^1.4.1",
+    "@nuxtjs/svg": "^0.1.12",
     "@vue/composition-api": "^1.0.5",
     "core-js": "^3.15.1",
     "include-media": "^1.4.10",
@@ -27,6 +28,7 @@
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.14.7",
+    "@nuxt/image": "^0.5.0",
     "@nuxtjs/eslint-config": "^6.0.1",
     "@nuxtjs/eslint-module": "^3.0.2",
     "@nuxtjs/netlify-files": "^1.2.0",

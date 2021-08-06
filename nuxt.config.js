@@ -48,10 +48,7 @@ export default {
     '@nuxtjs/eslint-module',
     // https://go.nuxtjs.dev/vuetify
     '@nuxtjs/vuetify',
-  ],
-
-  // Modules: https://go.nuxtjs.dev/config-modules
-  modules: [
+    '@nuxtjs/svg',
     [
       'storyblok-nuxt',
       {
@@ -59,7 +56,10 @@ export default {
         cacheProvider: 'memory',
       },
     ],
+  ],
 
+  // Modules: https://go.nuxtjs.dev/config-modules
+  modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/content
@@ -67,6 +67,7 @@ export default {
     '@nuxtjs/style-resources',
     '@nuxtjs/netlify-files',
     '@nuxtjs/dotenv',
+    '@nuxt/image',
   ],
 
   loading: {
@@ -86,6 +87,15 @@ export default {
 
   // Content module configuration: https://go.nuxtjs.dev/config-content
   content: {},
+
+  image: {
+    staticFilename: '[publicPath]/images/[name]-[hash][ext]',
+    dir: 'static/images',
+    provider: 'storyblok',
+    storyblok: {
+      baseURL: 'https://img2.storyblok.com',
+    },
+  },
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {

@@ -2,25 +2,21 @@
   <nav>
     <div class="navbar">
       <v-app-bar absolute color="black" height="80" elevation="2" width="100%">
-        <v-btn icon @click="drawer = !drawer">
-          <InlineSvg
-            :src="getImageUrl('shared/tablet/icon-hamburger.svg')"
-            alt="Menu"
-            title="Menu"
-            aria-label="Menu"
-          />
+        <v-btn icon title="Menu" aria-label="Menu" @click="drawer = !drawer">
+          <MenuSvg />
         </v-btn>
         <NuxtLink to="/">
-          <InlineSvg :src="getImageUrl('logo.svg')" />
+          <AudiophileLogo />
         </NuxtLink>
-        <v-btn icon text @click="toggleCartDialog">
-          <InlineSvg
-            :src="getImageUrl('shared/desktop/icon-cart.svg')"
-            alt="Cart"
-            title="Cart"
-            aria-label="Cart"
-            class="cart__icon"
-          />
+        <v-btn
+          icon
+          text
+          title="Cart"
+          aria-label="Cart"
+          class="cart__icon"
+          @click="toggleCartDialog"
+        >
+          <CartSvg />
           <v-slide-x-reverse-transition v-if="cart.length" appear>
             <div class="cart__amount">
               <h4 class="text--bold text--white">{{ getTotalCartItems }}</h4>
@@ -44,11 +40,14 @@
 </template>
 <script>
 import { mapActions } from 'vuex'
+import AudiophileLogo from '~/static/images/logo.svg?inline'
+import CartSvg from '~/static/images/shared/desktop/icon-cart.svg?inline'
+import MenuSvg from '~/static/images/shared/tablet/icon-hamburger.svg?inline'
 import CartModal from '~/components/Modals/CartModal/CartModal.vue'
 export default {
   name: 'Navbar',
 
-  components: { CartModal },
+  components: { CartModal, AudiophileLogo, CartSvg, MenuSvg },
 
   data: () => ({
     drawer: false,

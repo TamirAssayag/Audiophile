@@ -2,10 +2,12 @@
   <div v-editable="data.content" class="product product--card">
     <div class="product--card__container">
       <div class="product__image">
-        <v-img
+        <NuxtImg
+          :key="$screen.tablet"
+          provider="storyblok"
           :src="data.content.image"
-          :alt="data.content.title"
           :title="data.content.title"
+          :alt="data.content.title"
         />
       </div>
       <div class="product__header">
