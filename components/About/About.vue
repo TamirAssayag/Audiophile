@@ -2,13 +2,11 @@
   <section class="about">
     <div class="about__container">
       <div class="about__image">
-        <client-only>
-          <NuxtImg
-            :key="$screen.md + displayAboutImage"
-            provider="static"
-            :src="displayAboutImage"
-          />
-        </client-only>
+        <NuxtImg
+          :key="$screen.md + displayAboutImage"
+          provider="static"
+          :src="displayAboutImage"
+        />
       </div>
       <div class="about__text">
         <div class="about__title">

@@ -37,10 +37,12 @@
     justify-content: center;
     img {
       width: 327px;
+      height: 300px;
       border-radius: 8px;
+      object-fit: cover;
 
       @include media('>=md') {
-        width: 100%;
+        width: 689px;
         height: 300px;
       }
 
