@@ -40,6 +40,10 @@
   &__features {
     margin: 5.5rem 0;
 
+    h1 {
+      margin: 1.5rem 0;
+    }
+
     p {
       @include Paragraph(black, 0.5, 15px);
     }
@@ -47,6 +51,10 @@
 
   &__inthebox {
     margin-bottom: 4rem;
+
+    h1 {
+      margin: 1.5rem 0;
+    }
 
     ul {
       padding: 0;
@@ -94,6 +102,8 @@
     margin: 1.5rem 0 40px !important;
   }
 
+  // Media Queries
+
   @include media('>=md') {
     &__wrapper {
       display: flex;
@@ -113,11 +123,17 @@
       }
     }
 
-    &__image {
+    &__price {
+      padding-top: 32px;
+    }
+
+    &__button {
+      margin-top: 31px;
     }
 
     &__description {
-      width: 500px;
+      min-width: 320px;
+      max-width: 320px;
     }
 
     &__content--wrapper {
@@ -131,10 +147,6 @@
     &__features {
       margin-top: 0;
       margin-bottom: 5.5rem;
-
-      h1 {
-        margin: 1.5rem 0;
-      }
     }
 
     &__inthebox {
@@ -146,6 +158,7 @@
       h1 {
         align-self: flex-start;
         white-space: nowrap;
+        margin: 0;
       }
     }
 
@@ -169,12 +182,10 @@
     }
   }
 
-  // Media Queries
-
   @include media('>=lg') {
     &__wrapper {
       height: 560px;
-      gap: 5.8rem;
+      gap: 7.8rem;
     }
 
     &__content--wrapper {
@@ -188,6 +199,19 @@
       h1 {
         margin: 1.5rem 0;
       }
+    }
+
+    &__price {
+      padding-top: 32px;
+    }
+
+    &__button {
+      margin-top: 3rem;
+    }
+
+    &__description {
+      width: 445px;
+      min-width: 445px;
     }
 
     &__page {
@@ -204,6 +228,7 @@
     &__header {
       &__title {
         h1 {
+          width: 20.5vw;
           font-size: 3rem;
         }
       }

@@ -39,3 +39,7 @@
   overflow-x: hidden;
   max-height: 100vh;
 }
+
+.disable-dbl-tap-zoom {
+  touch-action: manipulation;
+}

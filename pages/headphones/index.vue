@@ -16,27 +16,29 @@ export default {
   components: { PageHeader, ProductCard },
 
   asyncData(context) {
-    return context.app.$storyapi
-      .get('cdn/stories', {
-        starts_with: 'headphones/',
-        version: 'draft',
-      })
-      .then((res) => {
-        return res.data
-      })
-      .catch((res) => {
-        if (!res.response) {
-          context.error({
-            statusCode: 404,
-            message: 'Failed to receive content form api',
-          })
-        } else {
-          context.error({
-            statusCode: res.response.status,
-            message: res.response.data,
-          })
-        }
-      })
+    if (process.server) {
+      return context.app.$storyapi
+        .get('cdn/stories', {
+          starts_with: 'headphones/',
+          version: 'draft',
+        })
+        .then((res) => {
+          return res.data
+        })
+        .catch((res) => {
+          if (!res.response) {
+            context.error({
+              statusCode: 404,
+              message: 'Failed to receive content form api',
+            })
+          } else {
+            context.error({
+              statusCode: res.response.status,
+              message: res.response.data,
+            })
+          }
+        })
+    }
   },
 
   data: () => ({
