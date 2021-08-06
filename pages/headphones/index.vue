@@ -46,11 +46,13 @@ export default {
   }),
 
   async fetch(context) {
-    const products = await context.app.$storyapi.get(`cdn/stories/`, {
-      starts_with: 'headphones/',
-      version: 'draft',
-    })
-    context.store.commit('products/setProducts', products.data.stories)
+    if (process.env.NODE_ENV === 'development' || process.server) {
+      const products = await context.app.$storyapi.get(`cdn/stories/`, {
+        starts_with: 'headphones/',
+        version: 'draft',
+      })
+      context.store.commit('products/setProducts', products.data.stories)
+    }
   },
 
   head: {
