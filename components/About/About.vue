@@ -3,9 +3,8 @@
     <div class="about__container">
       <div class="about__image">
         <client-only>
-          <NuxtImg
+          <v-img
             :key="$screen.tablet + displayAboutImage"
-            provider="static"
             :src="getImageUrl(displayAboutImage)"
           />
         </client-only>

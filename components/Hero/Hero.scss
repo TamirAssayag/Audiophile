@@ -62,8 +62,12 @@
 
     .hero__image {
       top: -3rem;
-      object-fit: contain;
       height: 100%;
+      .v-image {
+        &__image--cover {
+          background-size: contain;
+        }
+      }
     }
 
     &__header {

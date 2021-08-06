@@ -3,12 +3,10 @@
     <div class="hero">
       <div class="hero__container">
         <client-only>
-          <NuxtImg
-            provider="static"
+          <v-img
             :key="$screen.tablet + displayHeroImg"
             :src="getImageUrl(displayHeroImg)"
             class="hero__image"
-            contain
           />
         </client-only>
         <div class="hero__wrapper">
