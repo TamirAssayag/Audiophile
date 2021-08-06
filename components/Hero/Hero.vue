@@ -2,12 +2,15 @@
   <main>
     <div class="hero">
       <div class="hero__container">
-        <NuxtImg
-          :key="$screen.md + displayHeroImg"
-          provider="static"
-          :src="displayHeroImg()"
-          class="hero__image"
-        />
+        <client-only>
+          <NuxtImg
+            provider="static"
+            :key="$screen.tablet + displayHeroImg"
+            :src="getImageUrl(displayHeroImg)"
+            class="hero__image"
+            contain
+          />
+        </client-only>
         <div class="hero__wrapper">
           <div class="hero__header">
             <div class="hero__header__subtitle subtitle subtitle--white">
@@ -37,7 +40,7 @@ export default {
 
   data: () => ({}),
 
-  methods: {
+  computed: {
     displayHeroImg() {
       if (this.$screen.desktop) {
         return 'home/desktop/image-hero.jpg'
