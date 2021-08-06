@@ -23,7 +23,7 @@ export default {
   },
   asyncData(context) {
     // Load the JSON from the API
-    if (process.server) {
+    if (process.env.NODE_ENV === 'development' || process.server) {
       const url = `cdn/stories/speakers/${context.params.slug}`
       return context.app.$storyapi
         .get(url, {

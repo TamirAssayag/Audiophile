@@ -23,7 +23,7 @@ export default {
   components: { PageHeader, ProductCard },
 
   asyncData(context) {
-    if (process.server) {
+    if (process.env.NODE_ENV === 'development' || process.server) {
       return context.app.$storyapi
         .get('cdn/stories', {
           starts_with: 'earphones/',
@@ -53,7 +53,7 @@ export default {
   }),
 
   async fetch(context) {
-    if (process.server) {
+    if (process.env.NODE_ENV === 'development' || process.server) {
       const products = await context.app.$storyapi.get(`cdn/stories/`, {
         starts_with: 'earphones/',
         version: 'draft',
