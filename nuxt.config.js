@@ -66,7 +66,7 @@ export default {
     '@nuxt/content',
     '@nuxtjs/style-resources',
     '@nuxtjs/netlify-files',
-    '@nuxtjs/dotenv',
+    ['@nuxtjs/dotenv', { filename: '.env' }],
     '@nuxt/image',
   ],
 
