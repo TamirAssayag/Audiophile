@@ -2,7 +2,7 @@ import axios from 'axios'
 import Vue from 'vue'
 // Add a request interceptor
 
-const BASE_API_URL = 'http://localhost:8888/.netlify/functions/'
+const BASE_API_URL = '/.netlify/functions/'
 
 export default class API {
   static get instance() {
