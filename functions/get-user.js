@@ -7,7 +7,6 @@ module.exports.handler = async (event, context) => {
   context.callbackWaitsForEmptyEventLoop = false
   try {
     await db.connectToDatabase()
-    const { authorization: userId } = event.headers
 
     const userId = await helpers.getUserId(event).catch((err) => {
       return helpers.createResponse(
