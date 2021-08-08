@@ -26,29 +26,52 @@ export default class API {
     return instance
   }
 
-  static async getAllUsers() {
-    const res = await this.instance({
+  static getAllUsers() {
+    return this.instance({
       method: 'GET',
       url: '/get-users',
+    }).then((res) => {
+      return res.data
     })
-    return res.data
   }
 
-  static async getUser(userId) {
-    const res = await this.instance({
+  static getUser(userId) {
+    return this.instance({
       method: 'GET',
       url: '/get-user',
       data: userId,
+    }).then((res) => {
+      return res.data
     })
-    return res.data
   }
 
-  static async createUser(user) {
-    const res = await this.instance({
+  static createUser(user) {
+    return this.instance({
       method: 'POST',
       url: '/signup',
       data: user,
+    }).then((res) => {
+      return res.data
     })
-    return res.data
+  }
+
+  static userLogin(user) {
+    return this.instance({
+      method: 'POST',
+      url: '/login',
+      data: user,
+    }).then((res) => {
+      return res.data
+    })
+  }
+
+  static addOrder(order) {
+    return this.instance({
+      method: 'POST',
+      url: '/add-order',
+      data: order,
+    }).then((res) => {
+      return res.data
+    })
   }
 }
