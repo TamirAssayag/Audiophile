@@ -4,6 +4,7 @@ import sumBy from 'lodash/sumBy'
 const state = () => ({
   products: [],
   cart: [],
+  user: [],
   msg: '',
 })
 
@@ -13,6 +14,9 @@ const mutations = {
   },
   setCart(state, entries) {
     state.cart = entries
+  },
+  setUser(state, entries) {
+    state.user = entries
   },
   setRelations(state, entries) {
     state.products = entries
@@ -87,6 +91,10 @@ const actions = {
     commit('setCart', entries)
     saveToLocalStorage('cart', state.cart)
   },
+  setUser({ commit, state }, entries) {
+    commit('setUser', entries)
+    saveToLocalStorage('user', state.user)
+  },
   setRelations({ commit }, entries) {
     commit('setRelations', entries)
     console.log(entries)
@@ -122,6 +130,9 @@ const getters = {
   },
   cart: (state) => {
     return state.cart
+  },
+  user: (state) => {
+    return state.user
   },
   rels: (state) => {
     return state.rels

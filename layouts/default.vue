@@ -5,7 +5,7 @@
       <Nuxt keep-alive :keep-alive-props="{ max: 10 }" />
     </v-fade-transition>
     <Snackbar />
-    <div v-if="!checkRoute('index')" class="container">
+    <div v-if="!checkRoute('index') && !checkRoute('signup')" class="container">
       <Categories />
       <About />
     </div>

@@ -4,7 +4,7 @@ import Vue from 'vue'
 
 const BASE_API_URL =
   process.env.NODE_ENV === 'development'
-    ? 'https://localhost:8888/.netlify/functions/'
+    ? 'http://localhost:8888/.netlify/functions/'
     : '/.netlify/functions/'
 
 export default class API {
@@ -14,11 +14,9 @@ export default class API {
     })
 
     instance.interceptors.request.use((config) => {
-      console.log(config.headers)
       if (!Vue.prototype.$store?.user?.userId)
         config.headers = {
-          Authorization:
-            Vue.prototype.$store?.user?.userId ?? '610ed87570e4a9389cb34f55',
+          Authorization: Vue.prototype.$store?.user?.userId ?? null,
         }
       console.log(config.headers)
 
@@ -32,6 +30,24 @@ export default class API {
     const res = await this.instance({
       method: 'GET',
       url: '/get-users',
+    })
+    return res.data
+  }
+
+  static async getUser(userId) {
+    const res = await this.instance({
+      method: 'GET',
+      url: '/get-user',
+      data: userId,
+    })
+    return res.data
+  }
+
+  static async createUser(user) {
+    const res = await this.instance({
+      method: 'POST',
+      url: '/signup',
+      data: user,
     })
     return res.data
   }
