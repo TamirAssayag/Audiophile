@@ -1,12 +1,22 @@
 <template>
   <div class="sign-up container mb-5">
-    <h1 class="mb-5">Sign Up</h1>
+    <h1 class="mb-5 title--uppercase">Sign Up</h1>
     <v-form @submit.prevent="handleRegistration">
-      <label for="email">Email</label>
-      <v-text-field v-model="user.email" type="text" name="email" />
-      <label for="password">Password</label>
-      <v-text-field v-model="user.password" type="password" name="password" />
-      <v-btn type="submit"> Sign Up </v-btn>
+      <v-text-field
+        v-model="user.email"
+        label="Email"
+        type="text"
+        name="email"
+      />
+      <v-text-field
+        v-model="user.password"
+        label="Password"
+        type="password"
+        name="password"
+      />
+      <v-btn type="submit" class="mt-5 btn btn--orange" elevation="0">
+        Sign Up
+      </v-btn>
     </v-form>
   </div>
 </template>
