@@ -26,6 +26,14 @@
       </v-app-bar>
     </div>
     <v-bottom-sheet v-model="drawer" @keydown.esc="drawer = false">
+      <div class="sign-up__login d-flex align-center flex-column pt-5">
+        <NuxtLink to="/signup">
+          <v-btn class="btn btn--text"> Sign Up </v-btn>
+        </NuxtLink>
+        <NuxtLink to="/login">
+          <v-btn class="btn btn--text mt-1"> Login </v-btn>
+        </NuxtLink>
+      </div>
       <div class="mobile__menu">
         <Categories />
       </div>
@@ -139,6 +147,13 @@ nav {
     background-color: white;
     border-bottom-right-radius: 8px !important;
     border-bottom-left-radius: 8px !important;
+    height: 100vh;
+    max-height: 100%;
+  }
+
+  .sign-up__login {
+    padding: 0 1rem;
+    background-color: white;
   }
 }
 </style>

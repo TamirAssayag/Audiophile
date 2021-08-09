@@ -18,6 +18,8 @@ export default {
       products: 'products/products',
       cart: 'products/cart',
       msg: 'products/msg',
+      getUser: 'user/getUser',
+      users: 'user/users',
       grandTotal: 'products/getGrandTotal',
       getTotalCartItems: 'products/getTotalCartItems',
     }),

@@ -1,6 +1,7 @@
 const helpers = require('./utills/helpers')
 const db = require('./utills/db')
 const User = require('./models/users')
+const mongoose = require('mongoose')
 
 module.exports.handler = async (event, context) => {
   context.callbackWaitsForEmptyEventLoop = false

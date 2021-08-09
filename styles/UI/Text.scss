@@ -32,4 +32,13 @@
   &--half-opacity {
     opacity: 0.5;
   }
+
+  &--underline {
+    text-decoration: underline;
+  }
+
+  &--error {
+    font-size: 10px;
+    color: rgb(255, 0, 0);
+  }
 }

@@ -14,11 +14,11 @@ export default class API {
     })
 
     instance.interceptors.request.use((config) => {
-      if (!Vue.prototype.$store?.user?.userId)
+      if (Vue.prototype.$store?.$getters['user/getUser']?._id)
         config.headers = {
-          Authorization: Vue.prototype.$store?.user?.userId ?? null,
+          Authorization:
+            Vue.prototype.$store?.$getters['user/getUser']?._id ?? null,
         }
-      console.log(config.headers)
 
       return config
     })
@@ -31,17 +31,18 @@ export default class API {
       method: 'GET',
       url: '/get-users',
     }).then((res) => {
-      return res.data
+      return res.data.data.map((user) => {
+        return user
+      })
     })
   }
 
-  static getUser(userId) {
+  static getUser() {
     return this.instance({
       method: 'GET',
       url: '/get-user',
-      data: userId,
     }).then((res) => {
-      return res.data
+      return res.data.data
     })
   }
 
@@ -51,7 +52,7 @@ export default class API {
       url: '/signup',
       data: user,
     }).then((res) => {
-      return res.data
+      return res.data.data
     })
   }
 
@@ -60,9 +61,13 @@ export default class API {
       method: 'POST',
       url: '/login',
       data: user,
-    }).then((res) => {
-      return res.data
     })
+      .then((res) => {
+        return res.data.data
+      })
+      .catch((err) => {
+        console.log(err.message)
+      })
   }
 
   static addOrder(order) {
@@ -71,7 +76,7 @@ export default class API {
       url: '/add-order',
       data: order,
     }).then((res) => {
-      return res.data
+      return res.data.data
     })
   }
 }

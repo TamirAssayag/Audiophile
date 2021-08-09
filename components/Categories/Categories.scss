@@ -3,7 +3,6 @@
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   place-items: center;
   gap: 3rem;
-  padding-bottom: 7.5rem;
   width: 100%;
 
   @include media('>=md') {

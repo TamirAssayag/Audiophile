@@ -5,8 +5,13 @@
       <Nuxt keep-alive :keep-alive-props="{ max: 10 }" />
     </v-fade-transition>
     <Snackbar />
-    <div v-if="!checkRoute('index') && !checkRoute('signup')" class="container">
-      <Categories />
+    <div
+      v-if="
+        !checkRoute('index') && !checkRoute('signup') && !checkRoute('login')
+      "
+      class="container"
+    >
+      <Categories class="pb-120" />
       <About />
     </div>
     <footer>
@@ -29,10 +34,14 @@ export default {
     if (localStorage.getItem('cart')) {
       this.setCart(JSON.parse(localStorage.getItem('cart')))
     }
+    if (localStorage.getItem('user')) {
+      this.saveUser(JSON.parse(localStorage.getItem('user')))
+    }
   },
   methods: {
     ...mapActions({
       setCart: 'products/setCart',
+      saveUser: 'user/saveUser',
     }),
     checkRoute(route) {
       return this.$route.name === route
