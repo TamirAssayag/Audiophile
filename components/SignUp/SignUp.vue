@@ -27,10 +27,11 @@
           @focus="$v.user.password.$reset()"
           @blur="$v.user.password.$touch()"
         />
-
-        <p v-if="errorMsg" class="text--error">
-          {{ errorMsg }}
-        </p>
+        <v-slide-y-transition appear>
+          <p v-if="errorMsg" class="text--error">
+            {{ errorMsg }}
+          </p>
+        </v-slide-y-transition>
 
         <v-btn type="submit" class="mt-5 btn btn--orange" elevation="0">
           {{ signUpRoute ? 'Sign Up' : 'Login' }}
@@ -59,6 +60,8 @@ import API from '~/services/api'
 export default {
   name: 'SignUp',
   mixins: [validationMixin],
+  middleware: 'auth',
+  auth: 'guest',
 
   validations: {
     user: {

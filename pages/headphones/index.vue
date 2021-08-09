@@ -3,8 +3,15 @@
     <PageHeader :title="'Headphones'" />
     <div class="page__container">
       <template v-for="product in headphones">
-        <ProductCard :key="product._uid" :data="product" />
+        <ProductCard
+          v-if="headphones.length"
+          :key="product._uid"
+          :data="product"
+        />
       </template>
+      <h1 v-if="!headphones.length" class="no-content">
+        There are no headphones yet...
+      </h1>
     </div>
   </div>
 </template>

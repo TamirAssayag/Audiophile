@@ -52,7 +52,7 @@ export default {
     [
       'storyblok-nuxt',
       {
-        accessToken: process.env.ACCESS_TOKEN_STORYBLOK,
+        accessToken: 'ol47Ce94XpLASv7QFjKX3Qtt',
         cacheProvider: 'memory',
       },
     ],
@@ -62,7 +62,7 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
-    // https://go.nuxtjs.dev/content
+    '@nuxtjs/auth-next',
     '@nuxt/content',
     '@nuxtjs/style-resources',
     '@nuxtjs/netlify-files',
@@ -75,14 +75,36 @@ export default {
     height: '1px',
   },
 
+  auth: {
+    strategies: {
+      local: {
+        token: {
+          property: 'data.access_token',
+          type: 'Bearer',
+        },
+      },
+    },
+    cookie: {
+      prefix: 'auth_',
+    },
+    redirect: {
+      login: '/login',
+      logout: '/login',
+      callback: '/login',
+      home: '/',
+    },
+  },
+
   router: {
     base: '/',
+    middleware: ['auth'],
     scrollBehavior(to, from, savedPosition) {
       if (savedPosition) {
         return savedPosition
       }
       return { x: 0, y: 0 }
     },
+    redirects: {},
   },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios

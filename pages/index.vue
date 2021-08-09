@@ -2,7 +2,7 @@
   <div class="content">
     <Hero />
     <section class="container">
-      <Categories :class="$screen.sm ? 'pb-120' : ''" />
+      <Categories class="pb-120" />
       <Products />
       <About />
     </section>

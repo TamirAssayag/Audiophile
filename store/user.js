@@ -7,6 +7,8 @@ const mutations = {
   saveUser(state, payload) {
     if (payload) {
       state.user = payload
+      this.$auth.$state.loggedIn = true
+      this.$auth.$state.user = payload
     }
   },
 
@@ -14,6 +16,8 @@ const mutations = {
 
   logoutUser(state) {
     localStorage.removeItem('user')
+    this.$auth.$state.loggedIn = false
+    this.$auth.$state.user = {}
     state.user = {}
   },
 }
@@ -37,9 +41,7 @@ const getters = {
   users: (state) => {
     return state.users
   },
-  errorMsg: (state) => {
-    return state.errorMsg
-  },
+
   getUser: (state) => {
     return state.user
   },
