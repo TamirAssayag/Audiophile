@@ -14,6 +14,7 @@
       <Categories class="pb-120" />
       <About />
     </div>
+
     <footer>
       <Footer />
     </footer>

@@ -26,6 +26,10 @@ export default class API {
     return instance
   }
 
+  static getErorrMsg(err) {
+    return err.response.data.data
+  }
+
   static getAllUsers() {
     return this.instance({
       method: 'GET',

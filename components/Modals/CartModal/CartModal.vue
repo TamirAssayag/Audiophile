@@ -18,7 +18,7 @@ he
       <div class="cart-modal__container">
         <div class="cart-modal__header">
           <h1 class="title--uppercase">Cart ({{ getTotalCartItems }})</h1>
-          <span v-if="cart.length" @click="$emit('onDelete')">Remove all</span>
+          <span v-if="cart.length" @click="deleteAllCartItems">Remove all</span>
         </div>
         <v-slide-y-transition v-if="cart.length" group appear>
           <div v-for="item in cart" :key="item._uid" class="cart-modal__items">
@@ -37,12 +37,8 @@ he
               <div class="card-modal__quantity">
                 <QuantityToggle
                   :quantity="quantityControl(item.quantity)"
-                  @increment="
-                    incrementQuantity({
-                      _uid: item._uid,
-                    })
-                  "
-                  @decrement="$emit('onDecrement', item._uid)"
+                  @increment="onIncremenet(item)"
+                  @decrement="onDecrement(item)"
                 />
               </div>
             </div>
@@ -96,16 +92,40 @@ export default {
       },
     },
   },
-
   methods: {
     ...mapActions({
       incrementQuantity: 'products/incrementQuantity',
+      decrementQuantity: 'products/decrementQuantity',
+      removeAllCartItems: 'products/removeAllCartItems',
     }),
     itemClick(e) {
       console.log(e, 'item click')
     },
     quantityControl(quantity) {
       if (typeof quantity === 'number') return quantity.toString()
+    },
+    onIncremenet(item) {
+      if (item.quantity < 20) {
+        this.incrementQuantity({
+          _uid: item._uid,
+        })
+      } else {
+        this.$root.$emit('snackbar', {
+          text: "Can't update item quantity due to max quantity",
+        })
+      }
+    },
+    onDecrement(item) {
+      this.decrementQuantity({
+        _uid: item._uid,
+      })
+      if (!item.quantity) {
+        this.$root.$emit('snackbar', { text: 'Removed product from cart' })
+      }
+    },
+    deleteAllCartItems() {
+      this.removeAllCartItems()
+      this.$root.$emit('snackbar', { text: 'Removed all products in cart' })
     },
   },
 }

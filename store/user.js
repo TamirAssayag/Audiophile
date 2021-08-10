@@ -1,14 +1,11 @@
 const state = () => ({
   user: {},
-  users: [],
 })
 
 const mutations = {
   saveUser(state, payload) {
     if (payload) {
       state.user = payload
-      this.$auth.$state.loggedIn = true
-      this.$auth.$state.user = payload
     }
   },
 
@@ -16,8 +13,6 @@ const mutations = {
 
   logoutUser(state) {
     localStorage.removeItem('user')
-    this.$auth.$state.loggedIn = false
-    this.$auth.$state.user = {}
     state.user = {}
   },
 }
@@ -38,12 +33,13 @@ const actions = {
 }
 
 const getters = {
-  users: (state) => {
-    return state.users
-  },
-
   getUser: (state) => {
     return state.user
+  },
+
+  isLoggedIn: (state) => {
+    const userId = state?.user?._id
+    return !!userId || false
   },
 }
 

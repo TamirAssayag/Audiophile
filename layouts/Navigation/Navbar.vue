@@ -26,7 +26,10 @@
       </v-app-bar>
     </div>
     <v-bottom-sheet v-model="drawer" @keydown.esc="drawer = false">
-      <div class="sign-up__login d-flex align-center flex-column pt-5">
+      <div
+        v-if="!loggedIn"
+        class="sign-up__login d-flex align-center flex-column pt-5"
+      >
         <NuxtLink to="/signup">
           <v-btn class="btn btn--text"> Sign Up </v-btn>
         </NuxtLink>
@@ -34,16 +37,18 @@
           <v-btn class="btn btn--text mt-1"> Login </v-btn>
         </NuxtLink>
       </div>
+      <v-slide-y-transition v-else appear mode="in-out">
+        <div class="logout">
+          <v-btn v-if="getUser._id" elevation="0" @click.prevent="logOut()">
+            Logout
+          </v-btn>
+        </div>
+      </v-slide-y-transition>
       <div class="mobile__menu">
         <Categories />
       </div>
     </v-bottom-sheet>
-    <CartModal
-      :is-open="dialog"
-      @onClose="closeCartDialog"
-      @onDelete="deleteAllCartItems"
-      @onDecrement="decrementItemQuantity"
-    />
+    <CartModal :is-open="dialog" @onClose="closeCartDialog" />
   </nav>
 </template>
 <script>
@@ -81,9 +86,8 @@ export default {
 
   methods: {
     ...mapActions({
-      incrementQuantity: 'products/incrementQuantity',
-      decrementQuantity: 'products/decrementQuantity',
       removeAllCartItems: 'products/removeAllCartItems',
+      logoutUser: 'user/logoutUser',
     }),
     toggleCartDialog() {
       this.dialog = !this.dialog
@@ -97,13 +101,9 @@ export default {
       this.dialog = false
       return document.querySelector('body').classList.remove('modal-open')
     },
-    deleteAllCartItems() {
-      this.removeAllCartItems()
-    },
-    decrementItemQuantity(id) {
-      this.decrementQuantity({
-        _uid: id,
-      })
+    logOut() {
+      this.logoutUser()
+      this.drawer = false
     },
   },
 }
@@ -147,7 +147,8 @@ nav {
     background-color: white;
     border-bottom-right-radius: 8px !important;
     border-bottom-left-radius: 8px !important;
-    height: 100vh;
+    height: 100%;
+    padding-bottom: 2.5rem;
     max-height: 100%;
   }
 

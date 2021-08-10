@@ -48,7 +48,6 @@
         </NuxtLink>
       </div>
     </div>
-    <v-btn v-if="getUser._id" @click.prevent="logOut()"> Logout </v-btn>
   </div>
 </template>
 
@@ -60,8 +59,6 @@ import API from '~/services/api'
 export default {
   name: 'SignUp',
   mixins: [validationMixin],
-  middleware: 'auth',
-  auth: 'guest',
 
   validations: {
     user: {
@@ -112,16 +109,21 @@ export default {
   methods: {
     ...mapActions({
       saveUser: 'user/saveUser',
-      logoutUser: 'user/logoutUser',
     }),
     async handleRegistration() {
       this.$v.$touch()
       if (this.$v.$invalid) return
       if (this.$route.name === 'signup') {
-        const newUser = await API.createUser(this.dataForm)
-        this.$router.push({
-          name: 'index',
+        const newUser = await API.createUser(this.dataForm).catch((err) => {
+          this.$root.$emit('snackbar', {
+            text: err.response.data.data.errorMsg,
+          })
         })
+        if (newUser) {
+          this.$router.push({
+            name: 'index',
+          })
+        }
         this.saveUser(newUser)
       }
       if (this.$route.name === 'login') {
@@ -135,9 +137,6 @@ export default {
         }
         await this.saveUser(userLogin)
       }
-    },
-    logOut() {
-      return this.logoutUser()
     },
   },
 }
@@ -171,7 +170,7 @@ export default {
   }
 
   &__form {
-    height: 100%;
+    height: 400px;
     display: flex;
     align-items: center;
     justify-content: center;

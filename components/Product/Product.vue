@@ -109,7 +109,7 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 import QuantityToggle from '../Layout/UI/QuantityToggle.vue'
 import './../Product/Product.scss'
 export default {
@@ -127,6 +127,9 @@ export default {
   }),
 
   computed: {
+    ...mapGetters({
+      getProductById: 'products/getProductById',
+    }),
     productImageSettings() {
       if (this.$screen.desktop) {
         return {
@@ -145,12 +148,16 @@ export default {
         }
       }
     },
+    getCartProduct() {
+      return this.getProductById(this.data.content._uid)
+    },
   },
 
   methods: {
     ...mapActions({
       addProductToCart: 'products/addProductToCart',
     }),
+
     productImageLength() {
       return this.data.content?.product_images?.length
     },
@@ -164,6 +171,31 @@ export default {
         quantity: this.quantity,
         _uid: this.data.content._uid,
       })
+
+      if (
+        this.getCartProduct?.quantity >= 1 &&
+        this.getCartProduct?.quantity <= 1
+      ) {
+        this.$root.$emit('snackbar', {
+          text: `Added ${this.data.name} to cart`,
+        })
+      } else if (
+        this.getCartProduct?.quantity < 20 &&
+        this.getCartProduct?.quantity >= 2
+      ) {
+        this.$root.$emit('snackbar', {
+          text: `Updated  ${this.data.name} in Cart`,
+        })
+      } else if (this.getCartProduct?.quantity >= 20) {
+        return this.$root.$emit('snackbar', {
+          text: `Cart cannot be updated at this moment`,
+        })
+      }
+      if (this.getTotalCartItems >= 99) {
+        return this.$root.$emit('snackbar', {
+          text: "Can't update cart due to a limit of 99 items",
+        })
+      }
       this.quantity = 1
     },
   },

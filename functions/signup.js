@@ -1,13 +1,22 @@
 const helpers = require('./utills/helpers')
 const db = require('./utills/db')
 const User = require('./models/users')
-const mongoose = require('mongoose')
 
 module.exports.handler = async (event, context) => {
   context.callbackWaitsForEmptyEventLoop = false
   try {
     await db.connectToDatabase()
     const { email, password } = JSON.parse(event.body)
+
+    const findUser = await User.find({ email })
+
+    if (findUser.length) {
+      return helpers.createResponse(
+        { errorMsg: 'Oops! Email is already taken' },
+        false
+      )
+    }
+
     const user = await User.create({
       email,
       password: await helpers.bcryptPassword(password),

@@ -47,3 +47,15 @@
 .disable-dbl-tap-zoom {
   touch-action: manipulation;
 }
+
+.logout {
+  width: 100%;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .v-btn {
+    width: 327px;
+  }
+}

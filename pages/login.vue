@@ -1,13 +1,14 @@
 <template>
-  <SignUp />
+  <SignInForm v-if="isLoggedIn()" />
 </template>
 
 <script>
-import SignUp from '../components/SignUp/SignUp.vue'
+import SignInForm from '../components/SignInForm/SignInForm.vue'
 
 export default {
   name: 'Login',
-  components: { SignUp },
+  components: { SignInForm },
+  middleware: ['guest'],
 }
 </script>
 
