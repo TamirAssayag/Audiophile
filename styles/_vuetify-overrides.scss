@@ -61,6 +61,11 @@
     left: 50% !important;
     transform: translateX(-50%);
     z-index: 999 !important;
+
+    @include media('>=lg') {
+      left: 66% !important;
+      transform: translateX(-66%);
+    }
   }
 }
 

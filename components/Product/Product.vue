@@ -33,13 +33,9 @@
               </p>
             </div>
             <div class="product__price">
+              <!-- prettier-ignore -->
               <p>
-                $
-                {{
-                  data.content.price
-                    ? parseInt(data.content.price).toLocaleString()
-                    : 'Free'
-                }}
+                ${{ data.content.price ? parseInt(data.content.price).toLocaleString(): 0 }}
               </p>
             </div>
             <div class="product__button">
@@ -207,6 +203,12 @@ export default {
   .product {
     &__container {
       padding: 0rem 1.5rem 1.5rem;
+
+      @include media('>=lg') {
+        padding: 0;
+        display: grid;
+        place-items: center;
+      }
     }
   }
 
@@ -232,6 +234,12 @@ export default {
       cursor: pointer;
       font-size: 13px;
       font-weight: bold;
+      transition: color 0.2s ease;
+
+      &:hover,
+      &:active {
+        color: $orange;
+      }
     }
   }
 }

@@ -148,7 +148,7 @@ export default {
   width: 100%;
   min-height: 50vh;
   position: relative;
-  z-index: 1;
+  z-index: 0;
   background-color: rgb(255, 255, 255);
   margin: 1rem auto;
 
@@ -166,6 +166,9 @@ export default {
 
     @include media('>=md') {
       background-image: url('~/static/images/shared/tablet/image-best-gear.jpg');
+    }
+    @include media('>=lg') {
+      background-position-y: -10rem;
     }
   }
 

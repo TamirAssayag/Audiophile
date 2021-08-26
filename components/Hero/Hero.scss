@@ -5,6 +5,10 @@
   filter: contrast(1.25);
   margin-bottom: 2.5rem;
 
+  @include media('>=lg') {
+    margin-bottom: 127px;
+  }
+
   &__container {
     width: 100%;
     height: 100%;
@@ -13,6 +17,7 @@
     align-items: center;
     justify-content: center;
     background-color: black;
+    overflow: hidden;
 
     .hero__image {
       position: absolute;
@@ -84,8 +89,12 @@
   }
 
   @include media('>=lg') {
+    background-color: black;
     &__container {
+      width: 1110px;
+      margin: auto;
       justify-content: space-between;
+
       .hero__image {
         height: 729px;
         left: 62%;
@@ -98,10 +107,11 @@
       text-align: left;
       width: 500px;
       overflow: auto;
-      margin: auto;
+      padding: 1.5rem;
 
       &__description {
         padding: 0;
+        width: 349px;
       }
     }
 

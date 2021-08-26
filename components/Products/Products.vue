@@ -5,7 +5,7 @@
         <template #image>
           <NuxtImg
             provider="static"
-            src="home/mobile/image-speaker-zx9.png"
+            src="home/desktop/image-speaker-zx9.png"
             alt="ZX9 Speaker"
             title="ZX9 Speaker"
             aria-label="ZX9 Speaker"
@@ -36,17 +36,19 @@
           </NuxtLink>
         </template>
       </Card>
-      <Card :bg-color="cardColors[1]"> </Card>
-      <Card :bg-color="cardColors[1]">
-        <template #title>
-          <h1>YX1 EARPHONES</h1>
-        </template>
-        <template #btn>
-          <NuxtLink to="/earphones/yx1-wireless-earphones">
-            <v-btn elevation="0" class="btn btn--border">SEE PRODUCT</v-btn>
-          </NuxtLink>
-        </template>
-      </Card>
+      <div class="earphones__container">
+        <Card :bg-color="cardColors[1]"> </Card>
+        <Card :bg-color="cardColors[1]">
+          <template #title>
+            <h1>YX1 EARPHONES</h1>
+          </template>
+          <template #btn>
+            <NuxtLink to="/earphones/yx1-wireless-earphones">
+              <v-btn elevation="0" class="btn btn--border">SEE PRODUCT</v-btn>
+            </NuxtLink>
+          </template>
+        </Card>
+      </div>
     </div>
   </div>
 </template>
@@ -73,6 +75,24 @@ export default {
       background-repeat: no-repeat;
       background-size: contain;
       margin-bottom: 1.5rem;
+      overflow: hidden;
+
+      @include media('>=lg') {
+        background-image: url('../../static/images/circles-desktop.svg');
+        width: 1110px;
+        height: 560px;
+        margin-bottom: 3rem;
+
+        &__container {
+          height: 100%;
+          &--inner {
+            display: flex;
+            align-items: center;
+            height: 100%;
+            width: 100%;
+          }
+        }
+      }
 
       &__img {
         display: flex;
@@ -84,6 +104,17 @@ export default {
           height: 207px;
           margin-top: 2.5rem;
         }
+
+        @include media('>=lg') {
+          width: 67%;
+
+          img {
+            width: 400px;
+            height: 483.5px;
+            position: absolute;
+            top: 5.5rem;
+          }
+        }
       }
 
       &__title {
@@ -92,6 +123,12 @@ export default {
           width: 95%;
           margin: auto;
           margin-bottom: 1.5rem;
+
+          @include media('>=lg') {
+            @include Title(white, 56px, 2px);
+            margin: 0;
+            text-align: left;
+          }
         }
         text-align: center;
       }
@@ -104,6 +141,12 @@ export default {
         text-align: center;
         color: #ffffff;
         margin-bottom: 1.5rem;
+
+        @include media('>=lg') {
+          width: 330px;
+          text-align: left;
+          margin-top: 1.5rem;
+        }
       }
 
       &__wrapper {
@@ -114,6 +157,12 @@ export default {
         align-items: center;
         flex-direction: column;
         padding: 1.5rem;
+
+        @include media('>=lg') {
+          position: unset;
+          justify-content: flex-start;
+          align-items: flex-start;
+        }
       }
 
       &:nth-of-type(2) {
@@ -124,12 +173,24 @@ export default {
         filter: contrast(1.25);
         overflow: hidden;
 
+        @include media('>lg') {
+          background-image: url('../../static/images/home/desktop/image-speaker-zx7.jpg');
+          // background-position-x: 18rem;
+          height: 320px;
+        }
+
         &::before {
           content: '';
           inset: 0;
           position: absolute;
           background-color: black;
           opacity: 0.2;
+        }
+
+        @include media('>=lg') {
+          .card__img {
+            width: unset;
+          }
         }
 
         .card__title {
@@ -147,46 +208,80 @@ export default {
           display: block;
           align-items: flex-start;
           justify-content: flex-start;
-        }
 
-        .product__see-product {
-          @include Button(transparent, black, 1px, black);
-          font-weight: bold;
-        }
-      }
-
-      &:nth-of-type(3) {
-        min-height: 200px;
-        background-image: url('../../static/images/home/mobile/image-earphones-yx1.jpg');
-        background-repeat: no-repeat;
-        background-size: contain;
-        filter: contrast(1.1);
-        overflow: hidden;
-      }
-
-      &:nth-of-type(4) {
-        min-height: 200px;
-        .card__title {
-          h1 {
-            width: 100%;
-            @include Title(black, 28px, 2px);
-            margin-bottom: 32px;
+          @include media('>=lg') {
+            margin-left: 95px;
           }
         }
 
-        .card__wrapper {
-          top: 50%;
-          padding: 0;
-          padding-left: 1.5rem;
-          display: block;
-          align-items: flex-start;
-          justify-content: flex-start;
-          transform: translate(0, -50%);
-        }
-
         .product__see-product {
           @include Button(transparent, black, 1px, black);
           font-weight: bold;
+        }
+      }
+    }
+    .earphones__container {
+      @include media('>=lg') {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+      }
+      .card {
+        &:nth-of-type(1) {
+          min-height: 200px;
+          background-image: url('../../static/images/home/mobile/image-earphones-yx1.jpg');
+          background-repeat: no-repeat;
+          background-size: contain;
+          filter: contrast(1.1);
+          overflow: hidden;
+
+          @include media('>=lg') {
+            margin-bottom: 0;
+            width: 540px;
+            height: 320px;
+            background-image: url('../../static/images/home/desktop/image-earphones-yx1.jpg');
+            border-radius: 8px !important;
+          }
+        }
+
+        &:nth-of-type(2) {
+          background-image: unset;
+          min-height: 200px;
+          @include media('>=lg') {
+            width: 540px;
+            height: 320px;
+            margin-bottom: 0;
+          }
+          .card__title {
+            h1 {
+              width: 100%;
+              @include Title(black, 28px, 2px);
+              margin-bottom: 32px;
+            }
+          }
+
+          .card__wrapper {
+            top: 50%;
+            padding: 0;
+            padding-left: 1.5rem;
+            display: block;
+            align-items: center;
+            justify-content: center;
+            transform: translate(0, -50%);
+
+            @include media('>=lg') {
+              top: 0;
+              align-items: center;
+              justify-content: center;
+              padding: 0;
+              transform: translate(0, 0);
+            }
+          }
+
+          .product__see-product {
+            @include Button(transparent, black, 1px, black);
+            font-weight: bold;
+          }
         }
       }
     }

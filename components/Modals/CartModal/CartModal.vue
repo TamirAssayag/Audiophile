@@ -4,8 +4,8 @@ he
     <v-overlay v-model="showPopup" z-index="1" />
     <v-menu
       v-model="showPopup"
-      max-width="327px"
-      min-width="327px"
+      :max-width="!$screen.desktop ? '327px' : '377px'"
+      :min-width="!$screen.desktop ? '327px' : '377px'"
       :close-on-content-click="false"
       z-index="998"
       nudge-bottom="104"
@@ -165,6 +165,12 @@ export default {
         font-size: 13px;
         font-weight: bold;
         height: 32px;
+        transition: color 0.2s ease;
+
+        &:hover,
+        &:active {
+          color: $orange;
+        }
       }
     }
   }

@@ -1,7 +1,14 @@
 <template>
   <nav>
     <div class="navbar">
-      <v-app-bar absolute color="black" height="80" elevation="2" width="100%">
+      <v-app-bar
+        v-if="!$screen.desktop"
+        absolute
+        color="black"
+        height="80"
+        elevation="2"
+        width="100%"
+      >
         <v-btn icon title="Menu" aria-label="Menu" @click="drawer = !drawer">
           <MenuSvg />
         </v-btn>
@@ -25,29 +32,78 @@
         </v-btn>
       </v-app-bar>
     </div>
-    <v-bottom-sheet v-model="drawer" @keydown.esc="drawer = false">
-      <div
-        v-if="!loggedIn"
-        class="sign-up__login d-flex align-center flex-column pt-5"
+    <div class="navbar navbar--desktop">
+      <v-app-bar
+        v-if="$screen.desktop"
+        absolute
+        color="black"
+        height="80"
+        elevation="2"
+        width="100%"
       >
-        <NuxtLink to="/signup">
-          <v-btn class="btn btn--text"> Sign Up </v-btn>
-        </NuxtLink>
-        <NuxtLink to="/login">
-          <v-btn class="btn btn--text mt-1"> Login </v-btn>
-        </NuxtLink>
-      </div>
-      <v-slide-y-transition v-else appear mode="in-out">
-        <div class="logout">
-          <v-btn v-if="getUser._id" elevation="0" @click.prevent="logOut()">
-            Logout
-          </v-btn>
+        <div class="navbar__left">
+          <NuxtLink to="/">
+            <AudiophileLogo />
+          </NuxtLink>
+
+          <ul class="nav__menu">
+            <NuxtLink to="/">
+              <li class="nav__menu--item" :to="'/'">Home</li>
+            </NuxtLink>
+            <NuxtLink to="/headphones">
+              <li class="nav__menu--item">Headphones</li>
+            </NuxtLink>
+            <NuxtLink to="/speakers">
+              <li class="nav__menu--item">Speakers</li>
+            </NuxtLink>
+            <NuxtLink to="/earphones">
+              <li class="nav__menu--item">Earphones</li>
+            </NuxtLink>
+          </ul>
         </div>
-      </v-slide-y-transition>
-      <div class="mobile__menu">
-        <Categories />
-      </div>
-    </v-bottom-sheet>
+
+        <div class="navbar__right d-flex align-center">
+          <v-slide-x-transition v-if="!loggedIn" appear group>
+            <div :key="loggedIn">
+              <NuxtLink to="/signup">
+                <v-btn class="btn btn--signup mr-2"> Sign Up </v-btn>
+              </NuxtLink>
+              <NuxtLink to="/login">
+                <v-btn class="btn btn--login mr-5"> Login </v-btn>
+              </NuxtLink>
+            </div>
+          </v-slide-x-transition>
+          <v-slide-x-transition v-else appear>
+            <div class="logout">
+              <v-btn
+                v-if="getUser._id"
+                class="btn btn--logout"
+                elevation="0"
+                @click.prevent="logOut()"
+              >
+                Logout
+              </v-btn>
+            </div>
+          </v-slide-x-transition>
+        </div>
+
+        <v-btn
+          icon
+          text
+          title="Cart"
+          aria-label="Cart"
+          class="cart__icon"
+          @click="toggleCartDialog"
+        >
+          <CartSvg />
+          <v-slide-x-reverse-transition v-if="cart.length" appear>
+            <div class="cart__amount">
+              <h4 class="text--bold text--white">{{ getTotalCartItems }}</h4>
+            </div>
+          </v-slide-x-reverse-transition>
+        </v-btn>
+      </v-app-bar>
+    </div>
     <CartModal :is-open="dialog" @onClose="closeCartDialog" />
   </nav>
 </template>
@@ -118,11 +174,48 @@ nav {
     z-index: 999;
     inset: 0;
     max-height: 80px;
+
     .v-toolbar__content {
       display: flex !important;
       align-items: center !important;
-      justify-content: space-between;
+      justify-content: space-between !important;
       padding: 1.5rem;
+
+      @include media('>=lg') {
+        width: 1110px;
+        justify-content: unset !important;
+        margin: auto;
+        padding: 1.5rem;
+      }
+    }
+
+    &__left {
+      display: flex;
+
+      .nav__menu {
+        margin-left: 197px;
+        display: flex;
+        list-style-type: none;
+        padding: 0;
+        gap: 2.12rem;
+        &--item {
+          font-size: 13px;
+          font-weight: bold;
+          line-height: 1.92;
+          letter-spacing: 2px;
+          text-transform: uppercase;
+          color: white;
+          transition: color 0.2s ease;
+
+          &:hover {
+            color: $orange;
+          }
+        }
+      }
+    }
+
+    &__right {
+      margin-left: auto;
     }
 
     .cart__icon {

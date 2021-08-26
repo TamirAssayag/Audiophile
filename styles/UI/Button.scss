@@ -57,4 +57,49 @@
     width: inherit !important;
     text-transform: capitalize;
   }
+
+  &--signup {
+    font-size: 15px;
+    font-weight: bold;
+    height: 25px !important;
+    width: 70px !important;
+    transition: all 0.2s ease;
+    border: 1px solid transparent;
+    background-color: transparent !important;
+    color: white !important;
+
+    &:hover {
+      background-color: transparent !important;
+      border: 1px solid $orange;
+    }
+  }
+
+  &--login {
+    font-size: 15px;
+    font-weight: bold;
+    height: 25px !important;
+    width: 70px !important;
+    transition: all 0.2s ease;
+    background-color: transparent !important;
+    border: 1px solid $orange;
+    color: white !important;
+
+    &:hover {
+      background-color: $orange !important;
+      border: 1px solid transparent;
+      color: white !important;
+    }
+  }
+
+  &--logout {
+    width: 70px !important;
+    height: 25px !important;
+    font-weight: bold;
+    transition: all 0.2s ease;
+
+    &:hover {
+      color: $orange !important;
+      background-color: transparent !important;
+    }
+  }
 }
