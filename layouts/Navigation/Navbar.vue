@@ -1,46 +1,7 @@
 <template>
   <nav>
-    <div class="navbar">
-      <v-app-bar
-        v-if="!$screen.desktop"
-        absolute
-        color="black"
-        height="80"
-        elevation="2"
-        width="100%"
-      >
-        <v-btn icon title="Menu" aria-label="Menu" @click="drawer = !drawer">
-          <MenuSvg />
-        </v-btn>
-        <NuxtLink to="/">
-          <AudiophileLogo />
-        </NuxtLink>
-        <v-btn
-          icon
-          text
-          title="Cart"
-          aria-label="Cart"
-          class="cart__icon"
-          @click="toggleCartDialog"
-        >
-          <CartSvg />
-          <v-slide-x-reverse-transition v-if="cart.length" appear>
-            <div class="cart__amount">
-              <h4 class="text--bold text--white">{{ getTotalCartItems }}</h4>
-            </div>
-          </v-slide-x-reverse-transition>
-        </v-btn>
-      </v-app-bar>
-    </div>
-    <div class="navbar navbar--desktop">
-      <v-app-bar
-        v-if="$screen.desktop"
-        absolute
-        color="black"
-        height="80"
-        elevation="2"
-        width="100%"
-      >
+    <div class="navbar navbar--desktop" v-if="$screen.desktop">
+      <v-app-bar absolute color="black" height="80" elevation="2" width="100%">
         <div class="navbar__left">
           <NuxtLink to="/">
             <AudiophileLogo />
@@ -104,6 +65,54 @@
         </v-btn>
       </v-app-bar>
     </div>
+    <div class="navbar" v-else>
+      <v-app-bar absolute color="black" height="80" elevation="2" width="100%">
+        <v-btn icon title="Menu" aria-label="Menu" @click="drawer = !drawer">
+          <MenuSvg />
+        </v-btn>
+        <NuxtLink to="/">
+          <AudiophileLogo />
+        </NuxtLink>
+        <v-btn
+          icon
+          text
+          title="Cart"
+          aria-label="Cart"
+          class="cart__icon"
+          @click="toggleCartDialog"
+        >
+          <CartSvg />
+          <v-slide-x-reverse-transition v-if="cart.length" appear>
+            <div class="cart__amount">
+              <h4 class="text--bold text--white">{{ getTotalCartItems }}</h4>
+            </div>
+          </v-slide-x-reverse-transition>
+        </v-btn>
+      </v-app-bar>
+    </div>
+    <v-bottom-sheet v-model="drawer" @keydown.esc="drawer = false">
+      <div
+        v-if="!loggedIn"
+        class="sign-up__login d-flex align-center flex-column pt-5"
+      >
+        <NuxtLink to="/signup">
+          <v-btn class="btn btn--text"> Sign Up </v-btn>
+        </NuxtLink>
+        <NuxtLink to="/login">
+          <v-btn class="btn btn--text mt-1"> Login </v-btn>
+        </NuxtLink>
+      </div>
+      <v-slide-y-transition v-else appear mode="in-out">
+        <div class="logout">
+          <v-btn v-if="getUser._id" elevation="0" @click.prevent="logOut()">
+            Logout
+          </v-btn>
+        </div>
+      </v-slide-y-transition>
+      <div class="mobile__menu">
+        <Categories />
+      </div>
+    </v-bottom-sheet>
     <CartModal :is-open="dialog" @onClose="closeCartDialog" />
   </nav>
 </template>
