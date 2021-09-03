@@ -75,3 +75,16 @@
     text-align: center !important;
   }
 }
+
+.v-input {
+  &--checkbox {
+    padding: 1rem;
+    font-weight: bold;
+    border-radius: 8px;
+    border: 1px solid #cfcfcf;
+
+    .v-label {
+      color: black !important;
+    }
+  }
+}

@@ -1,6 +1,6 @@
 <template>
   <nav>
-    <div class="navbar navbar--desktop" v-if="$screen.desktop">
+    <div v-if="$screen.desktop" class="navbar navbar--desktop">
       <v-app-bar absolute color="black" height="80" elevation="2" width="100%">
         <div class="navbar__left">
           <NuxtLink to="/">
@@ -65,7 +65,7 @@
         </v-btn>
       </v-app-bar>
     </div>
-    <div class="navbar" v-else>
+    <div v-else class="navbar">
       <v-app-bar absolute color="black" height="80" elevation="2" width="100%">
         <v-btn icon title="Menu" aria-label="Menu" @click="drawer = !drawer">
           <MenuSvg />

@@ -1,0 +1,48 @@
+.checkout {
+  width: 100%;
+  padding: 0 1.5rem;
+
+  &__header {
+    h1 {
+      font-size: 28px;
+      font-weight: bold;
+    }
+  }
+
+  &__form {
+    background-color: white;
+    min-height: 100vh;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 7rem;
+    &--billing {
+      p {
+        font-size: 13px;
+        line-height: 1.92;
+        letter-spacing: 0.93px;
+      }
+    }
+
+    &--shipping {
+      margin-top: 2.5rem;
+    }
+
+    .v-text-field {
+      border-radius: 8px;
+
+      &--outlined fieldset {
+        border-color: #cfcfcf !important;
+      }
+    }
+
+    .primary--text {
+      color: $orange !important;
+      caret-color: $orange !important;
+    }
+
+    label {
+      font-size: 12px;
+      letter-spacing: -0.21px;
+    }
+  }
+}
