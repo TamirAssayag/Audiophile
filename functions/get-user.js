@@ -19,7 +19,7 @@ module.exports.handler = async (event, context) => {
         path: 'orders',
         model: Orders,
       })
-      .select('password')
+      .select('-password')
     return helpers.createResponse(user, true)
   } catch (err) {
     console.log(err)

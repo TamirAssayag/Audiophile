@@ -11,12 +11,11 @@ module.exports.handler = async (event, context) => {
     const { email, password } = JSON.parse(event.body)
     const user = await User.findOne({
       email,
+    }).populate(-password, {
+      path: 'orders',
+      model: Orders,
     })
-      .populate({
-        path: 'orders',
-        model: Orders,
-      })
-      .select('password')
+
     if (!user) {
       return helpers.createResponse({ errorMsg: 'User not found.' }, false)
     }
