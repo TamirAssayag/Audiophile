@@ -1,6 +1,7 @@
 const helpers = require('./utills/helpers')
 const db = require('./utills/db')
 const User = require('./models/users')
+const Orders = require('./models/orders')
 const bcrypt = require('bcryptjs')
 
 module.exports.handler = async (event, context) => {
@@ -10,6 +11,9 @@ module.exports.handler = async (event, context) => {
     const { email, password } = JSON.parse(event.body)
     const user = await User.findOne({
       email,
+    }).populate(email, -password, {
+      path: 'orders',
+      model: Orders,
     })
     if (!user) {
       return helpers.createResponse({ errorMsg: 'User not found.' }, false)
@@ -17,7 +21,7 @@ module.exports.handler = async (event, context) => {
     let result = bcrypt.compareSync(password, user.password)
     if (result) {
       return helpers.createResponse(
-        { _id: user._id, email, orders: user.orders },
+        { _id: user._id, email, orders: user?.orders },
         true
       )
     } else {

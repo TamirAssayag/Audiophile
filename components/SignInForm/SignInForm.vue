@@ -55,10 +55,10 @@
 import { mapActions } from 'vuex'
 import { validationMixin } from 'vuelidate'
 import { required, email, minLength } from 'vuelidate/lib/validators'
-import API from '~/services/api'
+import userApiMixin from '~/mixins/userApiMixin'
 export default {
   name: 'SignUp',
-  mixins: [validationMixin],
+  mixins: [validationMixin, userApiMixin],
 
   validations: {
     user: {
@@ -114,7 +114,7 @@ export default {
       this.$v.$touch()
       if (this.$v.$invalid) return
       if (this.$route.name === 'signup') {
-        const newUser = await API.createUser(this.dataForm).catch((err) => {
+        const newUser = await this.createUser(this.dataForm).catch((err) => {
           this.$root.$emit('snackbar', {
             text: err.response.data.data.errorMsg,
           })
@@ -127,7 +127,12 @@ export default {
         this.saveUser(newUser)
       }
       if (this.$route.name === 'login') {
-        const userLogin = await API.userLogin(this.dataForm)
+        const userLogin = await this.loginUser({
+          ...this.dataForm,
+          email: this.dataForm.email,
+        })
+
+        console.log(userLogin)
         if (userLogin) {
           this.$router.push({
             name: 'index',

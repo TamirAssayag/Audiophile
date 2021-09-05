@@ -91,11 +91,12 @@
     }
   }
 
-  &--logout {
-    width: 70px !important;
+  &--account {
+    width: 78px !important;
     height: 25px !important;
     font-weight: bold;
     transition: all 0.2s ease;
+    font-size: 11px !important;
 
     &:hover {
       color: $orange !important;

@@ -58,7 +58,11 @@ he
               $ {{ grandTotal.toLocaleString() }}
             </h3>
           </div>
-          <v-btn class="btn btn--orange" width="100%" elevation="0"
+          <v-btn
+            class="btn btn--orange"
+            width="100%"
+            elevation="0"
+            @click="onCheckOut"
             >Checkout</v-btn
           >
         </div>
@@ -70,9 +74,15 @@ he
 <script>
 import { mapActions } from 'vuex'
 import QuantityToggle from '../../Layout/UI/QuantityToggle.vue'
+import userApiMixin from '~/mixins/userApiMixin'
+import cartHelpers from '~/mixins/cartHelpers'
+
 export default {
   name: 'CartModal',
   components: { QuantityToggle },
+
+  mixins: [userApiMixin, cartHelpers],
+
   props: {
     isOpen: Boolean,
   },
@@ -94,38 +104,23 @@ export default {
   },
   methods: {
     ...mapActions({
-      incrementQuantity: 'products/incrementQuantity',
-      decrementQuantity: 'products/decrementQuantity',
-      removeAllCartItems: 'products/removeAllCartItems',
+      saveUser: 'user/saveUser',
     }),
-    itemClick(e) {
-      console.log(e, 'item click')
-    },
-    quantityControl(quantity) {
-      if (typeof quantity === 'number') return quantity.toString()
-    },
-    onIncremenet(item) {
-      if (item.quantity < 20) {
-        this.incrementQuantity({
-          _uid: item._uid,
-        })
-      } else {
-        this.$root.$emit('snackbar', {
-          text: "Can't update item quantity due to max quantity",
-        })
-      }
-    },
-    onDecrement(item) {
-      this.decrementQuantity({
-        _uid: item._uid,
+
+    async onCheckOut() {
+      const newCart = this.cart.map((obj) => ({
+        productId: obj._uid,
+        quantity: obj.quantity,
+      }))
+      const newOrder = await this.postPurchase({
+        date: new Date().toJSON(),
+        cart: newCart,
       })
-      if (!item.quantity) {
-        this.$root.$emit('snackbar', { text: 'Removed product from cart' })
-      }
-    },
-    deleteAllCartItems() {
-      this.removeAllCartItems()
-      this.$root.$emit('snackbar', { text: 'Removed all products in cart' })
+      this.saveUser(await this.getUserData())
+      this.showPopup = false
+      // this.$router.push('/' + `checkout`)
+
+      return newOrder
     },
   },
 }
@@ -222,6 +217,21 @@ export default {
     .v-btn {
       margin-top: 1.5rem;
       width: 100% !important;
+    }
+  }
+
+  .v-menu {
+    &__content {
+      border-radius: 8px !important;
+      box-shadow: unset !important;
+      left: 50% !important;
+      transform: translateX(-50%);
+      z-index: 999 !important;
+
+      @include media('>=lg') {
+        left: 66% !important;
+        transform: translateX(-66%);
+      }
     }
   }
 }

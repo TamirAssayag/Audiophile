@@ -7,12 +7,15 @@
     <Snackbar />
     <div
       v-if="
-        !checkRoute('index') && !checkRoute('signup') && !checkRoute('login')
+        !checkRoute('index') &&
+        !checkRoute('signup') &&
+        !checkRoute('login') &&
+        !checkRoute('orders')
       "
       class="container"
     >
       <Categories class="pb-120" />
-      <About />
+      <About v-if="!checkRoute('cart')" />
     </div>
 
     <footer>
@@ -27,18 +30,26 @@ import { mapActions } from 'vuex'
 import Navbar from './Navigation/Navbar.vue'
 import Snackbar from '~/components/Layout/UI/Snackbar.vue'
 import Footer from '~/components/Footer/Footer.vue'
+import userApiMixin from '~/mixins/userApiMixin'
 export default {
   name: 'Default',
   components: { Navbar, Footer, Snackbar },
+  mixins: [userApiMixin],
 
-  mounted() {
+  async mounted() {
     if (localStorage.getItem('cart')) {
       this.setCart(JSON.parse(localStorage.getItem('cart')))
     }
-    if (localStorage.getItem('user')) {
-      this.saveUser(JSON.parse(localStorage.getItem('user')))
+    if (JSON.parse(localStorage.getItem('user'))) {
+      this.$axios.setHeader(
+        'Authorization',
+        JSON.parse(localStorage.getItem('user'))._id
+      )
+
+      this.saveUser(await this.getUserData())
     }
   },
+
   methods: {
     ...mapActions({
       setCart: 'products/setCart',

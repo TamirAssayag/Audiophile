@@ -2,11 +2,12 @@
   <div class="earphones">
     <PageHeader :title="'earphones'" />
     <div class="page__container">
-      <template v-for="product in earphones">
+      <template v-for="(product, i) in earphones">
         <ProductCard
           v-if="earphones.length"
           :key="product._uid"
           :data="product"
+          :index="i"
         />
       </template>
       <h1 v-if="!earphones.length" class="no-content">
@@ -55,7 +56,7 @@ export default {
   async fetch(context) {
     if (process.env.NODE_ENV === 'development' || process.server) {
       const products = await context.app.$storyapi.get(`cdn/stories/`, {
-        starts_with: 'earphones/',
+        starts_with: 'products/earphones/',
         version: 'draft',
       })
       context.store.commit('products/setProducts', products.data.stories)

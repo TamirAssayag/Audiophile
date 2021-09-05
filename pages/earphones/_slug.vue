@@ -25,7 +25,7 @@ export default {
   asyncData(context) {
     // Load the JSON from the API
     if (process.env.NODE_ENV === 'development' || process.server) {
-      const url = `cdn/stories/earphones/${context.params.slug}`
+      const url = `cdn/stories/products/earphones/${context.params.slug}`
       return context.app.$storyapi
         .get(url, {
           resolve_relations: 'Product.more_products',

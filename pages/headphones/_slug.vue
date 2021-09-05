@@ -25,7 +25,7 @@ export default {
     // .get(`cdn/stories/cc4ebb9e-398d-4748-96e5-3e4700166333?find_by=uuid`, {})
     if (process.env.NODE_ENV === 'development' || process.server) {
       // Load the JSON from the API
-      const url = `cdn/stories/headphones/${context.params.slug}`
+      const url = `cdn/stories/products/headphones/${context.params.slug}`
       return context.app.$storyapi
         .get(url, {
           resolve_relations: 'Product.more_products',

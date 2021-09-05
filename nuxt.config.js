@@ -67,6 +67,7 @@ export default {
     '@nuxtjs/netlify-files',
     ['@nuxtjs/dotenv', { filename: '.env' }],
     '@nuxt/image',
+    '@nuxtjs/dayjs',
   ],
 
   loading: {
@@ -76,16 +77,15 @@ export default {
 
   router: {
     base: '/',
-    scrollBehavior(to, from, savedPosition) {
-      if (savedPosition) {
-        return savedPosition
-      }
-      return { x: 0, y: 0 }
-    },
   },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  axios: {},
+  axios: {
+    baseURL:
+      process.env.NODE_ENV === 'development'
+        ? 'http://localhost:8888/.netlify/functions/'
+        : '/.netlify/functions/',
+  },
 
   // Content module configuration: https://go.nuxtjs.dev/config-content
   content: {},

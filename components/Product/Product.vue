@@ -124,7 +124,7 @@ export default {
 
   computed: {
     ...mapGetters({
-      getProductById: 'products/getProductById',
+      getCartProductById: 'products/getCartProductById',
     }),
     productImageSettings() {
       if (this.$screen.desktop) {
@@ -145,7 +145,7 @@ export default {
       }
     },
     getCartProduct() {
-      return this.getProductById(this.data.content._uid)
+      return this.getCartProductById(this.data.content._uid)
     },
   },
 

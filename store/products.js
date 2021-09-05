@@ -3,12 +3,16 @@ import { findIndex, sumBy, find } from 'lodash'
 
 const state = () => ({
   products: [],
+  allProducts: [],
   cart: [],
 })
 
 const mutations = {
   setProducts(state, entries) {
     state.products = entries
+  },
+  setAllProducts(state, entries) {
+    state.allProducts = entries
   },
   setCart(state, entries) {
     state.cart = entries
@@ -96,9 +100,16 @@ const getters = {
   cart: (state) => {
     return state.cart
   },
-  getProductById(state) {
+  getCartProductById(state) {
     return (_uid) => {
       return state.cart.find((product) => product._uid === _uid)
+    }
+  },
+  getProductById(state) {
+    return (_uid) => {
+      return state.allProducts
+        .map((product) => product.content)
+        .find((item) => item._uid === _uid)
     }
   },
   getGrandTotal: (state) => {

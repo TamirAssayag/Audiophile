@@ -20,6 +20,12 @@ export default {
     isLoggedIn() {
       return this.loggedIn ? this.$router.push('/') : true
     },
+    getFormattedDate(date) {
+      if (date) return this.$dayjs(date).format('D MMM YYYY')
+    },
+    displayName() {
+      return this.getUser.email.split('@')[0]
+    },
   },
   computed: {
     ...mapGetters({

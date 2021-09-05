@@ -1,3 +1,4 @@
+import sumBy from 'lodash/sumBy'
 const state = () => ({
   user: {},
 })
@@ -40,6 +41,22 @@ const getters = {
   isLoggedIn: (state) => {
     const userId = state?.user?._id
     return !!userId || false
+  },
+
+  getAllUserOrders: (state, getters, rootState, rootGetters) => {
+    return state.user?.orders?.length
+      ? state.user.orders.map((order) => {
+          const mappedCart = order.cart.map((cartItem) => ({
+            ...rootGetters['products/getProductById'](cartItem?.productId),
+            quantity: cartItem.quantity,
+          }))
+          return {
+            ...order,
+            cart: mappedCart,
+            grandTotal: sumBy(mappedCart, (item) => item.quantity * item.price),
+          }
+        })
+      : []
   },
 }
 

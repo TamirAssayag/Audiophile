@@ -35,15 +35,49 @@
             </div>
           </v-slide-x-transition>
           <v-slide-x-transition v-else appear>
-            <div class="logout">
-              <v-btn
+            <div class="logout mr-5">
+              <v-menu
+                transition="slide-y-transition"
+                attach=""
+                offset-y
+                :menu-props="{
+                  top: false,
+                  offsetY: true,
+                }"
+              >
+                <template v-slot:activator="{ on, attrs }">
+                  <v-btn
+                    v-if="getUser._id"
+                    class="btn btn--account"
+                    elevation="0"
+                    v-bind="attrs"
+                    v-on="on"
+                  >
+                    Account
+                  </v-btn>
+                </template>
+                <v-list>
+                  <v-list-item
+                    v-for="(item, index) in userActions"
+                    :key="index"
+                  >
+                    <NuxtLink class="user--aciton" :to="item.link">
+                      <v-list-item-title
+                        @click="item.title === 'Logout' ? logOut() : null"
+                        >{{ item.title }}
+                      </v-list-item-title>
+                    </NuxtLink>
+                  </v-list-item>
+                </v-list>
+              </v-menu>
+              <!-- <v-btn
                 v-if="getUser._id"
                 class="btn btn--logout"
                 elevation="0"
                 @click.prevent="logOut()"
               >
                 Logout
-              </v-btn>
+              </v-btn> -->
             </div>
           </v-slide-x-transition>
         </div>
@@ -131,6 +165,11 @@ export default {
     drawer: false,
     group: null,
     dialog: false,
+    userActions: [
+      { title: 'Cart', link: '/cart' },
+      { title: 'Orders', link: '/orders' },
+      { title: 'Logout', link: '' },
+    ],
   }),
 
   watch: {
@@ -257,6 +296,17 @@ nav {
   .sign-up__login {
     padding: 0 1rem;
     background-color: white;
+  }
+}
+
+.logout {
+  .v-list-item {
+    transition: all 0.2s ease !important;
+    &:hover {
+      color: white !important;
+      background-color: black !important;
+      font-weight: bold;
+    }
   }
 }
 </style>

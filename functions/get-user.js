@@ -7,7 +7,6 @@ module.exports.handler = async (event, context) => {
   context.callbackWaitsForEmptyEventLoop = false
   try {
     await db.connectToDatabase()
-
     const userId = await helpers.getUserId(event).catch((err) => {
       return helpers.createResponse(
         { errorMsg: 'Something went wrong...', err },
@@ -15,10 +14,12 @@ module.exports.handler = async (event, context) => {
       )
     })
 
-    const user = await User.findById(userId).populate({
-      path: 'orders',
-      model: Orders,
-    })
+    const user = await User.findById(userId)
+      .populate({
+        path: 'orders',
+        model: Orders,
+      })
+      .select('-password')
     return helpers.createResponse(user, true)
   } catch (err) {
     console.log(err)

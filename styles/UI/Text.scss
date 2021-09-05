@@ -21,12 +21,20 @@
     text-align: center;
   }
 
+  &--uppercase {
+    text-transform: uppercase;
+  }
+
   &--bold {
     font-weight: bold;
   }
 
   &--white {
     color: white;
+  }
+
+  &--gray {
+    color: #888888;
   }
 
   &--half-opacity {

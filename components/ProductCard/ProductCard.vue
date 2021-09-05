@@ -1,8 +1,20 @@
 <template>
   <div v-editable="data.content" class="product product--card">
-    <div class="product--card__container">
+    <div
+      :class="
+        $screen.desktop && index % 2 === 0
+          ? `product--card__container flex-row-reverse`
+          : 'product--card__container'
+      "
+    >
       <div class="product--cart__side">
-        <div class="product__image">
+        <div
+          :class="
+            !productCategoryRouteNames
+              ? `product__image image--wrapper`
+              : `product__image`
+          "
+        >
           <NuxtImg
             :key="$screen.tablet"
             provider="storyblok"
@@ -24,9 +36,9 @@
           </div>
         </div>
         <div class="product__description">
-          <p>
+          <span>
             {{ data.content.description }}
-          </p>
+          </span>
         </div>
         <div class="product__button">
           <NuxtLink :to="$route.path + '/' + data.slug">
@@ -46,11 +58,25 @@ export default {
       type: null,
       default: '',
     },
+    index: {
+      type: null,
+      default: '',
+    },
   },
 
   methods: {
     directToProduct() {
       this.$router.push(this.$route.path + '/' + this.data.slug)
+    },
+  },
+
+  computed: {
+    productCategoryRouteNames() {
+      return (
+        this.$route.name === 'headphones' &&
+        this.$route.name === 'speakers' &&
+        this.$route.name === 'earphones'
+      )
     },
   },
 }
@@ -83,6 +109,8 @@ export default {
         text-align: left;
       }
       &__description {
+        width: 100%;
+        margin: 0 !important;
         text-align: left;
       }
       &__button {
