@@ -11,7 +11,7 @@ module.exports.handler = async (event, context) => {
     const { email, password } = JSON.parse(event.body)
     const user = await User.findOne({
       email,
-    }).populate(-password, {
+    }).populate('-password', {
       path: 'orders',
       model: Orders,
     })
