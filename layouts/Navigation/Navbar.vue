@@ -162,6 +162,7 @@ export default {
       { title: 'Orders', link: '/orders' },
       { title: 'Logout', link: '' },
     ],
+    scrollPosBeforeLock: 0,
   }),
 
   watch: {
@@ -187,15 +188,22 @@ export default {
     }),
     toggleCartDialog() {
       this.dialog = !this.dialog
-      if (this.dialog === true) {
-        return document.querySelector('body').classList.add('modal-open')
+      if (this.dialog) {
+        this.scrollPosBeforeLock = window.scrollY
+        document.querySelector('body').classList.add('modal-open')
       } else {
-        return document.querySelector('body').classList.remove('modal-open')
+        document.querySelector('body').classList.remove('modal-open')
+        setTimeout(() => {
+          window.scrollTo(0, this.scrollPosBeforeLock)
+        })
       }
     },
     closeCartDialog() {
       this.dialog = false
-      return document.querySelector('body').classList.remove('modal-open')
+      document.querySelector('body').classList.remove('modal-open')
+      setTimeout(() => {
+        window.scrollTo(0, this.scrollPosBeforeLock)
+      })
     },
     logOut() {
       this.logoutUser()
