@@ -19,5 +19,5 @@ const fetchAllUsers = async () => {
 
 module.exports.handler = async (event, context) => {
   context.callbackWaitsForEmptyEventLoop = false
-  return fetchAllUsers()
+  return await fetchAllUsers()
 }
