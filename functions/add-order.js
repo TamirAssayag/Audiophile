@@ -6,7 +6,7 @@ const Orders = require('./models/orders')
 module.exports.handler = async (event, context) => {
   context.callbackWaitsForEmptyEventLoop = false
   try {
-    await db.connectToDatabase()
+    db.connectToDatabase()
 
     // Gets user id from client headers
     const { authorization: userId } = event.headers

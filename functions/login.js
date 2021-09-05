@@ -1,13 +1,13 @@
+const bcrypt = require('bcryptjs')
 const helpers = require('./utills/helpers')
 const db = require('./utills/db')
 const User = require('./models/users')
 const Orders = require('./models/orders')
-const bcrypt = require('bcryptjs')
 
 module.exports.handler = async (event, context) => {
   context.callbackWaitsForEmptyEventLoop = false
   try {
-    await db.connectToDatabase()
+    db.connectToDatabase()
     const { email, password } = JSON.parse(event.body)
     const user = await User.findOne({
       email,
@@ -19,7 +19,7 @@ module.exports.handler = async (event, context) => {
     if (!user) {
       return helpers.createResponse({ errorMsg: 'User not found.' }, false)
     }
-    let result = bcrypt.compareSync(password, user.password)
+    const result = bcrypt.compareSync(password, user.password)
     if (result) {
       return helpers.createResponse(
         { _id: user._id, email, orders: user?.orders },

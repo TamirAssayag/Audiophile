@@ -6,7 +6,7 @@ const Orders = require('./models/orders')
 module.exports.handler = async (event, context) => {
   context.callbackWaitsForEmptyEventLoop = false
   try {
-    await db.connectToDatabase()
+    db.connectToDatabase()
     const userId = await helpers.getUserId(event).catch((err) => {
       return helpers.createResponse(
         { errorMsg: 'Something went wrong...', err },

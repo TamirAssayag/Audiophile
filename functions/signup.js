@@ -5,7 +5,7 @@ const User = require('./models/users')
 module.exports.handler = async (event, context) => {
   context.callbackWaitsForEmptyEventLoop = false
   try {
-    await db.connectToDatabase()
+    db.connectToDatabase()
     const { email, password } = JSON.parse(event.body)
 
     const findUser = await User.find({ email })

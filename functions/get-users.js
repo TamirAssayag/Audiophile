@@ -5,7 +5,7 @@ const Orders = require('./models/orders')
 
 const fetchAllUsers = async () => {
   try {
-    await db.connectToDatabase()
+    db.connectToDatabase()
     const users = await User.find().populate({ path: 'orders', model: Orders })
     return helpers.createResponse(users, true)
   } catch (err) {

@@ -8,7 +8,7 @@ const DB_URL =
   `mongodb+srv://cluster0.af2rl.mongodb.net/${DB_NAME}?retryWrites=true&w=majority`
 module.exports = {
   connectToDatabase: async () => {
-    mongoose.connect(DB_URL, {
+    await mongoose.connect(DB_URL, {
       user: DB_USERNAME,
       pass: DB_PASSWORD,
       useNewUrlParser: true,

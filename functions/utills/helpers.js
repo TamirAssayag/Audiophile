@@ -10,9 +10,9 @@ module.exports = {
   bcryptPassword: (pass) => {
     return new Promise((resolve, reject) => {
       bcrypt.genSalt(12, 'b', (genErr, salt) => {
-        if (genErr) reject()
+        if (genErr) reject(new Error('Failed'))
         bcrypt.hash(pass, salt, (hashErr, hash) => {
-          if (hashErr) reject()
+          if (hashErr) reject(new Error('Failed to encrypt password'))
           resolve(hash)
         })
       })
@@ -24,7 +24,7 @@ module.exports = {
       if (authorization) {
         resolve(authorization)
       } else {
-        reject('Could not find user')
+        reject(new Error('Could not find user'))
       }
     })
   },
