@@ -45,7 +45,7 @@
                   offsetY: true,
                 }"
               >
-                <template v-slot:activator="{ on, attrs }">
+                <template #activator="{ on, attrs }">
                   <v-btn
                     v-if="getUser._id"
                     class="btn btn--account"
@@ -70,14 +70,6 @@
                   </v-list-item>
                 </v-list>
               </v-menu>
-              <!-- <v-btn
-                v-if="getUser._id"
-                class="btn btn--logout"
-                elevation="0"
-                @click.prevent="logOut()"
-              >
-                Logout
-              </v-btn> -->
             </div>
           </v-slide-x-transition>
         </div>

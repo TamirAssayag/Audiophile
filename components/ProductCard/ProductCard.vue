@@ -64,12 +64,6 @@ export default {
     },
   },
 
-  methods: {
-    directToProduct() {
-      this.$router.push(this.$route.path + '/' + this.data.slug)
-    },
-  },
-
   computed: {
     productCategoryRouteNames() {
       return (
@@ -77,6 +71,12 @@ export default {
         this.$route.name === 'speakers' &&
         this.$route.name === 'earphones'
       )
+    },
+  },
+
+  methods: {
+    directToProduct() {
+      this.$router.push(this.$route.path + '/' + this.data.slug)
     },
   },
 }
