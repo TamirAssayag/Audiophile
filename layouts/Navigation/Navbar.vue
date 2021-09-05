@@ -24,26 +24,24 @@
         </div>
 
         <div class="navbar__right d-flex align-center">
-          <v-slide-x-transition v-if="!loggedIn" appear group>
-            <div :key="loggedIn">
+          <v-scroll-y-reverse-transition appear hide-on-leave group>
+            <div v-if="!loggedIn" :key="loggedIn">
               <NuxtLink to="/signup">
-                <v-btn class="btn btn--signup mr-2"> Sign Up </v-btn>
+                <v-btn class="btn btn--signup mr-2">Sign Up</v-btn>
               </NuxtLink>
               <NuxtLink to="/login">
-                <v-btn class="btn btn--login mr-5"> Login </v-btn>
+                <v-btn class="btn btn--login mr-5">Login</v-btn>
               </NuxtLink>
             </div>
-          </v-slide-x-transition>
-          <v-slide-x-transition v-else appear>
-            <div class="logout mr-5">
+          </v-scroll-y-reverse-transition>
+          <v-scroll-y-reverse-transition appear leave-absolute>
+            <div v-if="loggedIn" class="logout mr-5">
               <v-menu
-                transition="slide-y-transition"
-                attach=""
+                transition="scroll-y-reverse-transition"
+                attach
                 offset-y
-                :menu-props="{
-                  top: false,
-                  offsetY: true,
-                }"
+                :top="false"
+                open-on-hover
               >
                 <template #activator="{ on, attrs }">
                   <v-btn
@@ -57,21 +55,21 @@
                   </v-btn>
                 </template>
                 <v-list>
-                  <v-list-item
+                  <NuxtLink
                     v-for="(item, index) in userActions"
                     :key="index"
+                    class="user--aciton"
+                    :to="item.function ? '/' : item.link"
+                    @click.native="item.function"
                   >
-                    <NuxtLink class="user--aciton" :to="item.link">
-                      <v-list-item-title
-                        @click="item.title === 'Logout' ? logOut() : null"
-                        >{{ item.title }}
-                      </v-list-item-title>
-                    </NuxtLink>
-                  </v-list-item>
+                    <v-list-item>
+                      <v-list-item-title>{{ item.title }} </v-list-item-title>
+                    </v-list-item>
+                  </NuxtLink>
                 </v-list>
               </v-menu>
             </div>
-          </v-slide-x-transition>
+          </v-scroll-y-reverse-transition>
         </div>
 
         <v-btn
@@ -157,13 +155,19 @@ export default {
     drawer: false,
     group: null,
     dialog: false,
-    userActions: [
-      { title: 'Cart', link: '/cart' },
-      { title: 'Orders', link: '/orders' },
-      { title: 'Logout', link: '' },
-    ],
+
     scrollPosBeforeLock: 0,
   }),
+
+  computed: {
+    userActions() {
+      return [
+        { title: 'Cart', link: '/cart' },
+        { title: 'Orders', link: '/orders' },
+        { title: 'Logout', function: this.logOut },
+      ]
+    },
+  },
 
   watch: {
     group() {
@@ -172,6 +176,12 @@ export default {
 
     $route() {
       this.drawer = false
+    },
+
+    '$screen.desktop'(desktopView) {
+      if (desktopView) {
+        this.drawer = false
+      }
     },
 
     cart(value) {

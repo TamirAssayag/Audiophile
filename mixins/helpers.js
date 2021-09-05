@@ -23,11 +23,11 @@ export default {
     getFormattedDate(date) {
       if (date) return this.$dayjs(date).format('D MMM YYYY')
     },
+  },
+  computed: {
     displayName() {
       return this.getUser.email.split('@')[0]
     },
-  },
-  computed: {
     ...mapGetters({
       products: 'products/products',
       cart: 'products/cart',

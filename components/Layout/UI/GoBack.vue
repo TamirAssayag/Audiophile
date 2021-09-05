@@ -8,16 +8,9 @@
 
 <script>
 export default {
-  data: () => ({
-    path: '/',
-  }),
-  created() {
-    if (this.$nuxt?.context?.from?.path)
-      this.path = this.$nuxt.context.from.path
-  },
-  methods: {
-    goBack() {
-      return this.$router.back()
+  computed: {
+    path() {
+      return this.$nuxt.context?.from?.path || '/'
     },
   },
 }

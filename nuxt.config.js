@@ -61,8 +61,8 @@ export default {
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     // https://go.nuxtjs.dev/axios
-    '@nuxtjs/axios',
     '@nuxt/content',
+    '@nuxtjs/axios',
     '@nuxtjs/style-resources',
     '@nuxtjs/netlify-files',
     ['@nuxtjs/dotenv', { filename: '.env' }],

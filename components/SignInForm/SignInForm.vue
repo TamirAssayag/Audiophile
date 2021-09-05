@@ -132,7 +132,6 @@ export default {
           email: this.dataForm.email,
         })
 
-        console.log(userLogin)
         if (userLogin) {
           this.$router.push({
             name: 'index',

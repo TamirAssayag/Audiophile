@@ -36,6 +36,19 @@ export default {
   components: { Navbar, Footer, Snackbar },
   mixins: [userApiMixin],
 
+  watch: {
+    loggedIn(isLogged) {
+      if (isLogged) {
+        this.$axios.setHeader(
+          'Authorization',
+          JSON.parse(localStorage.getItem('user'))._id
+        )
+      } else {
+        this.$axios.setHeader('Authorization', false)
+      }
+    },
+  },
+
   async mounted() {
     if (localStorage.getItem('cart')) {
       this.setCart(JSON.parse(localStorage.getItem('cart')))
@@ -45,7 +58,6 @@ export default {
         'Authorization',
         JSON.parse(localStorage.getItem('user'))._id
       )
-
       this.saveUser(await this.getUserData())
     }
   },
@@ -62,4 +74,43 @@ export default {
 }
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+// .fade-enter-active {
+//   transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+//   .content,
+//   .page__header--title,
+//   .page__container {
+//     opacity: 1;
+//     transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+//     transform: translate3d(0, 0, 0);
+//   }
+// }
+
+// .fade-leave-active {
+//   transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+//   .content,
+//   .page__header--title,
+//   .page__container {
+//     opacity: 1;
+//     transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+//     transform: translate3d(0, 0, 0);
+//   }
+// }
+
+// .fade-leave-to {
+//   .content,
+//   .page__header--title,
+//   .page__container {
+//     opacity: 0;
+//     transform: translate3d(0, 80px, 0);
+//   }
+// }
+// .fade-enter {
+//   .content,
+//   .page__header--title,
+//   .page__container {
+//     opacity: 0;
+//     transform: translate3d(0, -80px, 0);
+//   }
+// }
+</style>

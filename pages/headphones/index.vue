@@ -23,6 +23,8 @@ import ProductCard from '~/components/ProductCard/ProductCard.vue'
 export default {
   components: { PageHeader, ProductCard },
 
+  // transition: 'fade',
+
   asyncData(context) {
     if (process.env.NODE_ENV === 'development' || process.server) {
       return context.app.$storyapi

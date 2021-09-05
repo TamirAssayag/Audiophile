@@ -29,6 +29,7 @@ export default {
   align-items: center;
   justify-content: center;
   margin-bottom: 40px;
+
   &--title {
     @include Title(null, 28px, 2px);
   }
