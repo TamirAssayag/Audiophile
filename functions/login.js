@@ -22,7 +22,7 @@ module.exports.handler = async (event, context) => {
     const result = bcrypt.compareSync(password, user.password)
     if (result) {
       return helpers.createResponse(
-        { _id: user._id, email, orders: user?.orders },
+        { _id: user._id, email, orders: user.orders },
         true
       )
     } else {
