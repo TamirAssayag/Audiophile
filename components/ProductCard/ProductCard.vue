@@ -84,7 +84,7 @@ export default {
 
 <style lang="scss">
 .product--card {
-  min-height: 700px;
+  // min-height: 500px;
   margin-bottom: 6rem;
   &__container {
     text-align: center;

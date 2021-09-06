@@ -25,7 +25,7 @@ export default {
   }
 
   @include media('>=lg') {
-    padding: 5rem 1.5rem 3.5rem;
+    padding: 3.5rem 1.5rem 3.5rem 0;
   }
 
   .v-btn:not(.v-btn--round).v-size--default {

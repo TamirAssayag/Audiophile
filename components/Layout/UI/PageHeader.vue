@@ -36,7 +36,7 @@ export default {
 
   @include media('>=lg') {
     height: 256px;
-    margin-bottom: 10rem;
+    margin-bottom: 5rem;
     &--title {
       @include Title(null, 40px, 1.43px);
     }

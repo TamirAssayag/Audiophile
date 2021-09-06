@@ -61,9 +61,8 @@ export default {
 .cart {
   .cart-modal {
     width: 100%;
-    max-width: 1140px;
+    max-width: 1110px;
     margin: auto auto 10rem;
-    border: 1px solid rgb(175, 175, 175);
     &__list-item__wrapper {
       width: 100%;
       padding: 1rem;

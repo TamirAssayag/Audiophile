@@ -59,13 +59,17 @@
                     v-for="(item, index) in userActions"
                     :key="index"
                     class="user--aciton"
-                    :to="item.function ? '/' : item.link"
-                    @click.native="item.function"
+                    :to="item.link"
                   >
                     <v-list-item>
                       <v-list-item-title>{{ item.title }} </v-list-item-title>
                     </v-list-item>
                   </NuxtLink>
+                  <v-list-item style="cursor: pointer">
+                    <v-list-item-title @click="logOut"
+                      >Logout
+                    </v-list-item-title>
+                  </v-list-item>
                 </v-list>
               </v-menu>
             </div>
@@ -164,7 +168,6 @@ export default {
       return [
         { title: 'Cart', link: '/cart' },
         { title: 'Orders', link: '/orders' },
-        { title: 'Logout', function: this.logOut },
       ]
     },
   },

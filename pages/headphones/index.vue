@@ -35,6 +35,7 @@ export default {
         .then((res) => {
           return res.data
         })
+
         .catch((res) => {
           if (!res.response) {
             context.error({
