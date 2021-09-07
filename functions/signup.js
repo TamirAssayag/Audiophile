@@ -6,7 +6,7 @@ module.exports.handler = async (event, context) => {
   context.callbackWaitsForEmptyEventLoop = false
   try {
     db.connectToDatabase()
-    const { email, password } = JSON.parse(event.body)
+    const { name, email, password } = JSON.parse(event.body)
 
     const findUser = await User.find({ email })
 
@@ -18,12 +18,13 @@ module.exports.handler = async (event, context) => {
     }
 
     const user = await User.create({
+      name,
       email,
       password: await helpers.bcryptPassword(password),
       orders: [],
     })
     return helpers.createResponse(
-      { _id: user._id, email, orders: user.orders },
+      { _id: user._id, name: name, email, orders: user.orders },
       true
     )
   } catch (err) {

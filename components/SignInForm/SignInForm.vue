@@ -6,6 +6,15 @@
       </h1>
       <v-form @submit.prevent="handleRegistration">
         <v-text-field
+          v-if="$route.name === 'signup'"
+          v-model="user.name"
+          label="Full Name"
+          type="text"
+          name="name"
+          color="black"
+          prepend-inner-icon="mdi-account"
+        />
+        <v-text-field
           v-model="user.email"
           label="Email"
           type="email"
@@ -69,6 +78,7 @@ export default {
 
   data: () => ({
     user: {
+      name: null,
       email: null,
       password: null,
     },
@@ -83,6 +93,14 @@ export default {
       return this.$route.name === 'signup'
     },
     dataForm() {
+      const formData = {
+        name: this.user.name,
+        email: this.user.email,
+        password: this.user.password,
+      }
+      return formData
+    },
+    dataFormLogin() {
       const formData = {
         email: this.user.email,
         password: this.user.password,
@@ -128,10 +146,13 @@ export default {
       }
       if (this.$route.name === 'login') {
         const userLogin = await this.loginUser({
-          ...this.dataForm,
-          email: this.dataForm.email,
+          ...this.dataFormLogin,
+          email: this.dataFormLogin.email,
+        }).catch((err) => {
+          this.$root.$emit('snackbar', {
+            text: err.response.data.data.errorMsg,
+          })
         })
-
         if (userLogin) {
           this.$router.push({
             name: 'index',
@@ -139,7 +160,7 @@ export default {
         } else {
           this.errorMsg = 'Please provide a valid email address and password.'
         }
-        await this.saveUser(userLogin)
+        this.saveUser(userLogin)
       }
     },
   },

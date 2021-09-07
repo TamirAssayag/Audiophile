@@ -26,13 +26,12 @@ export default {
   },
   computed: {
     displayName() {
-      return this.getUser.email.split('@')[0]
+      return this.getUser.name?.split(' ').slice(0, -1).join(' ')
     },
     ...mapGetters({
       products: 'products/products',
       cart: 'cart/cart',
       getUser: 'user/getUser',
-      waitingCart: 'cart/getWaitingCart',
       loggedIn: 'user/isLoggedIn',
       grandTotal: 'cart/getGrandTotal',
       getTotalCartItems: 'cart/getTotalCartItems',

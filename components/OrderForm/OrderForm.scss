@@ -1,6 +1,5 @@
 .checkout {
   width: 100%;
-  padding: 0 1.5rem;
 
   &__header {
     h1 {
@@ -48,5 +47,10 @@
   .cart-modal__down {
     background-color: unset;
     padding: unset;
+  }
+
+  &__cant-proceed {
+    text-align: center;
+    padding: 1rem;
   }
 }

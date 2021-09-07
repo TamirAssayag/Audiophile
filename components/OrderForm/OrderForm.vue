@@ -18,6 +18,7 @@
               hide-details="true"
               outlined
               type="text"
+              :value="getUser.name"
             />
 
             <label class="text--bold" for="email">Email Address</label>
@@ -130,6 +131,9 @@ import GoBack from '~/components/Layout/UI/GoBack.vue'
 export default {
   name: 'Checkout',
   components: { GoBack },
+  data: () => ({
+    radio: '',
+  }),
 }
 </script>
 

@@ -51,7 +51,7 @@
                     v-bind="attrs"
                     v-on="on"
                   >
-                    Account
+                    {{ displayName }}
                   </v-btn>
                 </template>
                 <v-list>
@@ -148,7 +148,7 @@
                 v-bind="attrs"
                 v-on="on"
               >
-                Account
+                {{ displayName }}
               </v-btn>
             </template>
             <v-list>

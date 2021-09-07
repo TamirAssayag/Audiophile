@@ -115,12 +115,10 @@ export default {
       saveUser: 'user/saveUser',
       // setWaitingCart: 'cart/setWaitingCart',
       removeAllCartItems: 'cart/removeAllCartItems',
-      setCartStatus: 'cart/setCartStatus',
     }),
 
     onCheckOut() {
       // this.setWaitingCart(this.cart)
-      this.setCartStatus(true)
       this.$router.push('/' + 'checkout')
 
       //
