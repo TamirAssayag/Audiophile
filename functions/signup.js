@@ -24,7 +24,7 @@ module.exports.handler = async (event, context) => {
       orders: [],
     })
     return helpers.createResponse(
-      { _id: user._id, name: name, email, orders: user.orders },
+      { _id: user._id, name, email, orders: user.orders },
       true
     )
   } catch (err) {
