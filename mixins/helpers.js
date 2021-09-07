@@ -30,11 +30,12 @@ export default {
     },
     ...mapGetters({
       products: 'products/products',
-      cart: 'products/cart',
+      cart: 'cart/cart',
       getUser: 'user/getUser',
+      waitingCart: 'cart/getWaitingCart',
       loggedIn: 'user/isLoggedIn',
-      grandTotal: 'products/getGrandTotal',
-      getTotalCartItems: 'products/getTotalCartItems',
+      grandTotal: 'cart/getGrandTotal',
+      getTotalCartItems: 'cart/getTotalCartItems',
     }),
   },
 }

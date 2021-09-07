@@ -77,6 +77,7 @@
         </div>
 
         <v-btn
+          :disabled="$route.name !== 'checkout' ? false : true"
           icon
           text
           title="Cart"
@@ -86,7 +87,7 @@
         >
           <CartSvg />
           <v-slide-x-reverse-transition v-if="cart.length" appear>
-            <div class="cart__amount">
+            <div v-if="$route.name !== 'checkout'" class="cart__amount">
               <h4 class="text--bold text--white">{{ getTotalCartItems }}</h4>
             </div>
           </v-slide-x-reverse-transition>
@@ -102,6 +103,7 @@
           <AudiophileLogo />
         </NuxtLink>
         <v-btn
+          :disabled="$route.name !== 'checkout' ? false : true"
           icon
           text
           title="Cart"
@@ -111,7 +113,7 @@
         >
           <CartSvg />
           <v-slide-x-reverse-transition v-if="cart.length" appear>
-            <div class="cart__amount">
+            <div v-if="$route.name !== 'checkout'" class="cart__amount">
               <h4 class="text--bold text--white">{{ getTotalCartItems }}</h4>
             </div>
           </v-slide-x-reverse-transition>
@@ -132,9 +134,39 @@
       </div>
       <v-slide-y-transition v-else appear mode="in-out">
         <div class="logout">
-          <v-btn v-if="getUser._id" elevation="0" @click.prevent="logOut()">
-            Logout
-          </v-btn>
+          <v-menu
+            transition="scroll-y-reverse-transition"
+            attach
+            offset-y
+            :top="false"
+          >
+            <template #activator="{ on, attrs }">
+              <v-btn
+                v-if="getUser._id"
+                class="btn btn--account"
+                elevation="0"
+                v-bind="attrs"
+                v-on="on"
+              >
+                Account
+              </v-btn>
+            </template>
+            <v-list>
+              <NuxtLink
+                v-for="(item, index) in userActions"
+                :key="index"
+                class="user--aciton"
+                :to="item.link"
+              >
+                <v-list-item>
+                  <v-list-item-title>{{ item.title }} </v-list-item-title>
+                </v-list-item>
+              </NuxtLink>
+              <v-list-item style="cursor: pointer">
+                <v-list-item-title @click="logOut">Logout </v-list-item-title>
+              </v-list-item>
+            </v-list>
+          </v-menu>
         </div>
       </v-slide-y-transition>
       <div class="mobile__menu">
@@ -196,7 +228,7 @@ export default {
 
   methods: {
     ...mapActions({
-      removeAllCartItems: 'products/removeAllCartItems',
+      removeAllCartItems: 'cart/removeAllCartItems',
       logoutUser: 'user/logoutUser',
     }),
     toggleCartDialog() {

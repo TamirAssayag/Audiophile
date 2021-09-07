@@ -124,7 +124,7 @@ export default {
 
   computed: {
     ...mapGetters({
-      getCartProductById: 'products/getCartProductById',
+      getCartProductById: 'cart/getCartProductById',
     }),
     productImageSettings() {
       if (this.$screen.desktop) {
@@ -151,7 +151,7 @@ export default {
 
   methods: {
     ...mapActions({
-      addProductToCart: 'products/addProductToCart',
+      addProductToCart: 'cart/addProductToCart',
     }),
 
     productImageLength() {

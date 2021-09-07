@@ -84,13 +84,20 @@
               Payment Details
             </p>
             <label class="text--bold">Payment Method</label>
-            <v-checkbox label="e-Moeny" class="mt-3 mb-6" hide-details="true" />
-            <v-checkbox
-              label="Cash on Delivery"
-              class="mt-2 mb-6"
-              hide-details="true"
-            />
-
+            <v-radio-group v-model="radio">
+              <v-radio
+                label="e-Money"
+                value="emoney"
+                class="mt-3 mb-6"
+                hide-details="true"
+              />
+              <v-radio
+                label="Cash on Delivery"
+                value="cashondelivery"
+                class="mt-2 mb-6"
+                hide-details="true"
+              />
+            </v-radio-group>
             <label class="text--bold" for="emoney-num">e-Money Number</label>
             <v-text-field
               id="emoney-num"

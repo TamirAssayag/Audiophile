@@ -10,7 +10,8 @@
         !checkRoute('index') &&
         !checkRoute('signup') &&
         !checkRoute('login') &&
-        !checkRoute('orders')
+        !checkRoute('orders') &&
+        !checkRoute('checkout')
       "
       class="container"
     >
@@ -53,6 +54,7 @@ export default {
     if (localStorage.getItem('cart')) {
       this.setCart(JSON.parse(localStorage.getItem('cart')))
     }
+
     if (JSON.parse(localStorage.getItem('user'))) {
       this.$axios.setHeader(
         'Authorization',
@@ -64,7 +66,7 @@ export default {
 
   methods: {
     ...mapActions({
-      setCart: 'products/setCart',
+      setCart: 'cart/setCart',
       saveUser: 'user/saveUser',
     }),
     checkRoute(route) {

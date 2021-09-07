@@ -102,25 +102,40 @@ export default {
       },
     },
   },
+
+  watch: {
+    $route() {
+      this.showPopup = false
+      window.scrollTo(0, 0)
+    },
+  },
+
   methods: {
     ...mapActions({
       saveUser: 'user/saveUser',
+      // setWaitingCart: 'cart/setWaitingCart',
+      removeAllCartItems: 'cart/removeAllCartItems',
+      setCartStatus: 'cart/setCartStatus',
     }),
 
-    async onCheckOut() {
-      const newCart = this.cart.map((obj) => ({
-        productId: obj._uid,
-        quantity: obj.quantity,
-      }))
-      const newOrder = await this.postPurchase({
-        date: new Date().toJSON(),
-        cart: newCart,
-      })
-      this.saveUser(await this.getUserData())
-      this.showPopup = false
-      // this.$router.push('/' + `checkout`)
+    onCheckOut() {
+      // this.setWaitingCart(this.cart)
+      this.setCartStatus(true)
+      this.$router.push('/' + 'checkout')
 
-      return newOrder
+      //
+      // const newCart = this.cart.map((obj) => ({
+      //   productId: obj._uid,
+      //   quantity: obj.quantity,
+      // }))
+      // const newOrder = await this.postPurchase({
+      //   date: new Date().toJSON(),
+      //   cart: newCart,
+      // })
+      // this.saveUser(await this.getUserData())
+      // this.showPopup = false
+      // // this.$router.push('/' + `checkout`)
+      // return newOrder
     },
   },
 }

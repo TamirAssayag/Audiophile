@@ -3,9 +3,9 @@ import { mapActions } from 'vuex'
 export default {
   methods: {
     ...mapActions({
-      incrementQuantity: 'products/incrementQuantity',
-      decrementQuantity: 'products/decrementQuantity',
-      removeAllCartItems: 'products/removeAllCartItems',
+      incrementQuantity: 'cart/incrementQuantity',
+      decrementQuantity: 'cart/decrementQuantity',
+      removeAllCartItems: 'cart/removeAllCartItems',
     }),
     quantityControl(quantity) {
       if (typeof quantity === 'number') return quantity.toString()

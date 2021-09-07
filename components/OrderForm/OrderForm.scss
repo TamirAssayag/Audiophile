@@ -11,10 +11,9 @@
 
   &__form {
     background-color: white;
-    min-height: 100vh;
     padding: 1.5rem;
     border-radius: 8px;
-    margin-bottom: 7rem;
+    // margin-bottom: 7rem;
     &--billing {
       p {
         font-size: 13px;
@@ -44,5 +43,10 @@
       font-size: 12px;
       letter-spacing: -0.21px;
     }
+  }
+
+  .cart-modal__down {
+    background-color: unset;
+    padding: unset;
   }
 }

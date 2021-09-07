@@ -1,10 +1,6 @@
-import Vue from 'vue'
-import { findIndex, sumBy, find } from 'lodash'
-
 const state = () => ({
   products: [],
   allProducts: [],
-  cart: [],
 })
 
 const mutations = {
@@ -14,82 +10,14 @@ const mutations = {
   setAllProducts(state, entries) {
     state.allProducts = entries
   },
-  setCart(state, entries) {
-    state.cart = entries
-  },
   setRelations(state, entries) {
     state.products = entries
   },
-
-  addProductToCart(state, { name, product, quantity, _uid }) {
-    const identifier = findIndex(state.cart, (i) => i._uid === _uid)
-    const cartItem = find(state.cart, (item) => item._uid === _uid)
-    // Finds if cart item is already exist in cart, if not then push,
-    // else update and increment the quantity only.
-    if (!cartItem) {
-      state.cart.push({
-        name,
-        title: product.title,
-        price: product.price,
-        image: product.image,
-        quantity,
-        _uid,
-      })
-    } else if (state.cart[identifier].quantity <= 19) {
-      // Updates quantity
-      state.cart[identifier].quantity += quantity
-    }
-
-    if (state.cart[identifier]?.quantity > 20) {
-      state.cart[identifier].quantity = 20
-    }
-  },
-  incrementQuantity(state, { _uid }) {
-    const identifier = findIndex(state.cart, (i) => i._uid === _uid)
-    state.cart[identifier].quantity++
-  },
-
-  decrementQuantity(state, { _uid }) {
-    const identifier = findIndex(state.cart, (i) => i._uid === _uid)
-    state.cart[identifier].quantity--
-    if (!state.cart[identifier].quantity) {
-      Vue.delete(state.cart, identifier)
-    }
-  },
-
-  removeAllCartItems(state) {
-    state.cart = []
-  },
-}
-
-const saveToLocalStorage = (key, value) => {
-  localStorage.setItem(key, JSON.stringify(value))
 }
 
 const actions = {
-  setCart({ commit, state }, entries) {
-    commit('setCart', entries)
-    saveToLocalStorage('cart', state.cart)
-  },
   setRelations({ commit }, entries) {
     commit('setRelations', entries)
-    console.log(entries)
-  },
-  addProductToCart({ commit, state }, { name, product, quantity, _uid }) {
-    commit('addProductToCart', { name, product, quantity, _uid })
-    saveToLocalStorage('cart', state.cart)
-  },
-  incrementQuantity({ commit, state }, { _uid }) {
-    commit('incrementQuantity', { _uid })
-    saveToLocalStorage('cart', state.cart)
-  },
-  decrementQuantity({ commit, state }, { _uid }) {
-    commit('decrementQuantity', { _uid })
-    saveToLocalStorage('cart', state.cart)
-  },
-  removeAllCartItems({ commit, state }) {
-    commit('removeAllCartItems')
-    saveToLocalStorage('cart', state.cart)
   },
 }
 
@@ -97,27 +25,12 @@ const getters = {
   products: (state) => {
     return state.products
   },
-  cart: (state) => {
-    return state.cart
-  },
-  getCartProductById(state) {
-    return (_uid) => {
-      return state.cart.find((product) => product._uid === _uid)
-    }
-  },
   getProductById(state) {
     return (_uid) => {
       return state.allProducts
         .map((product) => product.content)
         .find((item) => item._uid === _uid)
     }
-  },
-  getGrandTotal: (state) => {
-    return sumBy(state.cart, (item) => item.quantity * item.price)
-  },
-  getTotalCartItems: (state) => {
-    if (state.cart.length) return sumBy(state.cart, (item) => item.quantity)
-    return 0
   },
 }
 
