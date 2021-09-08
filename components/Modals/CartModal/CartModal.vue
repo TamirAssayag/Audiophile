@@ -62,7 +62,7 @@ he
             class="btn btn--orange"
             width="100%"
             elevation="0"
-            @click="onCheckOut"
+            @click="$emit('onCheckout')"
             >Checkout</v-btn
           >
         </div>
@@ -106,7 +106,6 @@ export default {
   watch: {
     $route() {
       this.showPopup = false
-      window.scrollTo(0, 0)
     },
   },
 
@@ -117,10 +116,9 @@ export default {
       removeAllCartItems: 'cart/removeAllCartItems',
     }),
 
-    onCheckOut() {
+    checkOut() {
+      // this.$router.push('/' + 'checkout')
       // this.setWaitingCart(this.cart)
-      this.$router.push('/' + 'checkout')
-
       //
       // const newCart = this.cart.map((obj) => ({
       //   productId: obj._uid,

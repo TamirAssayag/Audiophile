@@ -34,12 +34,18 @@ export default {
     @include Title(null, 28px, 2px);
   }
 
-  @include media('>=lg') {
-    height: 256px;
-    margin-bottom: 5rem;
+  @include media('>=md') {
+    height: 200px;
+    margin-bottom: 7.5rem;
+
     &--title {
       @include Title(null, 40px, 1.43px);
     }
+  }
+
+  @include media('>=lg') {
+    height: 256px;
+    margin-bottom: 5rem;
   }
 }
 </style>

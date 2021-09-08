@@ -85,10 +85,9 @@ export default {
 <style lang="scss">
 .product--card {
   // min-height: 500px;
-  margin-bottom: 6rem;
+  margin-bottom: 10rem;
   &__container {
     text-align: center;
-    padding: 1.5rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -96,12 +95,14 @@ export default {
   }
 
   @include media('>=lg') {
+    width: 1110px;
+
     &__container {
-      width: 1110px;
+      width: 100%;
       margin: auto;
       flex-direction: row;
       justify-content: center;
-      gap: 7.8rem;
+      justify-content: space-between;
     }
 
     .product {

@@ -3,6 +3,7 @@
   min-height: 654px;
   color: $bg;
   text-align: center;
+
   &__container {
     display: flex;
     align-items: center;
@@ -63,5 +64,61 @@
     justify-items: center;
     align-self: center;
     gap: 1rem;
+  }
+
+  @include media('>=lg') {
+    min-height: calc(365px - 3rem);
+    padding: 3rem;
+
+    &__logo {
+      margin: 0%;
+    }
+
+    &__container {
+      padding: 0 1.5rem;
+      max-width: 1110px;
+      margin: auto;
+      align-items: flex-start;
+    }
+    &__header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+
+      ul.footer__menu {
+        display: flex;
+        align-items: center;
+        gap: 2.125rem;
+        a {
+          height: auto;
+        }
+        li {
+          margin: 0% !important;
+        }
+        &--item {
+          margin: 0 !important;
+        }
+      }
+    }
+
+    &__about {
+      text-align: left;
+      width: 100%;
+      max-width: 540px;
+      margin: 0;
+      padding: 0;
+    }
+
+    &__information {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    &__social {
+      align-self: flex-end;
+    }
   }
 }

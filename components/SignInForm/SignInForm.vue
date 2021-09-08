@@ -13,6 +13,7 @@
           name="name"
           color="black"
           prepend-inner-icon="mdi-account"
+          required
         />
         <v-text-field
           v-model="user.email"

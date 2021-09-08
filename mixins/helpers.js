@@ -28,6 +28,14 @@ export default {
     displayName() {
       return this.getUser.name?.split(' ').slice(0, -1).join(' ')
     },
+    navigation() {
+      return [
+        { name: 'Home', link: '/' },
+        { name: 'Headphones', link: '/headphones' },
+        { name: 'Speakers', link: '/speakers' },
+        { name: 'Earphones', link: '/earphones' },
+      ]
+    },
     ...mapGetters({
       products: 'products/products',
       cart: 'cart/cart',

@@ -1,4 +1,7 @@
 .product {
+  &__page {
+    padding: 0 1.5rem;
+  }
   &__image {
     img {
       width: 327px;
@@ -96,7 +99,6 @@
     margin-bottom: 7.5rem;
     &__wrapper {
       width: 100%;
-      padding: 0 1.5rem;
 
       &--left {
         img {
@@ -263,7 +265,6 @@
           width: unset;
           height: unset;
           img {
-            width: 635px;
             height: 592px;
           }
         }
@@ -319,12 +320,11 @@
     }
 
     &__description {
-      width: 445px;
       max-width: 445px;
     }
 
     &__page {
-      width: 1110px;
+      width: 100%;
       max-width: 1110px;
     }
 

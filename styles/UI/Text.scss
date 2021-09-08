@@ -49,6 +49,10 @@
     text-decoration: underline;
   }
 
+  &--sm {
+    font-size: 13px;
+  }
+
   &--error {
     font-size: 10px;
     color: rgb(255, 0, 0);

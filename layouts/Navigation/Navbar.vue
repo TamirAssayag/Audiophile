@@ -8,17 +8,8 @@
           </NuxtLink>
 
           <ul class="nav__menu">
-            <NuxtLink to="/">
-              <li class="nav__menu--item" :to="'/'">Home</li>
-            </NuxtLink>
-            <NuxtLink to="/headphones">
-              <li class="nav__menu--item">Headphones</li>
-            </NuxtLink>
-            <NuxtLink to="/speakers">
-              <li class="nav__menu--item">Speakers</li>
-            </NuxtLink>
-            <NuxtLink to="/earphones">
-              <li class="nav__menu--item">Earphones</li>
+            <NuxtLink v-for="nav in navigation" :key="nav.link" :to="nav.link">
+              <li class="nav__menu--item">{{ nav.name }}</li>
             </NuxtLink>
           </ul>
         </div>
@@ -173,7 +164,11 @@
         <Categories />
       </div>
     </v-bottom-sheet>
-    <CartModal :is-open="dialog" @onClose="closeCartDialog" />
+    <CartModal
+      :is-open="dialog"
+      @onClose="closeCartDialog"
+      @onCheckout="checkOut"
+    />
   </nav>
 </template>
 <script>
@@ -191,7 +186,6 @@ export default {
     drawer: false,
     group: null,
     dialog: false,
-
     scrollPosBeforeLock: 0,
   }),
 
@@ -238,21 +232,20 @@ export default {
         document.querySelector('body').classList.add('modal-open')
       } else {
         document.querySelector('body').classList.remove('modal-open')
-        setTimeout(() => {
-          window.scrollTo(0, this.scrollPosBeforeLock)
-        })
+        window.scrollTo(0, this.scrollPosBeforeLock)
       }
     },
     closeCartDialog() {
       this.dialog = false
       document.querySelector('body').classList.remove('modal-open')
-      setTimeout(() => {
-        window.scrollTo(0, this.scrollPosBeforeLock)
-      })
+      window.scrollTo(0, this.scrollPosBeforeLock)
     },
     logOut() {
       this.logoutUser()
       this.drawer = false
+    },
+    checkOut() {
+      this.$router.push('/' + 'checkout')
     },
   },
 }

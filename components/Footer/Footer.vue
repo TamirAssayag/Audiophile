@@ -1,39 +1,40 @@
 <template>
   <div class="footer">
     <div class="footer__container">
-      <div class="footer__logo">
-        <NuxtLink to="/">
-          <AudiophileLogo />
-        </NuxtLink>
+      <div class="footer__header">
+        <div class="footer__logo">
+          <NuxtLink to="/">
+            <AudiophileLogo />
+          </NuxtLink>
+        </div>
+
+        <ul class="footer__menu">
+          <NuxtLink v-for="nav in navigation" :key="nav.link" :to="nav.link">
+            <li class="footer__menu--item">{{ nav.name }}</li>
+          </NuxtLink>
+        </ul>
       </div>
 
-      <ul class="footer__menu">
-        <NuxtLink to="/">
-          <li class="footer__menu--item" :to="'/'">Home</li>
-        </NuxtLink>
-        <NuxtLink to="/headphones">
-          <li class="footer__menu--item">Headphones</li>
-        </NuxtLink>
-        <NuxtLink to="/speakers">
-          <li class="footer__menu--item">Speakers</li>
-        </NuxtLink>
-        <NuxtLink to="/earphones">
-          <li class="footer__menu--item">Earphones</li>
-        </NuxtLink>
-      </ul>
+      <div class="footer__information">
+        <div class="footer__about">
+          <p>
+            Audiophile is an all in one stop to fulfill your audio needs. We're
+            a small team of music lovers and sound specialists who are devoted
+            to helping you get the most out of personal audio. Come and visit
+            our demo facility - we’re open 7 days a week.
+          </p>
+        </div>
 
-      <div class="footer__about">
-        <p>
-          Audiophile is an all in one stop to fulfill your audio needs. We're a
-          small team of music lovers and sound specialists who are devoted to
-          helping you get the most out of personal audio. Come and visit our
-          demo facility - we’re open 7 days a week.
-        </p>
+        <div v-if="$screen.desktop" class="footer__social">
+          <FacebookIcon />
+          <TwitterIcon />
+          <InstagramIcon />
+        </div>
       </div>
 
       <div class="footer__copyright">Copyright 2021. All Rights Reserved</div>
 
-      <div class="footer__social">
+      <div v-if="!$screen.desktop" class="footer__social">
         <FacebookIcon />
         <TwitterIcon />
         <InstagramIcon />

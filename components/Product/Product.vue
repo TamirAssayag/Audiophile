@@ -202,8 +202,6 @@ export default {
 .single--product {
   .product {
     &__container {
-      padding: 0rem 1.5rem 1.5rem;
-
       @include media('>=lg') {
         padding: 0;
         display: grid;

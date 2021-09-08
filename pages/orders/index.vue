@@ -1,6 +1,6 @@
 <template>
   <main class="orders">
-    <PageHeader title="Orders" />
+    <PageHeader title="Orders" class="mb-0" />
     <div class="container mb-10">
       <h2 class="mb-10">Previous Orders ({{ allOrders.length }})</h2>
       <v-row v-if="allOrders.length" justify="center">
@@ -123,6 +123,7 @@ export default {
 
 <style lang="scss">
 .orders {
+  min-height: 100vh;
   .order {
     &__wrapper {
       padding: 1rem 1.5rem 1rem;

@@ -18,14 +18,14 @@ export default {
 
 <style lang="scss">
 .goback {
-  padding: 1rem 1.5rem;
+  padding: 1rem 0 1rem 0;
 
   @include media('>=md') {
-    padding: 2rem 1.5rem;
+    padding: 2rem 0 2rem 0;
   }
 
   @include media('>=lg') {
-    padding: 3.5rem 1.5rem 3.5rem 0;
+    padding: 3.5rem 0 3.5rem 0;
   }
 
   .v-btn:not(.v-btn--round).v-size--default {
