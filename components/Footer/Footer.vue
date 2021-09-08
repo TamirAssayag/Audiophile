@@ -32,12 +32,14 @@
         </div>
       </div>
 
-      <div class="footer__copyright">Copyright 2021. All Rights Reserved</div>
+      <div class="footer__bottom">
+        <div class="footer__copyright">Copyright 2021. All Rights Reserved</div>
 
-      <div v-if="!$screen.desktop" class="footer__social">
-        <FacebookIcon />
-        <TwitterIcon />
-        <InstagramIcon />
+        <div v-if="!$screen.desktop" class="footer__social">
+          <FacebookIcon />
+          <TwitterIcon />
+          <InstagramIcon />
+        </div>
       </div>
     </div>
   </div>

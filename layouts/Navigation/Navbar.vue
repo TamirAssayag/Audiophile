@@ -267,6 +267,15 @@ nav {
       justify-content: space-between !important;
       padding: 1.5rem;
 
+      @include media('>=md') {
+        justify-content: unset !important;
+        gap: 1.6rem;
+
+        .cart__icon {
+          margin-left: auto;
+        }
+      }
+
       @include media('>=lg') {
         width: 1110px;
         justify-content: unset !important;
