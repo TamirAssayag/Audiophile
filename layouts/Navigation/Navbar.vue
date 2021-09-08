@@ -278,6 +278,10 @@ nav {
 
       @include media('>=lg') {
         width: 1110px;
+
+        .cart__icon {
+          margin-left: unset;
+        }
         justify-content: unset !important;
         margin: auto;
         padding: 1.5rem;
