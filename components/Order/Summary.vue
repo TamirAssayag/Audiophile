@@ -32,7 +32,11 @@
               $ {{ grandTotal.toLocaleString() }}
             </h3>
           </div>
-          <v-btn class="btn btn--orange" width="100%" elevation="0"
+          <v-btn
+            class="btn btn--orange"
+            width="100%"
+            elevation="0"
+            @click="$emit('onPay')"
             >Continue & Pay</v-btn
           >
         </div>

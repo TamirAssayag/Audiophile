@@ -1,0 +1,55 @@
+.thankyou {
+  min-height: 600px;
+  border-radius: 8px;
+  background-color: white !important;
+  padding: 2rem;
+
+  &__header {
+    &--title {
+      margin: 1rem 0;
+      h2 {
+        line-height: 1.17;
+        letter-spacing: 0.86px;
+      }
+    }
+    p {
+      font-size: 15px;
+      line-height: 1.67;
+    }
+  }
+
+  &__cart {
+    margin-top: 1.5rem;
+    border-radius: 8px 8px 0 0;
+    background-color: $gray;
+    width: 100%;
+
+    &--fhalf {
+      height: 100%;
+      padding: 1.5rem 1.5rem 1rem;
+      max-height: 140px;
+
+      hr {
+        opacity: 0.2;
+      }
+    }
+
+    &--total {
+      min-height: 92px;
+      background-color: black;
+      border-radius: 0 0 8px 8px;
+      padding: 1.5rem;
+    }
+
+    .cart-modal {
+      &__list-item {
+        margin: 0;
+        &__wrapper {
+          img {
+            width: 50px;
+          }
+        }
+      }
+    }
+  }
+}

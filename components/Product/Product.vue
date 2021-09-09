@@ -219,14 +219,14 @@ export default {
       width: calc(2.5rem + 3.1px);
       text-align: center;
       padding: 0 0.5rem;
-      background-color: #f1f1f1;
+      background-color: $gray;
       font-weight: bold;
       outline: none;
     }
 
     button {
       padding: 1rem;
-      background: #f1f1f1;
+      background: $gray;
       color: rgb(163, 163, 163);
       font-size: 1rem;
       cursor: pointer;

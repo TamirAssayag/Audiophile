@@ -14,7 +14,7 @@
       width: 327px;
       display: flex;
       margin: auto;
-      background-color: #f1f1f1 !important;
+      background-color: $gray !important;
       border-radius: 8px;
       img {
         width: 100%;
@@ -172,7 +172,7 @@
     }
 
     .image--wrapper {
-      background-color: #f1f1f1;
+      background-color: $gray;
       width: 689px;
       border-radius: 8px;
       height: 352px;

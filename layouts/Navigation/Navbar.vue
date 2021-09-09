@@ -85,7 +85,14 @@
         </v-btn>
       </v-app-bar>
     </div>
-    <div v-else class="navbar">
+    <div
+      v-else
+      :class="
+        $route.name === 'checkout'
+          ? 'navbar z-index--150'
+          : 'navbar z-index--999'
+      "
+    >
       <v-app-bar absolute color="black" height="80" elevation="2" width="100%">
         <v-btn icon title="Menu" aria-label="Menu" @click="drawer = !drawer">
           <MenuSvg />
@@ -222,7 +229,6 @@ export default {
 
   methods: {
     ...mapActions({
-      removeAllCartItems: 'cart/removeAllCartItems',
       logoutUser: 'user/logoutUser',
     }),
     toggleCartDialog() {
@@ -257,7 +263,7 @@ nav {
   height: 80px;
   .navbar {
     position: fixed;
-    z-index: 999;
+
     inset: 0;
     max-height: 80px;
 

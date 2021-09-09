@@ -72,7 +72,6 @@ he
 </template>
 
 <script>
-import { mapActions } from 'vuex'
 import QuantityToggle from '../../Layout/UI/QuantityToggle.vue'
 import userApiMixin from '~/mixins/userApiMixin'
 import cartHelpers from '~/mixins/cartHelpers'
@@ -108,32 +107,6 @@ export default {
       this.showPopup = false
     },
   },
-
-  methods: {
-    ...mapActions({
-      saveUser: 'user/saveUser',
-      // setWaitingCart: 'cart/setWaitingCart',
-      removeAllCartItems: 'cart/removeAllCartItems',
-    }),
-
-    checkOut() {
-      // this.$router.push('/' + 'checkout')
-      // this.setWaitingCart(this.cart)
-      //
-      // const newCart = this.cart.map((obj) => ({
-      //   productId: obj._uid,
-      //   quantity: obj.quantity,
-      // }))
-      // const newOrder = await this.postPurchase({
-      //   date: new Date().toJSON(),
-      //   cart: newCart,
-      // })
-      // this.saveUser(await this.getUserData())
-      // this.showPopup = false
-      // // this.$router.push('/' + `checkout`)
-      // return newOrder
-    },
-  },
 }
 </script>
 
@@ -153,7 +126,7 @@ export default {
         border: 0;
         text-align: center;
         padding: 0 0.5rem;
-        background-color: #f1f1f1;
+        background-color: $gray;
         font-weight: bold;
         outline: none;
         height: 32px;
@@ -164,7 +137,7 @@ export default {
 
       button {
         padding: 0 1rem;
-        background: #f1f1f1;
+        background: $gray;
         color: rgb(163, 163, 163);
         font-size: 1rem;
         cursor: pointer;
