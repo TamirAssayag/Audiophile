@@ -1,11 +1,18 @@
 <template>
   <nav>
-    <div v-if="$screen.desktop" class="navbar navbar--desktop">
+    <div
+      v-if="$screen.desktop"
+      :class="
+        $route.name === 'checkout'
+          ? 'navbar navbar--desktop z-index--150'
+          : 'navbar navbar--desktop z-index--999'
+      "
+    >
       <v-app-bar absolute color="black" height="80" elevation="2" width="100%">
         <div class="navbar__left">
           <NuxtLink to="/">
-            <AudiophileLogo />
-          </NuxtLink>
+            <AudiophileLogo /> </NuxtLink
+          >e
 
           <ul class="nav__menu">
             <NuxtLink v-for="nav in navigation" :key="nav.link" :to="nav.link">
