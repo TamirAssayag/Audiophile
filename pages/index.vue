@@ -1,8 +1,6 @@
 <template>
   <div class="content">
-    <client-only>
-      <Hero />
-    </client-only>
+    <Hero />
     <section class="container">
       <Categories class="pb-120" />
       <Products />

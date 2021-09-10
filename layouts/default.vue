@@ -1,8 +1,6 @@
 <template>
   <v-app light>
-    <client-only>
-      <Navbar />
-    </client-only>
+    <Navbar />
     <v-fade-transition appear>
       <Nuxt keep-alive :keep-alive-props="{ max: 10 }" />
     </v-fade-transition>
@@ -21,11 +19,9 @@
       <About v-if="!checkRoute('cart')" />
     </div>
 
-    <client-only>
-      <footer>
-        <Footer />
-      </footer>
-    </client-only>
+    <footer>
+      <Footer />
+    </footer>
   </v-app>
 </template>
 

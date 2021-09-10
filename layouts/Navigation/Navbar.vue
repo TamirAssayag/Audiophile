@@ -10,7 +10,9 @@
     >
       <v-app-bar absolute color="black" height="80" elevation="2" width="100%">
         <div class="navbar__left">
-          <NuxtLink to="/"> <AudiophileLogo /> </NuxtLink>
+          <client-only>
+            <NuxtLink to="/"> <AudiophileLogo /> </NuxtLink>
+          </client-only>
 
           <ul class="nav__menu">
             <NuxtLink v-for="nav in navigation" :key="nav.link" :to="nav.link">

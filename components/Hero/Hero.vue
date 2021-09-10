@@ -2,11 +2,13 @@
   <main>
     <div class="hero">
       <div class="hero__container">
-        <v-img
-          :key="$screen.tablet + displayHeroImg"
-          :src="getImageUrl(displayHeroImg)"
-          class="hero__image"
-        ></v-img>
+        <client-only>
+          <v-img
+            :key="$screen.tablet + displayHeroImg"
+            :src="getImageUrl(displayHeroImg)"
+            class="hero__image"
+          ></v-img>
+        </client-only>
         <div class="hero__wrapper">
           <div class="hero__header">
             <div class="hero__header__subtitle subtitle subtitle--white">
