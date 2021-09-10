@@ -124,7 +124,18 @@ export default {
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     extractCSS: {
-      allChunks: true,
+      optimization: {
+        splitChunks: {
+          cacheGroups: {
+            styles: {
+              name: 'styles',
+              test: /\.(css|vue)$/,
+              chunks: 'all',
+              enforce: true,
+            },
+          },
+        },
+      },
     },
   },
 }
