@@ -1,4 +1,5 @@
 import sumBy from 'lodash/sumBy'
+
 const state = () => ({
   user: {},
 })
@@ -13,19 +14,13 @@ const mutations = {
   updateUser(state, id) {},
 
   logoutUser(state) {
-    localStorage.removeItem('user')
     state.user = {}
   },
-}
-
-const saveToLocalStorage = (key, value) => {
-  localStorage.setItem(key, JSON.stringify(value))
 }
 
 const actions = {
   saveUser({ commit, state }, payload) {
     commit('saveUser', payload)
-    saveToLocalStorage('user', state.user)
   },
 
   logoutUser({ commit }) {

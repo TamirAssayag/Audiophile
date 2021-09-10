@@ -53,30 +53,21 @@ const mutations = {
   },
 }
 
-const saveToLocalStorage = (key, value) => {
-  localStorage.setItem(key, JSON.stringify(value))
-}
-
 const actions = {
   setCart({ commit, state }, entries) {
     commit('setCart', entries)
-    saveToLocalStorage('cart', state.cart)
   },
   addProductToCart({ commit, state }, { name, product, quantity, _uid }) {
     commit('addProductToCart', { name, product, quantity, _uid })
-    saveToLocalStorage('cart', state.cart)
   },
   incrementQuantity({ commit, state }, { _uid }) {
     commit('incrementQuantity', { _uid })
-    saveToLocalStorage('cart', state.cart)
   },
   decrementQuantity({ commit, state }, { _uid }) {
     commit('decrementQuantity', { _uid })
-    saveToLocalStorage('cart', state.cart)
   },
   removeAllCartItems({ commit, state }) {
     commit('removeAllCartItems')
-    saveToLocalStorage('cart', state.cart)
   },
 }
 

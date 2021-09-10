@@ -18,34 +18,26 @@
         <div class="cart-modal__items">
           <div class="cart-modal__list-item">
             <div class="cart-modal__list-item__wrapper">
-              <img
-                width="64"
-                :src="getImageUrl(getLastOrder[0].image)"
-                alt="Item"
-              />
+              <img width="64" :src="getImageUrl(cart[0].image)" alt="Item" />
               <div class="cart-modal__list-item__details">
                 <div class="title--uppercase text--bold">
-                  <v-clamp :autoresize="false" :max-lines="1">
-                    {{ cart[0].name }}
-                  </v-clamp>
+                  {{ cart[0].name }}
                 </div>
                 <p class="text--bold text--half-opacity">
-                  $ {{ parseInt(getLastOrder[0].price).toLocaleString() }}
+                  $ {{ parseInt(cart[0].price).toLocaleString() }}
                 </p>
               </div>
             </div>
             <div class="card-modal__quantity">
-              <p class="text--gray text--bold">
-                x{{ getLastOrder[0].quantity }}
-              </p>
+              <p class="text--gray text--bold">x{{ cart[0].quantity }}</p>
             </div>
           </div>
         </div>
 
-        <section v-if="getLastOrder.length > 1">
+        <section v-if="cart.length > 1">
           <hr class="mt-3" />
           <p class="text--bold text--gray text--center text--xsm mt-3">
-            and {{ getLastOrder.length - 1 }} more item(s)
+            and {{ cart.length - 1 }} more item(s)
           </p>
         </section>
       </div>
@@ -61,7 +53,7 @@
       class="btn btn--orange"
       style="width: 100% !important; margin-top: 23px"
       elevation="0"
-      @click="onBackHome"
+      @click="toOrders"
       >Back To Home</v-btn
     >
   </v-dialog>
@@ -69,19 +61,19 @@
 
 <script>
 import './ThankYouModal.scss'
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 import cartHelpers from '~/mixins/cartHelpers'
 import CheckMark from '~/static/images/checkmark.svg?inline'
+import userApiMixin from '~/mixins/userApiMixin'
 export default {
   components: { CheckMark },
-  mixins: [cartHelpers],
+  mixins: [cartHelpers, userApiMixin],
 
   props: {
     isOpen: Boolean,
   },
   computed: {
     ...mapGetters({
-      getLastOrder: 'user/getLastOrder',
       allOrders: 'user/getAllUserOrders',
     }),
     showPopup: {
@@ -95,10 +87,20 @@ export default {
   },
 
   methods: {
-    onBackHome() {
-      this.$router.push('/')
-      this.removeAllCartItems()
-      this.showPopup = false
+    ...mapActions({
+      saveUser: 'user/saveUser',
+    }),
+    async toOrders() {
+      try {
+        const userResponse = await this.getUserData()
+        await this.saveUser(userResponse)
+
+        this.$router.push('/orders')
+        this.removeAllCartItems()
+        this.showPopup = false
+      } catch (err) {
+        console.log(err)
+      }
     },
   },
 }

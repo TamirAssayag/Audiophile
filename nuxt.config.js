@@ -37,6 +37,7 @@ export default {
     '~/plugins/global.js',
     '~/plugins/composition-api.js',
     '~/plugins/rich-text-renderer.js',
+    { src: '~/plugins/vuex-persist', ssr: false },
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components

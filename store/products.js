@@ -25,6 +25,9 @@ const getters = {
   products: (state) => {
     return state.products
   },
+  getAllProducts: (state) => {
+    return state.allProducts
+  },
   getProductById(state) {
     return (_uid) => {
       return state.allProducts

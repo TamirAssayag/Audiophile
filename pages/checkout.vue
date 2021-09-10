@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex'
+import { mapActions } from 'vuex'
 import Summary from '../components/Order/Summary.vue'
 import OrderForm from '../components/Order/OrderForm/OrderForm.vue'
 import CheckoutErrors from '../components/Order/CheckoutErrors.vue'
@@ -20,12 +20,13 @@ import userApiMixin from './../mixins/userApiMixin'
 export default {
   components: { Summary, OrderForm, CheckoutErrors, ThankYouModal },
   mixins: [userApiMixin],
-  middleware: ['hasCartItems'],
 
   asyncData(context) {
     // Fetch by UUID
     // .get(`cdn/stories/cc4ebb9e-398d-4748-96e5-3e4700166333?find_by=uuid`, {})
     if (process.env.NODE_ENV === 'development' || process.server) {
+      if (context.store.getters['products/getAllProducts'].length) return
+
       // Load the JSON from the API
       const url = `cdn/stories/`
       return context.app.$storyapi
@@ -34,7 +35,8 @@ export default {
           version: 'draft',
         })
         .then((res) => {
-          return res.data
+          context.store.commit('products/setAllProducts', res.data.stories)
+          return res.data.stories
         })
         .catch((res) => {
           if (!res.response) {
@@ -57,22 +59,6 @@ export default {
     isOpen: false,
   }),
 
-  async fetch(context) {
-    if (process.env.NODE_ENV === 'development' || process.server) {
-      const products = await context.app.$storyapi.get(`cdn/stories/`, {
-        starts_with: 'products/',
-        version: 'draft',
-      })
-      context.store.commit('products/setAllProducts', products.data.stories)
-    }
-  },
-
-  computed: {
-    ...mapGetters({
-      getLastOrder: 'user/getLastOrder',
-    }),
-  },
-
   methods: {
     ...mapActions({
       saveUser: 'user/saveUser',
@@ -86,7 +72,6 @@ export default {
         date: new Date().toJSON(),
         cart: newCart,
       })
-      this.saveUser(await this.getUserData())
       this.isOpen = true
     },
   },

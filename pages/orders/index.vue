@@ -69,6 +69,7 @@
 <script>
 import { mapGetters } from 'vuex'
 import PageHeader from '../../components/Layout/UI/PageHeader.vue'
+
 export default {
   components: { PageHeader },
 
@@ -76,6 +77,8 @@ export default {
     // Fetch by UUID
     // .get(`cdn/stories/cc4ebb9e-398d-4748-96e5-3e4700166333?find_by=uuid`, {})
     if (process.env.NODE_ENV === 'development' || process.server) {
+      if (context.store.getters['products/getAllProducts'].length) return
+
       // Load the JSON from the API
       const url = `cdn/stories/`
       return context.app.$storyapi
@@ -84,7 +87,8 @@ export default {
           version: 'draft',
         })
         .then((res) => {
-          return res.data
+          context.store.commit('products/setAllProducts', res.data.stories)
+          return res.data.stories
         })
         .catch((res) => {
           if (!res.response) {
@@ -100,16 +104,6 @@ export default {
             })
           }
         })
-    }
-  },
-
-  async fetch(context) {
-    if (process.env.NODE_ENV === 'development' || process.server) {
-      const products = await context.app.$storyapi.get(`cdn/stories/`, {
-        starts_with: 'products/',
-        version: 'draft',
-      })
-      context.store.commit('products/setAllProducts', products.data.stories)
     }
   },
 

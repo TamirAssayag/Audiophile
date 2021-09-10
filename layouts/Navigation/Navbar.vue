@@ -178,11 +178,7 @@
         <Categories />
       </div>
     </v-bottom-sheet>
-    <CartModal
-      :is-open="dialog"
-      @onClose="closeCartDialog"
-      @onCheckout="checkOut"
-    />
+    <CartModal :is-open="dialog" @onClose="closeCartDialog" />
   </nav>
 </template>
 <script>
@@ -256,9 +252,6 @@ export default {
     logOut() {
       this.logoutUser()
       this.drawer = false
-    },
-    checkOut() {
-      this.$router.push('/' + 'checkout')
     },
   },
 }

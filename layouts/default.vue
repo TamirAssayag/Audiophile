@@ -27,7 +27,6 @@
 
 <script>
 import '~/styles/app.scss'
-import isEmpty from 'lodash/isEmpty'
 import { mapActions } from 'vuex'
 import Navbar from './Navigation/Navbar.vue'
 import Snackbar from '~/components/Layout/UI/Snackbar.vue'
@@ -40,19 +39,18 @@ export default {
 
   watch: {
     loggedIn(isLogged) {
-      if (isLogged) {
-        this.$axios.setHeader(
-          'Authorization',
-          JSON.parse(localStorage.getItem('user'))._id
-        )
-      } else {
-        this.$axios.setHeader('Authorization', false)
-      }
+      this.$axios.setHeader(
+        'Authorization',
+        isLogged ? this.getUser._id : false
+      )
     },
   },
 
-  mounted() {
-    return this.userHandler()
+  async mounted() {
+    if (this.loggedIn) {
+      this.$axios.setHeader('Authorization', this.getUser._id)
+      this.saveUser(await this.getUserData())
+    }
   },
 
   methods: {
@@ -60,21 +58,7 @@ export default {
       setCart: 'cart/setCart',
       saveUser: 'user/saveUser',
     }),
-    async userHandler() {
-      if (localStorage.getItem('cart')) {
-        this.setCart(JSON.parse(localStorage.getItem('cart')))
-      }
 
-      const noUser = isEmpty(JSON.parse(localStorage.getItem('user')))
-
-      if (!noUser) {
-        this.$axios.setHeader(
-          'Authorization',
-          JSON.parse(localStorage.getItem('user'))._id
-        )
-        this.saveUser(await this.getUserData())
-      }
-    },
     checkRoute(route) {
       return this.$route.name === route
     },

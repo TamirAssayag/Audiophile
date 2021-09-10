@@ -98,7 +98,8 @@
       ul.footer__menu {
         display: flex;
         justify-content: space-between;
-        width: 50%;
+        width: calc(50% - 1rem);
+        gap: 1rem;
 
         li {
           margin: 0% !important;
