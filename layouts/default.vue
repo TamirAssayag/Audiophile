@@ -27,6 +27,7 @@
 
 <script>
 import '~/styles/app.scss'
+import isEmpty from 'lodash/isEmpty'
 import { mapActions } from 'vuex'
 import Navbar from './Navigation/Navbar.vue'
 import Snackbar from '~/components/Layout/UI/Snackbar.vue'
@@ -55,7 +56,9 @@ export default {
       this.setCart(JSON.parse(localStorage.getItem('cart')))
     }
 
-    if (JSON.parse(localStorage.getItem('user'))) {
+    const noUser = isEmpty(JSON.parse(localStorage.getItem('user')))
+
+    if (!noUser) {
       this.$axios.setHeader(
         'Authorization',
         JSON.parse(localStorage.getItem('user'))._id
