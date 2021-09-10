@@ -21,6 +21,14 @@ export default {
   components: { Summary, OrderForm, CheckoutErrors, ThankYouModal },
   mixins: [userApiMixin],
 
+  head: {
+    title: 'Checkout',
+  },
+
+  meta: {
+    hideAbout: true,
+  },
+
   async beforeRouteLeave(to, from, next) {
     if (this.purchased) {
       await this.removeAllCartItems()

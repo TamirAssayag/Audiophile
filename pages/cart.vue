@@ -53,7 +53,13 @@ import cartHelpers from '~/mixins/cartHelpers'
 export default {
   components: { PageHeader, QuantityToggle },
   mixins: [cartHelpers],
-  data: () => ({}),
+  head: {
+    title: 'Cart',
+  },
+  meta: {
+    hideAbout: true,
+    routeName: 'cart',
+  },
 }
 </script>
 

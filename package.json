@@ -25,6 +25,7 @@
     "mongoose": "^5.13.5",
     "netlify-cli": "^6.8.5",
     "nuxt": "^2.15.7",
+    "nuxt-route-meta": "^2.3.2",
     "sass": "^1.32.8",
     "storyblok-nuxt": "^2.0.1",
     "vue-inline-svg": "^2.0.0",

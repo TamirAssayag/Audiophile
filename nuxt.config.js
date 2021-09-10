@@ -7,7 +7,7 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    titleTemplate: '%s - Audiophile',
+    titleTemplate: 'Audiophile - %s',
     title: 'Audiophile',
     htmlAttrs: {
       lang: 'en',
@@ -50,6 +50,7 @@ export default {
     // https://go.nuxtjs.dev/vuetify
     '@nuxtjs/vuetify',
     '@nuxtjs/svg',
+    'nuxt-route-meta',
     [
       'storyblok-nuxt',
       {
