@@ -1,6 +1,8 @@
 <template>
   <v-app light>
-    <Navbar />
+    <client-only>
+      <Navbar />
+    </client-only>
     <v-fade-transition appear>
       <Nuxt keep-alive :keep-alive-props="{ max: 10 }" />
     </v-fade-transition>
@@ -19,9 +21,11 @@
       <About v-if="!checkRoute('cart')" />
     </div>
 
-    <footer>
-      <Footer />
-    </footer>
+    <client-only>
+      <footer>
+        <Footer />
+      </footer>
+    </client-only>
   </v-app>
 </template>
 
@@ -51,20 +55,8 @@ export default {
     },
   },
 
-  async mounted() {
-    if (localStorage.getItem('cart')) {
-      this.setCart(JSON.parse(localStorage.getItem('cart')))
-    }
-
-    const noUser = isEmpty(JSON.parse(localStorage.getItem('user')))
-
-    if (!noUser) {
-      this.$axios.setHeader(
-        'Authorization',
-        JSON.parse(localStorage.getItem('user'))._id
-      )
-      this.saveUser(await this.getUserData())
-    }
+  mounted() {
+    return this.userHandler()
   },
 
   methods: {
@@ -72,6 +64,21 @@ export default {
       setCart: 'cart/setCart',
       saveUser: 'user/saveUser',
     }),
+    async userHandler() {
+      if (localStorage.getItem('cart')) {
+        this.setCart(JSON.parse(localStorage.getItem('cart')))
+      }
+
+      const noUser = isEmpty(JSON.parse(localStorage.getItem('user')))
+
+      if (!noUser) {
+        this.$axios.setHeader(
+          'Authorization',
+          JSON.parse(localStorage.getItem('user'))._id
+        )
+        this.saveUser(await this.getUserData())
+      }
+    },
     checkRoute(route) {
       return this.$route.name === route
     },

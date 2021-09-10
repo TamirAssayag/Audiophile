@@ -2,13 +2,11 @@
   <main>
     <div class="hero">
       <div class="hero__container">
-        <client-only>
-          <v-img
-            :key="$screen.tablet + displayHeroImg"
-            :src="getImageUrl(displayHeroImg)"
-            class="hero__image"
-          />
-        </client-only>
+        <v-img
+          :key="$screen.tablet + displayHeroImg"
+          :src="getImageUrl(displayHeroImg)"
+          class="hero__image"
+        ></v-img>
         <div class="hero__wrapper">
           <div class="hero__header">
             <div class="hero__header__subtitle subtitle subtitle--white">
@@ -36,8 +34,6 @@ import './Hero.scss'
 export default {
   name: 'Hero',
 
-  data: () => ({}),
-
   computed: {
     displayHeroImg() {
       if (this.$screen.desktop) {
@@ -51,5 +47,3 @@ export default {
   },
 }
 </script>
-
-<style lang="scss"></style>

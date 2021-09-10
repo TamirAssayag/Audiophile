@@ -2,12 +2,10 @@
   <section class="about">
     <div class="about__container">
       <div class="about__image">
-        <client-only>
-          <v-img
-            :key="$screen.tablet + displayAboutImage"
-            :src="getImageUrl(displayAboutImage)"
-          />
-        </client-only>
+        <v-img
+          :key="$screen.tablet + displayAboutImage"
+          :src="getImageUrl(displayAboutImage)"
+        ></v-img>
       </div>
       <div class="about__text">
         <div class="about__title">

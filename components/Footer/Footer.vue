@@ -25,16 +25,17 @@
           </p>
         </div>
 
-        <div v-if="$screen.desktop" class="footer__social">
-          <FacebookIcon />
-          <TwitterIcon />
-          <InstagramIcon />
-        </div>
+        <client-only>
+          <div v-if="$screen.desktop" class="footer__social">
+            <FacebookIcon />
+            <TwitterIcon />
+            <InstagramIcon />
+          </div>
+        </client-only>
       </div>
 
       <div class="footer__bottom">
         <div class="footer__copyright">Copyright 2021. All Rights Reserved</div>
-
         <div v-if="!$screen.desktop" class="footer__social">
           <FacebookIcon />
           <TwitterIcon />
@@ -62,5 +63,3 @@ export default {
   },
 }
 </script>
-
-<style lang="scss"></style>
