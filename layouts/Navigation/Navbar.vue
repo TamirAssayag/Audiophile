@@ -167,8 +167,8 @@
                   <v-list-item-title>{{ item.title }} </v-list-item-title>
                 </v-list-item>
               </NuxtLink>
-              <v-list-item style="cursor: pointer">
-                <v-list-item-title @click="logOut">Logout </v-list-item-title>
+              <v-list-item style="cursor: pointer" @click="logOut">
+                <v-list-item-title>Logout</v-list-item-title>
               </v-list-item>
             </v-list>
           </v-menu>

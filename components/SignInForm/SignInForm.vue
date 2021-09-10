@@ -163,7 +163,6 @@ export default {
         }
         this.saveUser(userLogin)
       }
-      this.saveUser(await this.getUserData())
     },
   },
 }

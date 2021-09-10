@@ -95,9 +95,9 @@ export default {
     async toOrders() {
       try {
         const userResponse = await this.getUserData()
-        await this.saveUser(userResponse)
-        this.removeAllCartItems()
-        this.$router.push('/orders')
+        this.saveUser(userResponse).then(() =>
+          setTimeout(() => this.$router.push('/orders'))
+        )
       } catch (err) {
         console.log(err)
       } finally {

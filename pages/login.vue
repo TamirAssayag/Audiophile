@@ -9,6 +9,15 @@ export default {
   name: 'Login',
   components: { SignInForm },
   middleware: ['guest'],
+
+  head: {
+    title: 'Login',
+  },
+
+  meta: {
+    hideLayout: true,
+    routeName: 'login',
+  },
 }
 </script>
 

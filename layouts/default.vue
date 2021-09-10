@@ -5,7 +5,7 @@
       <Nuxt keep-alive :keep-alive-props="{ max: 10 }" />
     </v-fade-transition>
     <Snackbar />
-    <div v-if="hideComponentOnRoutes" class="container">
+    <div v-if="!$route.meta.hideLayout" class="container">
       <Categories class="pb-120" />
       <About v-if="!$route.meta.hideAbout" />
     </div>
@@ -28,15 +28,6 @@ export default {
   components: { Navbar, Footer, Snackbar },
   mixins: [userApiMixin],
 
-  computed: {
-    hideComponentOnRoutes() {
-      // TODO  !$route.meta.hideLayout <= Create hideLayout for all these routes
-      return ['index', 'signup', 'login', 'orders', 'checkout'].every(
-        (routeName) => !this.checkRoute(routeName)
-      )
-    },
-  },
-
   watch: {
     loggedIn(isLogged) {
       this.$axios.setHeader(
@@ -47,7 +38,6 @@ export default {
   },
 
   async mounted() {
-    console.log(this.$route)
     if (this.loggedIn) {
       this.$axios.setHeader('Authorization', this.getUser._id)
       this.saveUser(await this.getUserData())

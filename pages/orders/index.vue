@@ -69,9 +69,17 @@
 <script>
 import { mapGetters } from 'vuex'
 import PageHeader from '../../components/Layout/UI/PageHeader.vue'
+import userApiMixin from '~/mixins/userApiMixin'
 
 export default {
   components: { PageHeader },
+
+  mixins: [userApiMixin],
+
+  meta: {
+    hideLayout: true,
+    routeName: 'orders',
+  },
 
   asyncData(context) {
     // Fetch by UUID
@@ -106,7 +114,6 @@ export default {
         })
     }
   },
-
   computed: {
     ...mapGetters({
       allOrders: 'user/getAllUserOrders',

@@ -77,10 +77,6 @@ export default {
     height: '1px',
   },
 
-  router: {
-    base: '/',
-  },
-
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     baseURL:

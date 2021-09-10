@@ -21,17 +21,10 @@ export default {
   components: { Summary, OrderForm, CheckoutErrors, ThankYouModal },
   mixins: [userApiMixin],
 
-  head: {
-    title: 'Checkout',
-  },
-
-  meta: {
-    hideAbout: true,
-  },
-
   async beforeRouteLeave(to, from, next) {
     if (this.purchased) {
       await this.removeAllCartItems()
+
       this.purchased = false
       this.isOpen = false
     }
@@ -77,22 +70,36 @@ export default {
     isOpen: false,
   }),
 
+  head: {
+    title: 'Checkout',
+  },
+
+  meta: {
+    hideLayout: true,
+    routeName: 'checkout',
+  },
+
   methods: {
     ...mapActions({
       saveUser: 'user/saveUser',
       removeAllCartItems: 'cart/removeAllCartItems',
     }),
     async onContinueAndPay() {
-      const newCart = this.cart.map((obj) => ({
-        productId: obj._uid,
-        quantity: obj.quantity,
-      }))
-      await this.postPurchase({
-        date: new Date().toJSON(),
-        cart: newCart,
-      })
-      this.purchased = true
-      this.isOpen = true
+      try {
+        const newCart = this.cart.map((obj) => ({
+          productId: obj._uid,
+          quantity: obj.quantity,
+        }))
+        await this.postPurchase({
+          date: new Date().toJSON(),
+          cart: newCart,
+        })
+
+        this.purchased = true
+        this.isOpen = true
+      } catch (err) {
+        console.log(err)
+      }
     },
   },
 }

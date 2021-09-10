@@ -15,6 +15,10 @@ import Categories from '../components/Categories/Categories.vue'
 import Hero from '../components/Hero/Hero.vue'
 export default {
   components: { Categories, Products, Hero },
+  meta: {
+    hideLayout: true,
+    routeName: 'index',
+  },
 }
 </script>
 
