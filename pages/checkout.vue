@@ -21,6 +21,15 @@ export default {
   components: { Summary, OrderForm, CheckoutErrors, ThankYouModal },
   mixins: [userApiMixin],
 
+  async beforeRouteLeave(to, from, next) {
+    if (this.purchased) {
+      await this.removeAllCartItems()
+      this.purchased = false
+      this.isOpen = false
+    }
+    next()
+  },
+
   asyncData(context) {
     // Fetch by UUID
     // .get(`cdn/stories/cc4ebb9e-398d-4748-96e5-3e4700166333?find_by=uuid`, {})
@@ -56,12 +65,14 @@ export default {
   },
 
   data: () => ({
+    purchased: false,
     isOpen: false,
   }),
 
   methods: {
     ...mapActions({
       saveUser: 'user/saveUser',
+      removeAllCartItems: 'cart/removeAllCartItems',
     }),
     async onContinueAndPay() {
       const newCart = this.cart.map((obj) => ({
@@ -72,6 +83,7 @@ export default {
         date: new Date().toJSON(),
         cart: newCart,
       })
+      this.purchased = true
       this.isOpen = true
     },
   },

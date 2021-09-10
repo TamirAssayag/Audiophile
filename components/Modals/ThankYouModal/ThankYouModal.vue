@@ -67,11 +67,13 @@ import CheckMark from '~/static/images/checkmark.svg?inline'
 import userApiMixin from '~/mixins/userApiMixin'
 export default {
   components: { CheckMark },
+
   mixins: [cartHelpers, userApiMixin],
 
   props: {
     isOpen: Boolean,
   },
+
   computed: {
     ...mapGetters({
       allOrders: 'user/getAllUserOrders',
@@ -94,12 +96,12 @@ export default {
       try {
         const userResponse = await this.getUserData()
         await this.saveUser(userResponse)
-
-        this.$router.push('/orders')
         this.removeAllCartItems()
-        this.showPopup = false
+        this.$router.push('/orders')
       } catch (err) {
         console.log(err)
+      } finally {
+        this.showPopup = false
       }
     },
   },
