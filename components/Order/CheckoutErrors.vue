@@ -1,8 +1,8 @@
 <template>
   <section class="error__container">
     <PageHeader :title="'Error'" class="mb-0" />
-    <client-only v-if="!loggedIn">
-      <div class="container">
+    <client-only>
+      <div v-if="!loggedIn" class="container">
         <div class="checkout__cant-proceed">
           <span><strong>Dear Customer</strong>, our apologies,</span>
           <p class="mt-1 mb-4">
@@ -21,9 +21,7 @@
           </h3>
         </div>
       </div>
-    </client-only>
-    <client-only v-else>
-      <div class="container">
+      <div v-else class="container">
         <div class="checkout__cant-proceed">
           <span
             ><strong>Dear {{ displayName }}</strong

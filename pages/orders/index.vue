@@ -1,7 +1,7 @@
 <template>
   <main class="orders">
     <PageHeader title="Orders" class="mb-0" />
-    <div class="container mb-10" v-if="allOrders">
+    <div v-if="allOrders" class="container mb-10">
       <h2 class="mb-10">Previous Orders ({{ allOrders.length }})</h2>
       <v-row v-if="allOrders.length" justify="center">
         <client-only>
