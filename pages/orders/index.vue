@@ -1,63 +1,65 @@
 <template>
   <main class="orders">
     <PageHeader title="Orders" class="mb-0" />
-    <div class="container mb-10">
+    <div class="container mb-10" v-if="allOrders">
       <h2 class="mb-10">Previous Orders ({{ allOrders.length }})</h2>
       <v-row v-if="allOrders.length" justify="center">
-        <v-expansion-panels accordion flat>
-          <v-expansion-panel v-for="order in allOrders" :key="order._id">
-            <v-expansion-panel-header>
-              <p class="text--bold">Order</p>
-              {{ getFormattedDate(order.date) }}
-            </v-expansion-panel-header>
+        <client-only>
+          <v-expansion-panels accordion flat>
+            <v-expansion-panel v-for="order in allOrders" :key="order._id">
+              <v-expansion-panel-header>
+                <p class="text--bold">Order</p>
+                {{ getFormattedDate(order.date) }}
+              </v-expansion-panel-header>
 
-            <v-expansion-panel-content>
-              <div class="order__wrapper">
-                <div
-                  v-for="cartItem in order.cart"
-                  :key="cartItem.price"
-                  class="order__product"
-                >
-                  <div class="order__product--image">
-                    <NuxtImg
-                      provider="storyblok"
-                      :src="cartItem.image"
-                      :alt="cartItem.title"
-                      :aria-label="cartItem.title"
-                      :title="cartItem.title"
-                    />
-                  </div>
-                  <div class="order__product--details">
-                    <p class="text--bold">{{ cartItem.title }}</p>
-                    <div>
-                      <span style="min-width: 60px; display: inline-block"
-                        >Price
-                      </span>
-                      <span class="text--bold"
-                        >${{ Number(cartItem.price).toLocaleString() }}</span
-                      >
+              <v-expansion-panel-content>
+                <div class="order__wrapper">
+                  <div
+                    v-for="cartItem in order.cart"
+                    :key="cartItem.price"
+                    class="order__product"
+                  >
+                    <div class="order__product--image">
+                      <NuxtImg
+                        provider="storyblok"
+                        :src="cartItem.image"
+                        :alt="cartItem.title"
+                        :aria-label="cartItem.title"
+                        :title="cartItem.title"
+                      />
                     </div>
-                    <div>
-                      <span style="min-width: 60px; display: inline-block"
-                        >Quantity
-                      </span>
+                    <div class="order__product--details">
+                      <p class="text--bold">{{ cartItem.title }}</p>
+                      <div>
+                        <span style="min-width: 60px; display: inline-block"
+                          >Price
+                        </span>
+                        <span class="text--bold"
+                          >${{ Number(cartItem.price).toLocaleString() }}</span
+                        >
+                      </div>
+                      <div>
+                        <span style="min-width: 60px; display: inline-block"
+                          >Quantity
+                        </span>
 
-                      <span class="text--bold text--gray"
-                        >x{{ cartItem.quantity }}</span
-                      >
+                        <span class="text--bold text--gray"
+                          >x{{ cartItem.quantity }}</span
+                        >
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-              <div class="order__product--total">
-                <span class="text--uppercase text--gray">Grand Total</span>
-                <p class="text--bold mt-2">
-                  $ {{ order.grandTotal.toLocaleString() }}
-                </p>
-              </div>
-            </v-expansion-panel-content>
-          </v-expansion-panel>
-        </v-expansion-panels>
+                <div class="order__product--total">
+                  <span class="text--uppercase text--gray">Grand Total</span>
+                  <p class="text--bold mt-2">
+                    $ {{ order.grandTotal.toLocaleString() }}
+                  </p>
+                </div>
+              </v-expansion-panel-content>
+            </v-expansion-panel>
+          </v-expansion-panels>
+        </client-only>
       </v-row>
       <div v-else class="">
         <h3>No orders yet...</h3>
@@ -85,7 +87,7 @@ export default {
     // Fetch by UUID
     // .get(`cdn/stories/cc4ebb9e-398d-4748-96e5-3e4700166333?find_by=uuid`, {})
     if (process.env.NODE_ENV === 'development' || process.server) {
-      if (context.store.getters['products/getAllProducts'].length) return
+      if (context.store.getters['products/getAllProducts'].length) return {}
 
       // Load the JSON from the API
       const url = `cdn/stories/`
