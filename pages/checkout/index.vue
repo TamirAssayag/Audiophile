@@ -1,14 +1,14 @@
 <template>
-  <section v-if="loggedIn && cart.length" class="container">
-    <OrderForm />
-    <Summary @onPay="onContinueAndPay" />
-    <ThankYouModal :is-open="isOpen" @onClose="isOpen = false" />
-  </section>
-  <section v-else>
-    <client-only>
+  <client-only>
+    <section v-if="loggedIn && cart.length" class="container">
+      <OrderForm />
+      <Summary @onPay="onContinueAndPay" />
+      <ThankYouModal :is-open="isOpen" @onClose="isOpen = false" />
+    </section>
+    <section v-else>
       <CheckoutErrors />
-    </client-only>
-  </section>
+    </section>
+  </client-only>
 </template>
 
 <script>
