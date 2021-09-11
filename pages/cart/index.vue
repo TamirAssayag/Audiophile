@@ -51,8 +51,8 @@
 </template>
 
 <script>
-import PageHeader from '../components/Layout/UI/PageHeader.vue'
-import QuantityToggle from '../components/Layout/UI/QuantityToggle.vue'
+import PageHeader from '../../components/Layout/UI/PageHeader.vue'
+import QuantityToggle from '../../components/Layout/UI/QuantityToggle.vue'
 import cartHelpers from '~/mixins/cartHelpers'
 export default {
   components: { PageHeader, QuantityToggle },

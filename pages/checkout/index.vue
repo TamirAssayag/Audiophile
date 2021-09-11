@@ -11,11 +11,11 @@
 
 <script>
 import { mapActions } from 'vuex'
-import Summary from '../components/Order/Summary.vue'
-import OrderForm from '../components/Order/OrderForm/OrderForm.vue'
-import CheckoutErrors from '../components/Order/CheckoutErrors.vue'
-import ThankYouModal from '../components/Modals/ThankYouModal/ThankYouModal.vue'
-import userApiMixin from './../mixins/userApiMixin'
+import Summary from '../../components/Order/Summary.vue'
+import OrderForm from '../../components/Order/OrderForm/OrderForm.vue'
+import CheckoutErrors from '../../components/Order/CheckoutErrors.vue'
+import ThankYouModal from '../../components/Modals/ThankYouModal/ThankYouModal.vue'
+import userApiMixin from '../../mixins/userApiMixin'
 
 export default {
   components: { Summary, OrderForm, CheckoutErrors, ThankYouModal },

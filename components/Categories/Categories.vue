@@ -4,8 +4,7 @@
       <NuxtLink :to="'/' + item.slug">
         <Card :bg-color="'#f1f1f1'">
           <template #image>
-            <NuxtImg
-              provider="static"
+            <img
               :src="item.image"
               :class="`img ${item.slug}`"
               :alt="item.title"
@@ -38,17 +37,17 @@ export default {
     items: [
       {
         title: 'Headphones',
-        image: 'shared/desktop/image-headphones.png',
+        image: '/images/shared/desktop/image-headphones.png',
         slug: 'headphones',
       },
       {
         title: 'Speakers',
-        image: 'shared/desktop/image-speakers.png',
+        image: '/images/shared/desktop/image-speakers.png',
         slug: 'speakers',
       },
       {
         title: 'Earphones',
-        image: 'shared/desktop/image-earphones.png',
+        image: '/images/shared/desktop/image-earphones.png',
         slug: 'earphones',
       },
     ],

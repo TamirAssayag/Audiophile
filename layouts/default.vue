@@ -1,6 +1,8 @@
 <template>
   <v-app light>
-    <Navbar />
+    <client-only>
+      <Navbar />
+    </client-only>
     <v-fade-transition appear>
       <Nuxt keep-alive :keep-alive-props="{ max: 10 }" />
     </v-fade-transition>

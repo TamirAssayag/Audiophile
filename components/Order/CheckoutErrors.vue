@@ -1,8 +1,8 @@
 <template>
   <section class="error__container">
     <PageHeader :title="'Error'" class="mb-0" />
-    <div v-if="!loggedIn" class="container">
-      <client-only>
+    <client-only v-if="!loggedIn">
+      <div class="container">
         <div class="checkout__cant-proceed">
           <span><strong>Dear Customer</strong>, our apologies,</span>
           <p class="mt-1 mb-4">
@@ -20,10 +20,10 @@
             here
           </h3>
         </div>
-      </client-only>
-    </div>
-    <div v-else class="container">
-      <client-only>
+      </div>
+    </client-only>
+    <client-only v-else>
+      <div class="container">
         <div class="checkout__cant-proceed">
           <span
             ><strong>Dear {{ displayName }}</strong
@@ -32,8 +32,8 @@
           <h3 class="mt-1 mb-4">Your cart is empty,</h3>
           <p class="text--gray text--sm">Please come back when it's not 😉</p>
         </div>
-      </client-only>
-    </div>
+      </div>
+    </client-only>
   </section>
 </template>
 
