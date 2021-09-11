@@ -1,32 +1,30 @@
 <template>
   <section class="category__navigation">
-    <client-only>
-      <div v-for="item in items" :key="item.title">
-        <NuxtLink :to="'/' + item.slug">
-          <Card :bg-color="'#f1f1f1'">
-            <template #image>
-              <NuxtImg
-                provider="static"
-                :src="item.image"
-                :class="`img ${item.slug}`"
-                :alt="item.title"
-                :aria-label="item.title"
-                :title="item.title"
-              />
-            </template>
-            <template #title>
-              <h4>{{ item.title }}</h4>
-            </template>
-            <template #btn>
-              <v-btn class="btn btn--text"
-                >SHOP &nbsp;
-                <IconRight />
-              </v-btn>
-            </template>
-          </Card>
-        </NuxtLink>
-      </div>
-    </client-only>
+    <div v-for="item in items" :key="item.title">
+      <NuxtLink :to="'/' + item.slug">
+        <Card :bg-color="'#f1f1f1'">
+          <template #image>
+            <NuxtImg
+              provider="static"
+              :src="item.image"
+              :class="`img ${item.slug}`"
+              :alt="item.title"
+              :aria-label="item.title"
+              :title="item.title"
+            />
+          </template>
+          <template #title>
+            <h4>{{ item.title }}</h4>
+          </template>
+          <template #btn>
+            <v-btn class="btn btn--text"
+              >SHOP &nbsp;
+              <IconRight />
+            </v-btn>
+          </template>
+        </Card>
+      </NuxtLink>
+    </div>
   </section>
 </template>
 
