@@ -3,16 +3,18 @@
     <div v-for="item in items" :key="item.title">
       <NuxtLink :to="'/' + item.slug">
         <Card :bg-color="'#f1f1f1'">
-          <template #image>
-            <NuxtImg
-              provider="static"
-              :src="item.image"
-              :class="`img ${item.slug}`"
-              :alt="item.title"
-              :aria-label="item.title"
-              :title="item.title"
-            />
-          </template>
+          <client-only>
+            <template #image>
+              <NuxtImg
+                provider="static"
+                :src="item.image"
+                :class="`img ${item.slug}`"
+                :alt="item.title"
+                :aria-label="item.title"
+                :title="item.title"
+              />
+            </template>
+          </client-only>
           <template #title>
             <h4>{{ item.title }}</h4>
           </template>
