@@ -3,8 +3,8 @@
     <div v-for="item in items" :key="item.title">
       <NuxtLink :to="'/' + item.slug">
         <Card :bg-color="'#f1f1f1'">
-          <client-only>
-            <template #image>
+          <template #image>
+            <client-only>
               <NuxtImg
                 provider="static"
                 :src="item.image"
@@ -13,8 +13,8 @@
                 :aria-label="item.title"
                 :title="item.title"
               />
-            </template>
-          </client-only>
+            </client-only>
+          </template>
           <template #title>
             <h4>{{ item.title }}</h4>
           </template>
