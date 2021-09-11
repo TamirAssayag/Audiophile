@@ -5,7 +5,9 @@
     <ThankYouModal :is-open="isOpen" @onClose="isOpen = false" />
   </section>
   <section v-else>
-    <CheckoutErrors />
+    <client-only>
+      <CheckoutErrors />
+    </client-only>
   </section>
 </template>
 
