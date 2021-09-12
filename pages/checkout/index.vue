@@ -17,7 +17,6 @@ import OrderForm from '~/components/Order/OrderForm/OrderForm.vue'
 import CheckoutErrors from '~/components/Order/CheckoutErrors.vue'
 import ThankYouModal from '~/components/Modals/ThankYouModal/ThankYouModal.vue'
 import GoBack from '~/components/Layout/UI/GoBack.vue'
-
 export default {
   components: { OrderForm, CheckoutErrors, ThankYouModal, GoBack },
   async beforeRouteLeave(to, from, next) {

@@ -25,8 +25,6 @@ export default {
       clientZipCode: { required },
       clientCity: { required },
       clientCountry: { required },
-      eMoneyNumber: { required },
-      eMoneyPin: { required },
       radioGroup: { required },
     },
   },

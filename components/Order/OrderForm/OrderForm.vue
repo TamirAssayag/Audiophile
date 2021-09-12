@@ -163,6 +163,7 @@
                     >e-Money Number</label
                   >
                   <v-text-field
+                    v-if="checkoutForm.radioGroup === 'emoney'"
                     id="emoney-num"
                     v-model="checkoutForm.eMoneyNumber"
                     class="mt-2 mb-6"
@@ -170,9 +171,6 @@
                     type="number"
                     pattern="[0-9]*"
                     color="#d87d4a"
-                    :error-messages="eMoneyNumberErrors"
-                    @focus="reset('checkoutForm.eMoneyNumber')"
-                    @blur="touch('checkoutForm.eMoneyNumber')"
                   />
                 </div>
 
@@ -186,18 +184,17 @@
                     type="number"
                     pattern="[0-9]*"
                     color="#d87d4a"
-                    :error-messages="eMoneyPinErrors"
-                    @focus="reset('checkoutForm.eMoneyPin')"
-                    @blur="touch('checkoutForm.eMoneyPin')"
                   />
                 </div>
               </section>
             </v-expand-transition>
-            <v-expand-transition appear group mode="out-in">
-              <div
-                v-if="checkoutForm.radioGroup === 'cash-on-delivery'"
-                class="checkout__cash-on-delivery"
-              >
+            <v-expand-transition
+              v-if="checkoutForm.radioGroup === 'cash-on-delivery'"
+              appear
+              group
+              mode="out-in"
+            >
+              <div class="checkout__cash-on-delivery">
                 <div class="checkout__cash-on-delivery--img">
                   <CashOnDelivery />
                 </div>
@@ -256,8 +253,6 @@ export default {
   mixins: [validations, userApiMixin],
 
   data: () => ({
-    radio: false,
-    color: '#d87d4a',
     isOpen: false,
     purchased: false,
     paymentMethods: [
@@ -276,11 +271,15 @@ export default {
 
   methods: {
     async onContinueAndPay() {
-      if (this.checkoutForm.radioGroup !== 'emoney') {
-        this.$root.$emit('snackbar', { text: 'All fields must be added' })
-      } else {
-        this.$v.$touch()
+      if (
+        this.checkoutForm.eMoneyNumber === null ||
+        this.checkoutForm.eMoneyPin === null
+      ) {
+        this.$root.$emit('snackbar', {
+          text: 'Please fill up your e-Money details',
+        })
       }
+      this.$v.$touch()
       if (this.$v.$invalid) {
         this.$root.$emit('snackbar', { text: 'All fields must be added' })
       } else if (this.$v.checkoutForm.radioGroup.$invalid) {
