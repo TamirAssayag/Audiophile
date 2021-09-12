@@ -178,7 +178,7 @@
         <Categories />
       </div>
     </v-bottom-sheet>
-    <CartModal :is-open="dialog" @onClose="closeCartDialog" />
+    <CartModal :is-open="cartModal" @onClose="closeCartDialog" />
   </nav>
 </template>
 <script>
@@ -195,7 +195,7 @@ export default {
   data: () => ({
     drawer: false,
     group: null,
-    dialog: false,
+    cartModal: false,
     scrollPosBeforeLock: 0,
   }),
 
@@ -220,6 +220,13 @@ export default {
     '$screen.desktop'(desktopView) {
       if (desktopView) {
         this.drawer = false
+        this.cartModal = false
+      }
+    },
+
+    cartModal(modal) {
+      if (modal) {
+        this.drawer = false
       }
     },
 
@@ -235,8 +242,8 @@ export default {
       logoutUser: 'user/logoutUser',
     }),
     toggleCartDialog() {
-      this.dialog = !this.dialog
-      if (this.dialog) {
+      this.cartModal = !this.cartModal
+      if (this.cartModal) {
         this.scrollPosBeforeLock = window.scrollY
         document.querySelector('body').classList.add('modal-open')
       } else {
@@ -245,7 +252,7 @@ export default {
       }
     },
     closeCartDialog() {
-      this.dialog = false
+      this.cartModal = false
       document.querySelector('body').classList.remove('modal-open')
       window.scrollTo(0, this.scrollPosBeforeLock)
     },
@@ -263,9 +270,27 @@ nav {
   height: 80px;
   .navbar {
     position: fixed;
-
     inset: 0;
     max-height: 80px;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      height: 0.0625rem;
+      width: 100%;
+      opacity: 0.1;
+      background-color: #fff;
+      z-index: 250;
+      left: 50%;
+      transform: translate(-50%, 0);
+      max-width: 1110px !important;
+
+      @include media('<=lg') {
+        width: 100%;
+        max-width: unset !important;
+      }
+    }
 
     .v-toolbar__content {
       display: flex !important;

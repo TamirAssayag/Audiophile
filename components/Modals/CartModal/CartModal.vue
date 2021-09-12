@@ -209,7 +209,12 @@ export default {
       left: 50% !important;
       transform: translateX(-50%);
       z-index: 999 !important;
+      right: unset !important;
 
+      @include media('>=md') {
+        left: 96% !important;
+        transform: translateX(-96%);
+      }
       @include media('>=lg') {
         left: 66% !important;
         transform: translateX(-66%);
