@@ -29,10 +29,12 @@
 
     &--fhalf {
       height: 100%;
-      padding: 1.5rem 1.5rem 1rem;
+      padding: 1.5rem 2rem 1rem 1.5rem;
       max-height: 140px;
       display: flex;
       flex-direction: column;
+      max-height: 100%;
+      min-height: 100%;
 
       hr {
         opacity: 0.2;
@@ -87,9 +89,6 @@
       &--fhalf {
         width: 60%;
         padding-right: 2.4rem;
-        height: 100%;
-        max-height: 100%;
-        min-height: 100%;
       }
 
       &--total {

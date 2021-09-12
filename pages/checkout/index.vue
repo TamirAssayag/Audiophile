@@ -69,7 +69,7 @@ export default {
 
   data: () => ({
     purchased: false,
-    isOpen: false,
+    isOpen: true,
   }),
 
   head: {
