@@ -71,7 +71,7 @@
 <script>
 import { mapGetters } from 'vuex'
 import PageHeader from '../../components/Layout/UI/PageHeader.vue'
-import userApiMixin from '~/mixins/userApiMixin'
+import userApiMixin from '~/mixins/api/userApiMixin'
 
 export default {
   components: { PageHeader },

@@ -15,14 +15,14 @@
     </div>
     <div class="thankyou__cart">
       <div class="thankyou__cart--fhalf">
-        <div v-if="!isShowMore" class="cart-modal__items">
+        <div class="cart-modal__items">
           <div class="cart-modal__list-item">
             <div class="cart-modal__list-item__wrapper">
               <img width="64" :src="getImageUrl(cart[0].image)" alt="Item" />
               <div class="cart-modal__list-item__details">
-                <div class="title--uppercase text--bold">
+                <p class="title--uppercase text--bold text--md">
                   {{ cart[0].name }}
-                </div>
+                </p>
                 <p class="text--bold text--half-opacity">
                   $ {{ parseInt(cart[0].price).toLocaleString() }}
                 </p>
@@ -34,18 +34,18 @@
           </div>
         </div>
 
-        <div
-          v-for="item in cart.slice(0, 3)"
+        <v-expand-transition
+          v-for="item in cart.slice(1, 4)"
           :key="item.image"
           class="cart-modal__items"
         >
-          <div v-show="isShowMore" class="cart-modal__list-item">
+          <div v-if="isShowMore" class="cart-modal__list-item">
             <div class="cart-modal__list-item__wrapper">
               <img width="64" :src="getImageUrl(item.image)" alt="Item" />
               <div class="item-modal__list-item__details">
-                <div class="title--uppercase text--bold">
+                <p class="title--uppercase text--bold text--md">
                   {{ item.name }}
-                </div>
+                </p>
                 <p class="text--bold text--half-opacity">
                   $ {{ parseInt(item.price).toLocaleString() }}
                 </p>
@@ -55,7 +55,7 @@
               <p class="text--gray text--bold">x{{ item.quantity }}</p>
             </div>
           </div>
-        </div>
+        </v-expand-transition>
 
         <section v-if="cart.length > 1" class="thankyou__showmore">
           <hr class="mt-3" />
@@ -79,7 +79,7 @@
 
     <v-btn
       class="btn btn--orange"
-      style="width: 100% !important; margin-top: 23px"
+      style="width: 100% !important"
       elevation="0"
       @click="toOrders"
       >Back To Home</v-btn
@@ -92,7 +92,7 @@ import './ThankYouModal.scss'
 import { mapGetters, mapActions } from 'vuex'
 import cartHelpers from '~/mixins/cartHelpers'
 import CheckMark from '~/static/images/checkmark.svg?inline'
-import userApiMixin from '~/mixins/userApiMixin'
+import userApiMixin from '~/mixins/api/userApiMixin'
 export default {
   components: { CheckMark },
 
@@ -120,8 +120,8 @@ export default {
     },
     drawShowMoreText() {
       if (this.isShowMore) {
-        if (this.cart.length > 3) {
-          return `View less (${this.cart.length - 3} more item(s)) `
+        if (this.cart.length > 4) {
+          return `View less (${this.cart.length - 4} more item(s)) `
         } else {
           return `View less`
         }

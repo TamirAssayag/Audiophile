@@ -1,8 +1,8 @@
 <template>
   <client-only>
     <section v-if="loggedIn && cart.length" class="container">
+      <GoBack />
       <OrderForm />
-      <Summary @onPay="onContinueAndPay" />
       <ThankYouModal :is-open="isOpen" @onClose="isOpen = false" />
     </section>
     <section v-else>
@@ -13,26 +13,21 @@
 
 <script>
 import { mapActions } from 'vuex'
-import Summary from '../../components/Order/Summary.vue'
-import OrderForm from '../../components/Order/OrderForm/OrderForm.vue'
-import CheckoutErrors from '../../components/Order/CheckoutErrors.vue'
-import ThankYouModal from '../../components/Modals/ThankYouModal/ThankYouModal.vue'
-import userApiMixin from '../../mixins/userApiMixin'
+import OrderForm from '~/components/Order/OrderForm/OrderForm.vue'
+import CheckoutErrors from '~/components/Order/CheckoutErrors.vue'
+import ThankYouModal from '~/components/Modals/ThankYouModal/ThankYouModal.vue'
+import GoBack from '~/components/Layout/UI/GoBack.vue'
 
 export default {
-  components: { Summary, OrderForm, CheckoutErrors, ThankYouModal },
-  mixins: [userApiMixin],
-
+  components: { OrderForm, CheckoutErrors, ThankYouModal, GoBack },
   async beforeRouteLeave(to, from, next) {
     if (this.purchased) {
       await this.removeAllCartItems()
-
       this.purchased = false
       this.isOpen = false
     }
     next()
   },
-
   asyncData(context) {
     // Fetch by UUID
     // .get(`cdn/stories/cc4ebb9e-398d-4748-96e5-3e4700166333?find_by=uuid`, {})
@@ -80,29 +75,37 @@ export default {
     hideLayout: true,
     routeName: 'checkout',
   },
+  mounted() {
+    this.$nuxt.$on('openModal', this.openModal)
+  },
+
+  destroyed() {
+    if (this.isOpen) {
+      this.isOpen = false
+    }
+    this.$nuxt.$off('openModal', this.openModal)
+  },
 
   methods: {
     ...mapActions({
       saveUser: 'user/saveUser',
       removeAllCartItems: 'cart/removeAllCartItems',
     }),
-    async onContinueAndPay() {
-      try {
-        const newCart = this.cart.map((obj) => ({
-          productId: obj._uid,
-          quantity: obj.quantity,
-        }))
-        await this.postPurchase({
-          date: new Date().toJSON(),
-          cart: newCart,
-        })
-
-        this.purchased = true
-        this.isOpen = true
-      } catch (err) {
-        console.log(err)
-      }
+    openModal() {
+      this.isOpen = true
+      this.purchased = true
     },
   },
 }
 </script>
+
+<style lang="scss">
+@include media('>=lg') {
+  .checkout {
+    &__wrapper {
+      display: flex;
+      justify-content: center;
+    }
+  }
+}
+</style>

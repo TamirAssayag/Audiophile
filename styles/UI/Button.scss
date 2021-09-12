@@ -56,6 +56,16 @@
     height: 30px !important;
     width: inherit !important;
     text-transform: capitalize;
+    transition: all 0.2s ease !important;
+
+    &::before {
+      background-color: unset !important;
+    }
+
+    &:hover {
+      background-color: transparent !important;
+      color: $orange;
+    }
   }
 
   &--signup {

@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import { findIndex, sumBy, find } from 'lodash'
-import { genGrandTotal } from '../mixins/utiles.js'
+import { genGrandTotal } from '../mixins/utils.js'
 
 const state = () => ({
   cart: [],

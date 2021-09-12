@@ -1,4 +1,5 @@
-.checkout {
+.checkout,
+.summary {
   width: 100%;
 
   &__header {
@@ -13,7 +14,18 @@
     padding: 1.5rem;
     border-radius: 8px;
     // margin-bottom: 7rem;
-    &--billing {
+
+    &--payment {
+      .v-radio {
+        margin-top: 0 !important;
+        border-radius: 8px;
+        border: 1px solid #cfcfcf;
+        padding: 0.5rem 7rem 0.5rem 1rem;
+        height: 56px;
+      }
+    }
+
+    section {
       p {
         font-size: 13px;
         line-height: 1.92;
@@ -29,7 +41,22 @@
       border-radius: 8px;
 
       &--outlined fieldset {
-        border-color: #cfcfcf !important;
+        border: solid 1px #cfcfcf !important;
+        border-color: unset !important;
+      }
+
+      &--is-focused {
+        border: 1px solid $orange !important;
+      }
+    }
+
+    .v-item {
+      &--active {
+        transition: all 0.3s ease !important;
+        border: 1px solid $orange !important;
+      }
+      &:focus {
+        border: 1px solid $orange !important;
       }
     }
 
@@ -44,6 +71,13 @@
     }
   }
 
+  &__card {
+    margin-top: 1.5rem;
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+  }
+
   .cart-modal__down {
     background-color: unset;
     padding: unset;
@@ -52,5 +86,81 @@
   &__cant-proceed {
     text-align: center;
     padding: 1rem;
+  }
+
+  &__cash-on-delivery {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  @include media('>=lg') {
+    margin-bottom: 3rem;
+    &__wrapper {
+      gap: 1.8rem;
+    }
+
+    &__form {
+      width: 730px;
+      padding: 3rem;
+
+      &--billing,
+      &--shipping__wrapper,
+      .e-money {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        gap: 1rem;
+      }
+
+      .billing,
+      .shipping,
+      .emoney {
+        width: 50%;
+      }
+
+      &--payment {
+        display: flex;
+        justify-content: space-between;
+
+        .v-input--selection-controls.v-input {
+          margin-top: 0;
+        }
+
+        .v-radio {
+          width: 309px;
+        }
+      }
+    }
+
+    .summary {
+      width: unset !important;
+      &__card {
+        margin: 0;
+        width: 350px !important;
+      }
+    }
+  }
+}
+
+.v-text-field__details {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.v-text-field__details {
+  position: absolute;
+  right: 0.5rem;
+  top: -1.6rem;
+
+  .v-messages__wrapper {
+    margin-top: 0rem;
+  }
+
+  .v-messages__message {
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.25;
+    letter-spacing: -0.25px;
   }
 }

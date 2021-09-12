@@ -71,7 +71,7 @@ he
 
 <script>
 import QuantityToggle from '../../Layout/UI/QuantityToggle.vue'
-import userApiMixin from '~/mixins/userApiMixin'
+import userApiMixin from '~/mixins/api/userApiMixin'
 import cartHelpers from '~/mixins/cartHelpers'
 
 export default {

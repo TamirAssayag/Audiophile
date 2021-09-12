@@ -22,7 +22,7 @@ import { mapActions } from 'vuex'
 import Navbar from './Navigation/Navbar.vue'
 import Snackbar from '~/components/Layout/UI/Snackbar.vue'
 import Footer from '~/components/Footer/Footer.vue'
-import userApiMixin from '~/mixins/userApiMixin'
+import userApiMixin from '~/mixins/api/userApiMixin'
 export default {
   name: 'Default',
   components: { Navbar, Footer, Snackbar },

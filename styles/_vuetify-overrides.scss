@@ -23,22 +23,6 @@
   border-color: unset;
 }
 
-.container {
-  width: 100%;
-  padding: 1.5rem;
-
-  @include media('>=md') {
-    width: 768px;
-    max-width: 768px;
-    margin: auto;
-  }
-  @include media('>=lg') {
-    width: 1110px;
-    max-width: 1110px;
-    margin: auto;
-  }
-}
-
 .v-application p {
   margin-bottom: 0 !important;
 }
@@ -62,15 +46,8 @@
 }
 
 .v-input {
-  &--checkbox {
-    padding: 1rem;
-    font-weight: bold;
-    border-radius: 8px;
-    border: 1px solid #cfcfcf;
-
-    .v-label {
-      color: black !important;
-    }
+  .v-label {
+    color: black !important;
   }
 }
 
@@ -95,7 +72,6 @@
       }
     }
     &-content__wrap {
-      // padding: 24px 24px 16px;
       padding: unset !important;
     }
   }

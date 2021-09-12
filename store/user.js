@@ -53,9 +53,6 @@ const getters = {
         })
       : []
   },
-
-  getLastOrder: (state, getters) =>
-    getters.getAllUserOrders[getters.getAllUserOrders.length - 1].cart,
 }
 
 export default {

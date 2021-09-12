@@ -23,6 +23,22 @@
   font-size: 1rem;
 }
 
+.container {
+  width: 100%;
+  padding: 1.5rem;
+
+  @include media('>=md') {
+    width: 768px;
+    max-width: 768px;
+    margin: auto;
+  }
+  @include media('>=lg') {
+    width: 1110px;
+    max-width: 1110px;
+    margin: auto;
+  }
+}
+
 .z-index {
   &--150 {
     z-index: 150;

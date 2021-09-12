@@ -1,5 +1,6 @@
 .thankyou {
   min-height: 600px;
+  width: 327px;
   border-radius: 8px;
   background-color: white !important;
   padding: 2rem;
@@ -22,7 +23,7 @@
   }
 
   &__cart {
-    margin-top: 1.5rem;
+    margin: 1.5rem 0 !important;
     border-radius: 8px 8px 0 0;
     background-color: $gray;
     width: 100%;
@@ -60,9 +61,9 @@
     }
   }
 
-  @include media('>=lg') {
+  @include media('>=md') {
     width: 540px;
-    min-height: 713px;
+    min-height: 518px;
     padding: 3rem;
     display: flex;
     flex-direction: column;
@@ -83,12 +84,13 @@
     }
     &__cart {
       display: flex;
-      max-height: 280px;
+      max-height: 300px;
       border-radius: 8px;
+      margin: 1.5rem 0;
 
       &--fhalf {
         width: 60%;
-        padding-right: 2.4rem;
+        padding-right: 2rem;
       }
 
       &--total {
@@ -102,8 +104,17 @@
         }
       }
     }
-    .v-btn {
-      margin-top: auto !important;
-    }
+  }
+
+  @include media('>=lg') {
+    min-height: 713px;
+  }
+
+  &__cart {
+    margin: 1.5rem 0 0;
+  }
+
+  .v-btn {
+    margin-top: auto;
   }
 }

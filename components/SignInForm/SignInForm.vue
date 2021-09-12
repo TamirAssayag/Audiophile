@@ -65,7 +65,7 @@
 import { mapActions } from 'vuex'
 import { validationMixin } from 'vuelidate'
 import { required, email, minLength } from 'vuelidate/lib/validators'
-import userApiMixin from '~/mixins/userApiMixin'
+import userApiMixin from '~/mixins/api/userApiMixin'
 export default {
   name: 'SignUp',
   mixins: [validationMixin, userApiMixin],
