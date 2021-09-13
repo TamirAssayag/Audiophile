@@ -271,14 +271,17 @@ export default {
 
   methods: {
     async onContinueAndPay() {
-      if (
-        this.checkoutForm.eMoneyNumber === null ||
-        this.checkoutForm.eMoneyPin === null
-      ) {
-        this.$root.$emit('snackbar', {
-          text: 'Please fill up your e-Money details',
-        })
+      if (this.checkoutForm.radioGroup === 'e-money') {
+        if (
+          this.checkoutForm.eMoneyNumber === null ||
+          this.checkoutForm.eMoneyPin === null
+        ) {
+          this.$root.$emit('snackbar', {
+            text: 'Please fill up your e-Money details',
+          })
+        }
       }
+
       this.$v.$touch()
       if (this.$v.$invalid) {
         this.$root.$emit('snackbar', { text: 'All fields must be added' })
