@@ -6,7 +6,7 @@
     </v-fade-transition>
     <Snackbar />
     <div v-if="!$route.meta.hideLayout" class="container">
-      <Categories class="pb-120" />
+      <Categories :class="$screen.lg ? 'pb-120' : ''" />
       <About v-if="!$route.meta.hideAbout" />
     </div>
 

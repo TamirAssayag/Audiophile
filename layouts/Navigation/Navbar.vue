@@ -175,7 +175,7 @@
         </div>
       </v-slide-y-transition>
       <div class="mobile__menu">
-        <Categories />
+        <Categories class="pa-10" />
       </div>
     </v-bottom-sheet>
     <CartModal :is-open="cartModal" @onClose="closeCartDialog" />
