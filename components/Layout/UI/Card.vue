@@ -1,5 +1,5 @@
 <template>
-  <div class="card" :style="bgColor ? `background-color: ${bgColor}` : ''">
+  <div :class="`card `" :style="bgColor ? `background-color: ${bgColor}` : ''">
     <div class="card__container">
       <div class="card__container--inner">
         <div class="card__img">
@@ -9,7 +9,7 @@
           <div class="card__title">
             <slot name="title" />
           </div>
-          <div class="card__description">
+          <div v-if="hasDescriptionSlot" class="card__description">
             <slot name="description" />
           </div>
           <div class="card__button">
@@ -29,6 +29,19 @@ export default {
     bgColor: {
       type: String,
       default: '',
+    },
+    hasDescriptions: {
+      type: Boolean,
+      default: true,
+    },
+  },
+
+  computed: {
+    hasDescriptionSlot: {
+      cache: false,
+      get() {
+        return !!this.$slots.description
+      },
     },
   },
 }

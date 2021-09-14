@@ -1,0 +1,258 @@
+.products {
+  margin-bottom: 7.5rem;
+  &__container {
+    display: grid;
+    gap: 1.5rem;
+    place-items: center;
+  }
+
+  .card {
+    width: unset;
+    height: unset;
+
+    &.audiophile-product {
+      &-1 {
+        width: 327px;
+        height: 100%;
+        padding: 3.43rem 1.5rem;
+        background-image: url('../../static/images/circles.svg');
+        background-repeat: no-repeat;
+        background-size: contain;
+        overflow: hidden;
+
+        .card__wrapper {
+          margin: auto;
+          color: white;
+          text-align: center;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: 1.5rem;
+
+          .card__title {
+            header {
+              width: 240px;
+              h1 {
+                @include Title(white, 36px, 1.29px);
+              }
+            }
+          }
+          .card__description {
+            p {
+              width: 280px;
+            }
+          }
+        }
+
+        .card__img {
+          text-align: center;
+          img {
+            width: 172px !important;
+            margin-bottom: 32px;
+          }
+        }
+
+        @include media('>=md') {
+          width: 100%;
+          background-image: url('../../static/images/circles-tablet.svg');
+          height: 656px;
+          background-position: 1rem 0;
+
+          .card__wrapper {
+            gap: 2rem;
+            .card__title {
+              header {
+                h1 {
+                  @include Title(white, 56px, 1.29px);
+                }
+              }
+            }
+          }
+        }
+
+        @include media('>=lg') {
+          background-image: url('../../static/images/circles-desktop.svg');
+          background-position: unset;
+          height: 560px;
+          .card__container--inner {
+            display: flex;
+          }
+
+          .card__wrapper {
+            margin: unset;
+            width: 30%;
+            align-items: unset;
+            justify-content: unset;
+            text-align: left;
+            margin-top: 1rem;
+
+            .card__description {
+              p {
+                width: 349px;
+              }
+            }
+          }
+
+          .card__img {
+            width: 59%;
+            text-align: center;
+
+            img {
+              width: 400px !important;
+              height: 483.5px;
+              margin: 2rem 0;
+            }
+          }
+        }
+      }
+
+      &-2 {
+        width: 327px;
+        height: 320px;
+        position: relative;
+        background-color: black !important;
+        background-image: url('../../static/images/home/mobile/image-speaker-zx7.jpg');
+        background-repeat: no-repeat;
+        background-size: contain;
+        filter: contrast(1.25);
+        overflow: hidden;
+        z-index: 1;
+
+        &:before {
+          content: '';
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          position: absolute;
+          background-color: #000;
+          opacity: 0.2;
+          z-index: -1;
+        }
+
+        @include media('>=md') {
+          width: 100%;
+          background-image: url('../../static/images/home/tablet/image-speaker-zx7.jpg');
+          background-size: cover;
+        }
+
+        @include media('>=lg') {
+          width: 100%;
+          background-image: url('../../static/images/home/desktop/image-speaker-zx7.jpg');
+          background-size: cover;
+        }
+      }
+
+      &-3 {
+        background-image: url('../../static/images/home/mobile/image-earphones-yx1.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        filter: contrast(1);
+
+        @include media('>=md') {
+          background-image: url('../../static/images/home/tablet/image-earphones-yx1.jpg');
+        }
+
+        @include media('>=lg') {
+          background-image: url('../../static/images/home/desktop/image-earphones-yx1.jpg');
+        }
+      }
+
+      &-2,
+      &-4 {
+        .card__container {
+          width: 100%;
+          height: 100%;
+        }
+
+        .card__container--inner {
+          width: 100%;
+          height: 100%;
+          padding: 24px;
+        }
+
+        .card__wrapper {
+          width: 100%;
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          gap: 32px;
+          justify-content: center;
+
+          @include media('>=lg') {
+            margin-left: 6rem;
+            width: unset;
+          }
+
+          .card__title {
+            header {
+              h1 {
+                @include Title(black, 28px, 1.29px);
+              }
+            }
+          }
+        }
+      }
+      @include media('>=md') {
+        &-2 {
+          .card__wrapper {
+            margin-left: 3.8rem;
+          }
+        }
+        &-4 {
+          .card__wrapper {
+            margin: 0 2rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+.container__earphones {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  width: 100%;
+  .audiophile-product {
+    &-4,
+    &-3 {
+      overflow: hidden;
+      width: 327px;
+      height: 200px;
+
+      .card__img {
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+  }
+
+  @include media('>=md') {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    .audiophile-product {
+      &-3,
+      &-4 {
+        height: 320px;
+        width: 50%;
+      }
+    }
+  }
+
+  @include media('>=lg') {
+    gap: 1.5rem;
+    .audiophile-product {
+      &-3,
+      &-4 {
+        width: 540px;
+        height: 320px;
+      }
+    }
+  }
+}
