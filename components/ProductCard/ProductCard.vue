@@ -95,9 +95,10 @@ export default {
   }
 
   @include media('>=lg') {
-    width: 1110px;
+    max-width: 1110px;
 
     &__container {
+      text-align: left !important;
       width: 100%;
       margin: auto;
       flex-direction: row;
@@ -105,25 +106,21 @@ export default {
       justify-content: space-between;
     }
 
-    .product {
-      &--card {
-        &__side {
-          @include media('>lg') {
-            width: 50%;
-          }
-        }
+    &__side {
+      @include media('>lg') {
+        width: 50%;
       }
-      &__header {
-        text-align: left;
-      }
-      &__description {
-        width: 100%;
-        margin: 0 !important;
-        text-align: left;
-      }
-      &__button {
-        text-align: left;
-      }
+    }
+    &__header {
+      text-align: left;
+    }
+    &__description {
+      width: 100%;
+      margin: 0 !important;
+      text-align: left;
+    }
+    &__button {
+      text-align: left;
     }
   }
 }
