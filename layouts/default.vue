@@ -5,13 +5,8 @@
       <Nuxt keep-alive :keep-alive-props="{ max: 10 }" />
     </v-fade-transition>
     <Snackbar />
-    <div
-      v-if="!$route.meta.hideLayout"
-      :class="!checkRoute('index') ? 'container pa-0' : 'container'"
-    >
-      <Categories
-        :class="$screen.desktop && !checkRoute('index') ? 'mt-0' : ''"
-      />
+    <div v-if="!$route.meta.hideLayout" :class="'container'">
+      <Categories :class="!checkRoute('index') ? 'mt-0' : ''" />
       <About v-if="!$route.meta.hideAbout" />
     </div>
     <footer>
