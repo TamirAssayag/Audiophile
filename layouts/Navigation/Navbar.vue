@@ -39,7 +39,6 @@
                 attach
                 offset-y
                 :top="false"
-                open-on-hover
               >
                 <template #activator="{ on, attrs }">
                   <v-btn

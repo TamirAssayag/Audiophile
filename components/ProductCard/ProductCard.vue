@@ -7,7 +7,7 @@
           : 'product--card__container'
       "
     >
-      <div class="product--cart__side">
+      <div class="product--card__side">
         <div
           :class="
             !productCategoryRouteNames
@@ -24,7 +24,7 @@
           />
         </div>
       </div>
-      <div class="product--cart__side-two">
+      <div class="product--card__side-two">
         <div class="product__header">
           <span
             v-if="data.content.is_new_product"
@@ -106,6 +106,13 @@ export default {
     }
 
     .product {
+      &--card {
+        &__side {
+          @include media('>lg') {
+            width: 50%;
+          }
+        }
+      }
       &__header {
         text-align: left;
       }

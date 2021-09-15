@@ -16,6 +16,7 @@
   }
 
   @include media('>=lg') {
+    max-width: 1110px;
     width: 100%;
     margin-bottom: 10rem;
     padding: 0;
@@ -44,7 +45,7 @@
     }
 
     @include media('>=lg') {
-      width: 335px;
+      width: 350px;
       height: 204px;
     }
 
