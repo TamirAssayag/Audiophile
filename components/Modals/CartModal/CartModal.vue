@@ -59,7 +59,12 @@ he
             </h3>
           </div>
           <NuxtLink to="/checkout">
-            <v-btn class="btn btn--orange" width="100%" elevation="0"
+            <v-btn
+              class="btn btn--orange"
+              width="100%"
+              elevation="0"
+              title="Checkout"
+              aria-label="Checkout"
               >Checkout</v-btn
             >
           </NuxtLink>

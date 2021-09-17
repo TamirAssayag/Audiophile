@@ -41,6 +41,8 @@
           <v-btn
             class="btn btn--orange"
             elevation="0"
+            aria-label="Checkout"
+            title="Checkout"
             @click="$emit('onCheckout')"
             >Checkout</v-btn
           >
@@ -71,7 +73,7 @@ export default {
 .cart {
   .cart-modal {
     width: 100%;
-    max-width: 1110px;
+    max-width: $lg-width;
     margin: auto auto 10rem;
     &__list-item__wrapper {
       width: 100%;

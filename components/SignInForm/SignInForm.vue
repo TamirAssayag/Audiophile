@@ -43,7 +43,13 @@
           </p>
         </v-slide-y-transition>
 
-        <v-btn type="submit" class="mt-5 btn btn--orange" elevation="0">
+        <v-btn
+          type="submit"
+          class="mt-5 btn btn--orange"
+          elevation="0"
+          :title="signUpRoute ? 'Sign Up' : 'Login'"
+          :aria-label="signUpRoute ? 'Sign Up' : 'Login'"
+        >
           {{ signUpRoute ? 'Sign Up' : 'Login' }}
         </v-btn>
       </v-form>

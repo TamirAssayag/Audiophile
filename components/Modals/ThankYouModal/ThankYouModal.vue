@@ -81,8 +81,10 @@
       class="btn btn--orange"
       style="width: 100% !important"
       elevation="0"
+      title="Done"
+      aria-label="Finish Order"
       @click="toOrders"
-      >Back To Home</v-btn
+      >Done</v-btn
     >
   </v-dialog>
 </template>

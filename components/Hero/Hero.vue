@@ -20,7 +20,10 @@
               made for the passionate music enthusiast.
             </div>
             <NuxtLink to="/headphones/xx99-mk-ii">
-              <v-btn class="hero__header__btn btn btn--orange"
+              <v-btn
+                class="hero__header__btn btn btn--orange"
+                aria-label="See Product"
+                title="See Product"
                 >See Product</v-btn
               >
             </NuxtLink>

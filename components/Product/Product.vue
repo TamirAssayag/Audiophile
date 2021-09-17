@@ -45,7 +45,13 @@
                   @increment="incrementQuantity()"
                   @decrement="decrementQuantity()"
                 />
-                <v-btn class="btn btn--orange" elevation="0" @click="addToCart">
+                <v-btn
+                  class="btn btn--orange"
+                  elevation="0"
+                  aria-label="Add To Cart"
+                  title="Add to Cart"
+                  @click="addToCart"
+                >
                   Add to cart
                 </v-btn>
               </div>

@@ -25,10 +25,20 @@
           <v-scroll-y-reverse-transition appear hide-on-leave group>
             <div v-if="!loggedIn" :key="loggedIn">
               <NuxtLink to="/signup">
-                <v-btn class="btn btn--signup mr-2">Sign Up</v-btn>
+                <v-btn
+                  class="btn btn--signup mr-2"
+                  title="Sign up"
+                  aria-label="Sign up"
+                  >Sign Up</v-btn
+                >
               </NuxtLink>
               <NuxtLink to="/login">
-                <v-btn class="btn btn--login mr-5">Login</v-btn>
+                <v-btn
+                  class="btn btn--login mr-5"
+                  title="Login"
+                  aria-label="Login"
+                  >Login</v-btn
+                >
               </NuxtLink>
             </div>
           </v-scroll-y-reverse-transition>
@@ -46,6 +56,8 @@
                     class="btn btn--account"
                     elevation="0"
                     v-bind="attrs"
+                    :aria-label="displayName"
+                    :title="displayName"
                     v-on="on"
                   >
                     {{ displayName }}
@@ -130,10 +142,14 @@
         class="sign-up__login d-flex align-center flex-column pt-5"
       >
         <NuxtLink to="/signup">
-          <v-btn class="btn btn--text"> Sign Up </v-btn>
+          <v-btn class="btn btn--text" title="Sign up" aria-label="Sign up">
+            Sign Up
+          </v-btn>
         </NuxtLink>
         <NuxtLink to="/login">
-          <v-btn class="btn btn--text mt-1"> Login </v-btn>
+          <v-btn class="btn btn--text mt-1" title="Login" aria-label="Login">
+            Login
+          </v-btn>
         </NuxtLink>
       </div>
       <v-slide-y-transition v-else appear mode="in-out">
@@ -150,6 +166,8 @@
                 class="btn btn--account"
                 elevation="0"
                 v-bind="attrs"
+                :aria-label="displayName"
+                :title="displayName"
                 v-on="on"
               >
                 {{ displayName }}
@@ -283,7 +301,7 @@ nav {
       z-index: 250;
       left: 50%;
       transform: translate(-50%, 0);
-      max-width: 1110px !important;
+      max-width: $lg-width !important;
 
       @include media('<=lg') {
         width: 100%;
@@ -307,7 +325,7 @@ nav {
       }
 
       @include media('>=lg') {
-        width: 1110px;
+        width: $lg-width;
 
         .cart__icon {
           margin-left: unset;

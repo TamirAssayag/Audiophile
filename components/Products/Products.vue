@@ -25,7 +25,11 @@
           </template>
           <template #btn>
             <NuxtLink v-if="item.link" :to="item.link">
-              <v-btn elevation="0" :class="`btn ${item.btnStyle}`"
+              <v-btn
+                elevation="0"
+                aria-label="See Product"
+                title="See Product"
+                :class="`btn ${item.btnStyle}`"
                 >SEE PRODUCT</v-btn
               >
             </NuxtLink>
@@ -46,7 +50,11 @@
             </template>
             <template #btn>
               <NuxtLink v-if="item.link" :to="item.link">
-                <v-btn elevation="0" :class="`btn ${item.btnStyle}`"
+                <v-btn
+                  elevation="0"
+                  :class="`btn ${item.btnStyle}`"
+                  aria-label="See Product"
+                  title="See Product"
                   >SEE PRODUCT</v-btn
                 >
               </NuxtLink>

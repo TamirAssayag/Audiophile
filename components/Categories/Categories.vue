@@ -2,7 +2,7 @@
   <section class="category__navigation">
     <div v-for="item in items" :key="item.title">
       <NuxtLink :to="'/' + item.slug">
-        <Card :bg-color="'#f1f1f1'">
+        <Card :bg-color="'#f1f1f1'" :title="item.title">
           <template #image>
             <img
               :src="item.image"
@@ -16,7 +16,7 @@
             <h4>{{ item.title }}</h4>
           </template>
           <template #btn>
-            <v-btn class="btn btn--text"
+            <v-btn class="btn btn--text" aria-label="Shop" title="Shop"
               >SHOP &nbsp;
               <IconRight />
             </v-btn>

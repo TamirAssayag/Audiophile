@@ -94,16 +94,13 @@
     gap: 2rem;
   }
 
-  @include media('>=lg') {
-    margin-bottom: 3rem;
+  @include media('>=md') {
+    margin-bottom: 1.5rem;
     &__wrapper {
       gap: 1.8rem;
     }
 
     &__form {
-      width: 730px;
-      padding: 3rem;
-
       &--billing,
       &--shipping__wrapper,
       .e-money {
@@ -131,6 +128,19 @@
           width: 309px;
         }
       }
+    }
+    .summary {
+      &__card {
+        margin-top: 0;
+      }
+    }
+  }
+
+  @include media('>=lg') {
+    margin-bottom: 3rem;
+    &__form {
+      width: 730px;
+      padding: 3rem;
     }
 
     .summary {

@@ -42,7 +42,14 @@
         </div>
         <div class="product__button">
           <NuxtLink :to="$route.path + '/' + data.slug">
-            <v-btn class="btn btn--orange" elevation="0"> See Product </v-btn>
+            <v-btn
+              class="btn btn--orange"
+              elevation="0"
+              aria-label="See Product"
+              title="See Product"
+            >
+              See Product
+            </v-btn>
           </NuxtLink>
         </div>
       </div>
@@ -84,7 +91,6 @@ export default {
 
 <style lang="scss">
 .product--card {
-  // min-height: 500px;
   margin-bottom: 10rem;
   &__container {
     text-align: center;
@@ -95,7 +101,7 @@ export default {
   }
 
   @include media('>=lg') {
-    max-width: 1110px;
+    max-width: $lg-width;
 
     &__container {
       text-align: left !important;

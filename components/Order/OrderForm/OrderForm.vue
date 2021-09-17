@@ -229,6 +229,8 @@
               class="btn btn--orange"
               width="100%"
               elevation="0"
+              title="Continue & Pay"
+              aria-label="Continue & Pay"
               @click="onContinueAndPay"
               >Continue & Pay</v-btn
             >

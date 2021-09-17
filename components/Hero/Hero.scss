@@ -91,7 +91,7 @@
   @include media('>=lg') {
     background-color: black;
     &__container {
-      width: 1110px;
+      width: $lg-width;
       margin: auto;
       justify-content: space-between;
 

@@ -16,7 +16,7 @@
   }
 
   @include media('>=lg') {
-    max-width: 1110px;
+    max-width: $lg-width;
     width: 100%;
     margin-bottom: 10rem;
     padding: 0;
