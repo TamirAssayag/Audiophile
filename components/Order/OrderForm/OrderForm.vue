@@ -220,9 +220,47 @@
                 align-center
               "
             >
+              <h4 class="text--half-opacity title--uppercase">Total</h4>
+              <h3 class="cart-modal__price">$ {{ total.toLocaleString() }}</h3>
+            </div>
+            <div
+              class="
+                cart-modal__total
+                d-flex
+                justify-space-between
+                align-center
+              "
+            >
+              <h4 class="text--half-opacity title--uppercase">Shipping</h4>
+              <h3 class="cart-modal__price">$ {{ shipping }}</h3>
+            </div>
+            <div
+              class="
+                cart-modal__total
+                d-flex
+                justify-space-between
+                align-center
+              "
+            >
+              <h4 class="text--half-opacity title--uppercase">
+                VAT (INCLUDED)
+              </h4>
+              <h3 class="cart-modal__price">
+                $ {{ vatCalc.toLocaleString() }}
+              </h3>
+            </div>
+            <div
+              class="
+                cart-modal__total
+                d-flex
+                justify-space-between
+                align-center
+                mt-5
+              "
+            >
               <h4 class="text--half-opacity title--uppercase">Grand Total</h4>
               <h3 class="cart-modal__price text--orange">
-                $ {{ grandTotal.toLocaleString() }}
+                $ {{ calcGrandTotal }}
               </h3>
             </div>
             <v-btn

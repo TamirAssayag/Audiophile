@@ -72,7 +72,7 @@
         <div class="thankyou__cart--total--text"></div>
         <span class="text--uppercase text--gray">Grand Total</span>
         <p class="text--bold text--white">
-          $ {{ grandTotal.toLocaleString() }}
+          $ {{ calcGrandTotal.toLocaleString() }}
         </p>
       </div>
     </div>

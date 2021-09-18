@@ -74,8 +74,8 @@ import { required, email, minLength } from 'vuelidate/lib/validators'
 import PageHeader from '../Layout/UI/PageHeader.vue'
 import userApiMixin from '~/mixins/api/userApiMixin'
 export default {
-  components: { PageHeader },
   name: 'SignUp',
+  components: { PageHeader },
   mixins: [validationMixin, userApiMixin],
 
   validations: {

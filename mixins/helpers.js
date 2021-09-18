@@ -1,6 +1,9 @@
 import { mapGetters } from 'vuex'
 
 export default {
+  data: () => ({
+    shipping: 50,
+  }),
   methods: {
     logConsole(param) {
       console.log(param)
@@ -25,6 +28,14 @@ export default {
     },
   },
   computed: {
+    ...mapGetters({
+      products: 'products/products',
+      cart: 'cart/cart',
+      getUser: 'user/getUser',
+      loggedIn: 'user/isLoggedIn',
+      grandTotal: 'cart/getGrandTotal',
+      getTotalCartItems: 'cart/getTotalCartItems',
+    }),
     displayName() {
       return this.getUser.name?.split(' ').slice(0, -1).join(' ')
     },
@@ -43,13 +54,14 @@ export default {
         { name: 'Earphones', link: '/earphones' },
       ]
     },
-    ...mapGetters({
-      products: 'products/products',
-      cart: 'cart/cart',
-      getUser: 'user/getUser',
-      loggedIn: 'user/isLoggedIn',
-      grandTotal: 'cart/getGrandTotal',
-      getTotalCartItems: 'cart/getTotalCartItems',
-    }),
+    vatCalc() {
+      return (20 / 100) * this.grandTotal
+    },
+    total() {
+      return this.grandTotal + this.vatCalc
+    },
+    calcGrandTotal() {
+      return this.total + this.shipping
+    },
   },
 }

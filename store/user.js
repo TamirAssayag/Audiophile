@@ -11,6 +11,8 @@ const mutations = {
     }
   },
 
+  saveGrandTotal(state, payload) {},
+
   updateUser(state, id) {},
 
   logoutUser(state) {
@@ -45,10 +47,12 @@ const getters = {
             ...rootGetters['products/getProductById'](cartItem?.productId),
             quantity: cartItem.quantity,
           }))
+          const total = sumBy(mappedCart, (item) => item.quantity * item.price)
+          const vat = (20 / 100) * total
           return {
             ...order,
             cart: mappedCart,
-            grandTotal: sumBy(mappedCart, (item) => item.quantity * item.price),
+            grandTotal: total + vat + 50,
           }
         })
       : []

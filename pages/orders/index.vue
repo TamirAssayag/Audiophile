@@ -52,8 +52,11 @@
                 </div>
                 <div class="order__product--total">
                   <span class="text--uppercase text--gray">Grand Total</span>
-                  <p class="text--bold mt-2">
+                  <p class="text--bold mt-1">
                     $ {{ order.grandTotal.toLocaleString() }}
+                  </p>
+                  <p class="text--sm text--gray mt-1">
+                    Vat Included (20%) and Shipping ($50)
                   </p>
                 </div>
               </v-expansion-panel-content>
@@ -139,7 +142,7 @@ export default {
 
       &--total {
         padding: 1rem 1.5rem;
-        height: 92px;
+        min-height: 92px;
         color: white;
         background-color: black;
         border-bottom-left-radius: 8px;
