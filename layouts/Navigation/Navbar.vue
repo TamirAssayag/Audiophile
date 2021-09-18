@@ -1,7 +1,7 @@
 <template>
   <nav>
     <div
-      v-if="$screen.desktop"
+      v-show="$screen.desktop"
       :class="
         $route.name === 'checkout'
           ? 'navbar navbar--desktop z-index--150'
@@ -104,7 +104,7 @@
       </v-app-bar>
     </div>
     <div
-      v-else
+      v-show="!$screen.desktop"
       :class="
         $route.name === 'checkout'
           ? 'navbar z-index--150'
