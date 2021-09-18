@@ -1,78 +1,80 @@
 <template>
-  <div class="user-form mb-5">
-    <div class="user-form__form">
-      <h1 class="mb-5 title--uppercase">
-        {{ signUpRoute ? 'Sign Up' : 'Login' }}
-      </h1>
-      <v-form @submit.prevent="handleRegistration">
-        <v-text-field
-          v-if="$route.name === 'signup'"
-          v-model="user.name"
-          label="Full Name"
-          type="text"
-          name="name"
-          color="black"
-          prepend-inner-icon="mdi-account"
-          required
-        />
-        <v-text-field
-          v-model="user.email"
-          label="Email"
-          type="email"
-          name="email"
-          color="black"
-          prepend-inner-icon="mdi-email"
-          :error-messages="emailErrors"
-          @focus="$v.user.email.$reset()"
-          @blur="$v.user.email.$touch()"
-        />
-        <v-text-field
-          v-model="user.password"
-          label="Password"
-          type="password"
-          name="password"
-          color="black"
-          prepend-inner-icon="mdi-lock"
-          :error-messages="passwordErrors"
-          @focus="$v.user.password.$reset()"
-          @blur="$v.user.password.$touch()"
-        />
-        <v-slide-y-transition appear>
-          <p v-if="errorMsg" class="text--error">
-            {{ errorMsg }}
-          </p>
-        </v-slide-y-transition>
+  <main>
+    <PageHeader :title="signUpRoute ? 'Sign Up' : 'Login'" class="mb-0" />
+    <div class="user-form">
+      <div class="user-form__form">
+        <v-form @submit.prevent="handleRegistration">
+          <v-text-field
+            v-if="$route.name === 'signup'"
+            v-model="user.name"
+            label="Full Name"
+            type="text"
+            name="name"
+            color="black"
+            prepend-inner-icon="mdi-account"
+            required
+          />
+          <v-text-field
+            v-model="user.email"
+            label="Email"
+            type="email"
+            name="email"
+            color="black"
+            prepend-inner-icon="mdi-email"
+            :error-messages="emailErrors"
+            @focus="$v.user.email.$reset()"
+            @blur="$v.user.email.$touch()"
+          />
+          <v-text-field
+            v-model="user.password"
+            label="Password"
+            type="password"
+            name="password"
+            color="black"
+            prepend-inner-icon="mdi-lock"
+            :error-messages="passwordErrors"
+            @focus="$v.user.password.$reset()"
+            @blur="$v.user.password.$touch()"
+          />
+          <v-slide-y-transition appear>
+            <p v-if="errorMsg" class="text--error">
+              {{ errorMsg }}
+            </p>
+          </v-slide-y-transition>
 
-        <v-btn
-          type="submit"
-          class="mt-5 btn btn--orange"
-          elevation="0"
-          :title="signUpRoute ? 'Sign Up' : 'Login'"
-          :aria-label="signUpRoute ? 'Sign Up' : 'Login'"
-        >
-          {{ signUpRoute ? 'Sign Up' : 'Login' }}
-        </v-btn>
-      </v-form>
-      <div class="mt-5">
-        <span class="">{{
-          loginRoute ? "Don't have an account? " : 'Already have an account?'
-        }}</span>
-        <NuxtLink :to="loginRoute ? '/signup' : '/login'">
-          <span class="text--bold text--underline">
-            {{ loginRoute ? 'Sign Up Now' : 'Login' }}
-          </span>
-        </NuxtLink>
+          <v-btn
+            type="submit"
+            class="mt-5 btn btn--orange"
+            elevation="0"
+            :title="signUpRoute ? 'Sign Up' : 'Login'"
+            :aria-label="signUpRoute ? 'Sign Up' : 'Login'"
+          >
+            {{ signUpRoute ? 'Sign Up' : 'Login' }}
+          </v-btn>
+        </v-form>
+        <div class="mt-5">
+          <span class="">{{
+            loginRoute ? "Don't have an account? " : 'Already have an account?'
+          }}</span>
+          <NuxtLink :to="loginRoute ? '/signup' : '/login'">
+            <span class="text--bold text--underline">
+              {{ loginRoute ? 'Sign Up Now' : 'Login' }}
+            </span>
+          </NuxtLink>
+        </div>
       </div>
     </div>
-  </div>
+  </main>
 </template>
 
 <script>
 import { mapActions } from 'vuex'
 import { validationMixin } from 'vuelidate'
 import { required, email, minLength } from 'vuelidate/lib/validators'
+import PageHeader from '../Layout/UI/PageHeader.vue'
 import userApiMixin from '~/mixins/api/userApiMixin'
 export default {
+  components: { PageHeader },
   name: 'SignUp',
   mixins: [validationMixin, userApiMixin],
 
@@ -176,13 +178,16 @@ export default {
 
 <style lang="scss">
 .user-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   padding: 1.5rem;
   width: 100%;
   min-height: 50vh;
   position: relative;
   z-index: 0;
   background-color: rgb(255, 255, 255);
-  margin: 1rem auto;
 
   &::before {
     content: '';
@@ -210,6 +215,7 @@ export default {
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    width: 100%;
 
     @include media('>=md') {
       width: 568px;
