@@ -6,7 +6,6 @@
 @import './UI/Text.scss';
 
 .page__container {
-  // min-height: 100vh;
   padding: 0 1.5rem;
   @include media('>=lg') {
     width: 100%;
@@ -31,7 +30,7 @@
   @include media('>=md') {
     width: 100%;
     max-width: $md-width;
-    min-width: calc($md-width - 79px);
+    min-width: calc(768px - 79px);
     margin: auto;
   }
   @include media('>=lg') {
