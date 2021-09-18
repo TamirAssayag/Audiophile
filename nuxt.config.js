@@ -70,6 +70,7 @@ export default {
     '@nuxtjs/netlify-files',
     ['@nuxtjs/dotenv', { filename: '.env' }],
     '@nuxtjs/dayjs',
+    'vue-screen/nuxt',
   ],
 
   loading: {
