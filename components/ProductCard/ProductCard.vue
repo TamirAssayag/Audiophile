@@ -1,19 +1,17 @@
 <template>
   <div v-editable="data.content" class="product product--card">
     <div
-      :class="
-        $screen.desktop && index % 2 === 0
-          ? `product--card__container flex-row-reverse`
-          : 'product--card__container'
-      "
+      :class="[
+        'product--card__container',
+        { 'product--card--reverse': index % 2 === 0 },
+      ]"
     >
       <div class="product--card__side">
         <div
-          :class="
-            !productCategoryRouteNames
-              ? `product__image image--wrapper`
-              : `product__image`
-          "
+          :class="[
+            'product__image',
+            { 'image--wrapper': !productCategoryRouteNames },
+          ]"
         >
           <NuxtImg
             :key="$screen.tablet"
@@ -73,11 +71,8 @@ export default {
 
   computed: {
     productCategoryRouteNames() {
-      return (
-        this.$route.name === 'headphones' &&
-        this.$route.name === 'speakers' &&
-        this.$route.name === 'earphones'
-      )
+      const routeNames = ['headphones', 'speakers', 'earphones']
+      return routeNames.every((route) => this.$route.name === route)
     },
   },
 
@@ -110,6 +105,10 @@ export default {
       flex-direction: row;
       justify-content: center;
       justify-content: space-between;
+    }
+
+    &--reverse {
+      flex-direction: row-reverse;
     }
 
     &__side {

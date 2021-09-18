@@ -260,7 +260,7 @@
             >
               <h4 class="text--half-opacity title--uppercase">Grand Total</h4>
               <h3 class="cart-modal__price text--orange">
-                $ {{ calcGrandTotal }}
+                $ {{ calcGrandTotal.toLocaleString() }}
               </h3>
             </div>
             <v-btn

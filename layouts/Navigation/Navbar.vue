@@ -2,11 +2,10 @@
   <nav>
     <div
       v-show="$screen.desktop"
-      :class="
-        $route.name === 'checkout'
-          ? 'navbar navbar--desktop z-index--150'
-          : 'navbar navbar--desktop z-index--999'
-      "
+      :class="[
+        'navbar navbar--desktop',
+        { 'z-index--150': $route.name === 'checkout' },
+      ]"
     >
       <v-app-bar absolute color="black" height="80" elevation="2" width="100%">
         <div class="navbar__left">
@@ -105,11 +104,7 @@
     </div>
     <div
       v-show="!$screen.desktop"
-      :class="
-        $route.name === 'checkout'
-          ? 'navbar z-index--150'
-          : 'navbar z-index--999'
-      "
+      :class="['navbar', { 'z-index--150': $route.name === 'checkout' }]"
     >
       <v-app-bar absolute color="black" height="80" elevation="2" width="100%">
         <v-btn icon title="Menu" aria-label="Menu" @click="drawer = !drawer">
@@ -278,6 +273,7 @@ nav {
     position: fixed;
     inset: 0;
     max-height: 80px;
+    z-index: 300;
 
     &::after {
       content: '';
