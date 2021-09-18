@@ -32,6 +32,12 @@
   position: absolute;
   top: 80px;
   overflow-y: scroll;
+  @include media('>md') {
+    overflow-y: unset;
+  }
+  @include media('>=lg') {
+    overflow-y: scroll;
+  }
 }
 
 .v-overlay {

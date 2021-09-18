@@ -153,42 +153,31 @@
         </NuxtLink>
       </div>
       <v-slide-y-transition v-else appear mode="in-out">
-        <div class="logout">
-          <v-menu
-            transition="scroll-y-reverse-transition"
-            attach
-            offset-y
-            :top="false"
+        <div class="menu">
+          <v-avatar size="40px" color="primary">
+            <p class="text--white text--bold">{{ userCapitalLetters }}</p>
+          </v-avatar>
+          <div class="menu__actions">
+            <v-btn
+              v-for="(item, index) in userActions"
+              :key="index"
+              elevation="0"
+              class="btn btn--border"
+              title="Logout"
+              aria-label="Logout"
+              :to="item.link"
+            >
+              {{ item.title }}
+            </v-btn>
+          </div>
+          <v-btn
+            class="btn btn--text"
+            title="Logout"
+            aria-label="Logout"
+            @click="logOut"
           >
-            <template #activator="{ on, attrs }">
-              <v-btn
-                v-if="getUser._id"
-                class="btn btn--account"
-                elevation="0"
-                v-bind="attrs"
-                :aria-label="displayName"
-                :title="displayName"
-                v-on="on"
-              >
-                {{ displayName }}
-              </v-btn>
-            </template>
-            <v-list>
-              <NuxtLink
-                v-for="(item, index) in userActions"
-                :key="index"
-                class="user--aciton"
-                :to="item.link"
-              >
-                <v-list-item>
-                  <v-list-item-title>{{ item.title }} </v-list-item-title>
-                </v-list-item>
-              </NuxtLink>
-              <v-list-item style="cursor: pointer" @click="logOut">
-                <v-list-item-title>Logout</v-list-item-title>
-              </v-list-item>
-            </v-list>
-          </v-menu>
+            Logout
+          </v-btn>
         </div>
       </v-slide-y-transition>
       <div class="mobile__menu">
@@ -383,18 +372,22 @@ nav {
 }
 .v-bottom-sheet {
   .mobile__menu {
-    padding-top: 3.8rem;
     background-color: white;
     border-bottom-right-radius: 8px !important;
     border-bottom-left-radius: 8px !important;
     height: 100%;
-    padding-bottom: 2.5rem;
     max-height: 100%;
+    padding: 0 1.5rem;
   }
 
   .sign-up__login {
     padding: 0 1rem;
     background-color: white;
+    min-height: 150px;
+
+    @include media('>=md') {
+      min-height: 110px;
+    }
   }
 }
 

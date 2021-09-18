@@ -7,7 +7,7 @@
       color="#d87d4a"
       elevation="1"
     >
-      <p class="text--uppercase text--bold">{{ config.text }} ...</p>
+      <p class="text--bold">{{ config.text }} ...</p>
     </v-snackbar>
   </div>
 </template>

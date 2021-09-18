@@ -37,6 +37,8 @@
 
   &__description {
     @include Paragraph(black, 0.5, 15px);
+    width: 100%;
+    max-width: 350px;
   }
 
   &__button {

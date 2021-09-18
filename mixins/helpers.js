@@ -28,6 +28,13 @@ export default {
     displayName() {
       return this.getUser.name?.split(' ').slice(0, -1).join(' ')
     },
+    userCapitalLetters() {
+      return this.getUser.name
+        .split(' ')
+        .map((name) => name.substring(0, 1))
+        .join('')
+        .toUpperCase()
+    },
     navigation() {
       return [
         { name: 'Home', link: '/' },

@@ -105,15 +105,13 @@ export default {
       dark: false,
       themes: {
         light: {
-          primary: colors.blue.lighten3,
+          primary: '#d87d4a',
           accent: colors.grey.darken3,
           secondary: colors.amber.darken3,
           info: colors.teal.lighten1,
           warning: colors.amber.base,
           error: colors.deepOrange.accent4,
           success: colors.green.accent3,
-          black: '#000000',
-          orange: '#d87d4a',
         },
       },
     },
