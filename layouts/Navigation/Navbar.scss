@@ -54,71 +54,71 @@ nav {
       font-weight: bold;
       z-index: 2;
     }
-  }
 
-  @include media('>=md') {
-    .v-toolbar__content {
-      justify-content: unset !important;
-      gap: 1.6rem;
+    @include media('>=md') {
+      .v-toolbar__content {
+        justify-content: unset !important;
+        gap: 1.6rem;
 
-      .cart__icon {
-        margin-left: auto;
+        .cart__icon {
+          margin-left: auto;
+        }
       }
     }
-  }
 
-  @include media('>=lg') {
-    &::after {
-      width: 100%;
-      max-width: unset !important;
-    }
-
-    .v-toolbar__content {
-      width: $lg-width;
-
-      .cart__icon {
-        margin-left: unset;
+    @include media('>=lg') {
+      &::after {
+        width: 100%;
+        max-width: unset !important;
       }
-      justify-content: unset !important;
-      margin: auto;
-      padding: 1.5rem;
-    }
 
-    &__left {
-      .nav__menu {
-        margin-left: 197px;
-        display: flex;
-        list-style-type: none;
-        padding: 0;
-        gap: 2.12rem;
+      .v-toolbar__content {
+        width: $lg-width;
 
-        a {
-          transition: color 0.2s ease;
-          color: white !important;
+        .cart__icon {
+          margin-left: unset;
+        }
+        justify-content: unset !important;
+        margin: auto;
+        padding: 1.5rem;
+      }
 
-          &:hover {
-            color: $orange !important;
+      &__left {
+        .nav__menu {
+          margin-left: 197px;
+          display: flex;
+          list-style-type: none;
+          padding: 0;
+          gap: 2.12rem;
+
+          a {
+            transition: color 0.2s ease;
+            color: white !important;
+
+            &:hover {
+              color: $orange !important;
+            }
+          }
+
+          &--item {
+            font-size: 13px;
+            font-weight: bold;
+            line-height: 1.92;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: white;
+          }
+
+          &__menu--btn {
+            display: none;
           }
         }
-
-        &--item {
-          font-size: 13px;
-          font-weight: bold;
-          line-height: 1.92;
-          letter-spacing: 2px;
-          text-transform: uppercase;
-          color: white;
-        }
-
-        &__menu--btn {
-          display: none;
-        }
       }
-    }
 
-    &__right {
-      display: flex;
-      align-items: center;
+      &__right {
+        display: flex;
+        align-items: center;
+      }
     }
   }
 }
