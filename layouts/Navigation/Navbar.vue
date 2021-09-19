@@ -332,6 +332,14 @@ nav {
         list-style-type: none;
         padding: 0;
         gap: 2.12rem;
+        a {
+          transition: color 0.2s ease;
+          color: white !important;
+
+          &:hover {
+            color: $orange !important;
+          }
+        }
         &--item {
           font-size: 13px;
           font-weight: bold;
@@ -339,11 +347,6 @@ nav {
           letter-spacing: 2px;
           text-transform: uppercase;
           color: white;
-          transition: color 0.2s ease;
-
-          &:hover {
-            color: $orange;
-          }
         }
       }
     }

@@ -7,27 +7,16 @@
   gap: 3rem;
   margin-bottom: 7.5rem;
 
-  @include media('>=md') {
-    margin-top: 3rem;
-    margin-bottom: 6rem;
-    flex-direction: row;
-    justify-content: space-between;
-    gap: 0;
-  }
-
-  @include media('>=lg') {
-    max-width: $lg-width;
-    width: 100%;
-    margin-bottom: 10rem;
-    padding: 0;
-  }
-
   .img {
     position: absolute;
-    width: 130px;
     top: -3rem;
     left: 50%;
     transform: translateX(-50%);
+    z-index: 0;
+  }
+
+  .headphones {
+    width: 130px;
   }
 
   .speakers {
@@ -39,32 +28,80 @@
   }
 
   .card {
-    @include media('>=md') {
-      width: 223px;
-      height: 165px;
-    }
-
-    @include media('>=lg') {
-      width: 350px;
-      height: 204px;
-    }
-
     &__container {
-      padding: 1rem;
       margin: 1rem;
+      padding: 1rem;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: flex-end;
+      text-align: center;
+      flex-direction: column;
     }
     &__title {
       @include Title(null, 15px, 1.07px);
       margin-bottom: 0.5rem;
     }
+  }
 
-    &__wrapper {
-      height: 133px;
-      width: 100%;
-      display: flex;
-      justify-content: flex-end;
-      text-align: center;
-      flex-direction: column;
+  @include media('>=md') {
+    margin-top: 3rem;
+    margin-bottom: 6rem;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 0;
+
+    .img {
+      top: -3.5rem;
+    }
+
+    .headphones {
+      width: 160px;
+    }
+
+    .speakers {
+      width: 175px;
+    }
+
+    .earphones {
+      width: 190px;
+    }
+
+    .card {
+      width: 223px;
+      height: 165px;
+
+      &__container {
+        margin: 0;
+      }
+    }
+  }
+
+  @include media('>=lg') {
+    max-width: $lg-width;
+    width: 100%;
+    margin-bottom: 10rem;
+    padding: 0;
+
+    .headphones {
+      width: 200px;
+    }
+
+    .speakers {
+      width: 210px;
+    }
+
+    .earphones {
+      width: 220px;
+    }
+
+    .card {
+      width: 350px;
+      height: 204px;
+
+      &__title {
+        font-size: 18px !important;
+      }
     }
   }
 }

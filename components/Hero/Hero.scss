@@ -68,7 +68,7 @@
   }
 
   @include media('>=lg') {
-    height: 632px;
+    height: 640px;
     margin-bottom: calc(127px - 3rem);
     background-color: black;
     &__container {

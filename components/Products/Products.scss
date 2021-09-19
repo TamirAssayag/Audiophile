@@ -5,6 +5,14 @@
     flex-direction: column;
     gap: 1.5rem;
     place-items: center;
+
+    @include media('>=md') {
+      gap: 2rem;
+    }
+
+    @include media('>=lg') {
+      gap: 3rem;
+    }
   }
 
   .card {
@@ -235,6 +243,7 @@
 
   @include media('>=md') {
     display: flex;
+
     justify-content: space-between;
     flex-direction: row;
     .audiophile-product {

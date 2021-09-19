@@ -33,6 +33,15 @@
     list-style-type: none;
     padding: 0 !important;
 
+    a {
+      transition: color 0.2s ease;
+      color: white !important;
+
+      &:hover {
+        color: $orange !important;
+      }
+    }
+
     &--item {
       margin: 1rem 0;
       text-transform: uppercase;
@@ -40,11 +49,7 @@
       letter-spacing: 2px;
       font-weight: bold;
       font-size: 13px;
-      transition: color 0.2s ease;
       cursor: pointer;
-      &:hover {
-        color: $orange;
-      }
     }
   }
 

@@ -11,6 +11,9 @@
     color: white !important;
     background-color: $orange !important;
     transition: all 0.2s ease;
+    & a {
+      color: white !important;
+    }
 
     &:hover {
       background-color: $orange--light !important;
