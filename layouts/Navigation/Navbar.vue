@@ -1,13 +1,17 @@
 <template>
   <nav>
-    <div
-      v-if="$screen.desktop"
-      :class="[
-        'navbar navbar--desktop',
-        { 'z-index--150': $route.name === 'checkout' },
-      ]"
-    >
+    <div :class="['navbar', { 'z-index--150': $route.name === 'checkout' }]">
       <v-app-bar absolute color="black" height="80" elevation="2" width="100%">
+        <v-btn
+          class="navbar__menu--btn"
+          icon
+          title="Menu"
+          aria-label="Menu"
+          @click="drawer = !drawer"
+        >
+          <MenuSvg />
+        </v-btn>
+
         <div class="navbar__left">
           <NuxtLink to="/"> <AudiophileLogo /> </NuxtLink>
 
@@ -22,7 +26,7 @@
           </ul>
         </div>
 
-        <div class="navbar__right d-flex align-center">
+        <div class="navbar__right">
           <v-scroll-y-reverse-transition appear hide-on-leave group>
             <client-only>
               <div v-if="!loggedIn" :key="loggedIn">
@@ -109,37 +113,6 @@
         </client-only>
       </v-app-bar>
     </div>
-    <div
-      v-else
-      :class="['navbar', { 'z-index--150': $route.name === 'checkout' }]"
-    >
-      <v-app-bar absolute color="black" height="80" elevation="2" width="100%">
-        <v-btn icon title="Menu" aria-label="Menu" @click="drawer = !drawer">
-          <MenuSvg />
-        </v-btn>
-        <NuxtLink to="/">
-          <AudiophileLogo />
-        </NuxtLink>
-        <client-only>
-          <v-btn
-            :disabled="$route.name !== 'checkout' ? false : true"
-            icon
-            text
-            title="Cart"
-            aria-label="Cart"
-            class="cart__icon"
-            @click="toggleCartDialog"
-          >
-            <CartSvg />
-            <v-slide-x-reverse-transition v-if="cart.length" appear>
-              <div v-if="$route.name !== 'checkout'" class="cart__amount">
-                <h4 class="text--bold text--white">{{ getTotalCartItems }}</h4>
-              </div>
-            </v-slide-x-reverse-transition>
-          </v-btn>
-        </client-only>
-      </v-app-bar>
-    </div>
     <v-bottom-sheet v-model="drawer" @keydown.esc="drawer = false">
       <div
         v-if="!loggedIn"
@@ -194,6 +167,7 @@
   </nav>
 </template>
 <script>
+import './Navbar.scss'
 import { mapActions } from 'vuex'
 import AudiophileLogo from '~/static/images/logo.svg?inline'
 import CartSvg from '~/static/images/shared/desktop/icon-cart.svg?inline'
@@ -275,140 +249,3 @@ export default {
   },
 }
 </script>
-
-<style lang="scss">
-nav {
-  position: relative;
-  height: 80px;
-  .navbar {
-    position: fixed;
-    inset: 0;
-    max-height: 80px;
-    z-index: 300;
-
-    &::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      height: 0.0625rem;
-      width: 100%;
-      opacity: 0.1;
-      background-color: #fff;
-      z-index: 250;
-      left: 50%;
-      transform: translate(-50%, 0);
-      max-width: $lg-width !important;
-
-      @include media('<=lg') {
-        width: 100%;
-        max-width: unset !important;
-      }
-    }
-
-    .v-toolbar__content {
-      display: flex !important;
-      align-items: center !important;
-      justify-content: space-between !important;
-      padding: 1.5rem;
-
-      @include media('>=md') {
-        justify-content: unset !important;
-        gap: 1.6rem;
-
-        .cart__icon {
-          margin-left: auto;
-        }
-      }
-
-      @include media('>=lg') {
-        width: $lg-width;
-
-        .cart__icon {
-          margin-left: unset;
-        }
-        justify-content: unset !important;
-        margin: auto;
-        padding: 1.5rem;
-      }
-    }
-
-    &__left {
-      display: flex;
-
-      .nav__menu {
-        margin-left: 197px;
-        display: flex;
-        list-style-type: none;
-        padding: 0;
-        gap: 2.12rem;
-        a {
-          transition: color 0.2s ease;
-          color: white !important;
-
-          &:hover {
-            color: $orange !important;
-          }
-        }
-        &--item {
-          font-size: 13px;
-          font-weight: bold;
-          line-height: 1.92;
-          letter-spacing: 2px;
-          text-transform: uppercase;
-          color: white;
-        }
-      }
-    }
-
-    &__right {
-      margin-left: auto;
-    }
-
-    .cart__icon {
-      position: relative;
-    }
-    .cart__amount {
-      position: absolute;
-      height: 20px;
-      width: 20px;
-      background-color: $orange;
-      border-radius: 50%;
-      top: 0px;
-      left: -8px;
-      font-weight: bold;
-      z-index: 2;
-    }
-  }
-}
-.v-bottom-sheet {
-  .mobile__menu {
-    background-color: white;
-    border-bottom-right-radius: 8px !important;
-    border-bottom-left-radius: 8px !important;
-    height: 100%;
-    max-height: 100%;
-    padding: 0 1.5rem;
-  }
-
-  .sign-up__login {
-    padding: 0 1rem;
-    background-color: white;
-    min-height: 150px;
-
-    @include media('>=md') {
-      min-height: 110px;
-    }
-  }
-}
-
-.logout {
-  .v-list-item {
-    transition: all 0.2s ease !important;
-    &:hover {
-      color: white !important;
-      background-color: black !important;
-      font-weight: bold;
-    }
-  }
-}
-</style>
