@@ -40,8 +40,10 @@ export default {
 
 <style lang="scss">
 .error__container {
-  height: 450px;
+  height: 50vh;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 </style>
