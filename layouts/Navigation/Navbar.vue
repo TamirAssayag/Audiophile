@@ -119,16 +119,24 @@
         class="sign-up__login d-flex align-center flex-column pt-5"
       >
         <clien-only>
-          <NuxtLink to="/signup">
-            <v-btn class="btn btn--text" title="Sign up" aria-label="Sign up">
+          <div class="user__buttons">
+            <v-btn
+              class="btn btn--text"
+              title="Sign up"
+              aria-label="Sign up"
+              to="/signup"
+            >
               Sign Up
             </v-btn>
-          </NuxtLink>
-          <NuxtLink to="/login">
-            <v-btn class="btn btn--text mt-1" title="Login" aria-label="Login">
+            <v-btn
+              class="btn btn--text"
+              title="Login"
+              aria-label="Login"
+              to="/login"
+            >
               Login
             </v-btn>
-          </NuxtLink>
+          </div>
         </clien-only>
       </div>
       <v-slide-y-transition v-else appear mode="in-out">

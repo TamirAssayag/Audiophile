@@ -124,6 +124,18 @@ nav {
 }
 
 .v-bottom-sheet {
+  .user__buttons {
+    margin-top: 0.5rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 1rem;
+
+    .v-btn {
+      margin: 0;
+    }
+  }
+
   .mobile__menu {
     background-color: white;
     border-bottom-right-radius: 8px !important;
@@ -131,6 +143,7 @@ nav {
     height: 100%;
     max-height: 100%;
     padding: 0 1.5rem;
+
     @include media('>=md') {
       width: $md-width;
       max-width: 100%;
