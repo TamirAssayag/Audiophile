@@ -134,6 +134,7 @@ nav {
     @include media('>=md') {
       width: $md-width;
       max-width: 100%;
+      margin: 5rem auto;
     }
   }
 
