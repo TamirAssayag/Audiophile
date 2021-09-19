@@ -72,7 +72,6 @@ export default {
 
   meta: {
     hideLayout: true,
-    hasPageHeader: true,
     routeName: 'checkout',
   },
   mounted() {
