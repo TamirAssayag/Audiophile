@@ -1,6 +1,5 @@
 <template>
   <main>
-    <PageHeader :title="signUpRoute ? 'Sign Up' : 'Login'" class="mb-0" />
     <div class="user-form">
       <div class="user-form__form">
         <v-form @submit.prevent="handleRegistration">
@@ -71,11 +70,9 @@
 import { mapActions } from 'vuex'
 import { validationMixin } from 'vuelidate'
 import { required, email, minLength } from 'vuelidate/lib/validators'
-import PageHeader from '../Layout/UI/PageHeader.vue'
 import userApiMixin from '~/mixins/api/userApiMixin'
 export default {
   name: 'SignUp',
-  components: { PageHeader },
   mixins: [validationMixin, userApiMixin],
 
   validations: {

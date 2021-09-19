@@ -16,6 +16,7 @@ export default {
 
   meta: {
     hideLayout: true,
+    hasPageHeader: true,
     routeName: 'login',
   },
 }

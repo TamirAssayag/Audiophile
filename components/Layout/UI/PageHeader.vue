@@ -1,7 +1,10 @@
 <template>
-  <div class="page__header">
+  <div
+    v-if="$route.meta.hasPageHeader"
+    :class="['page__header', { 'mb-0': getSpecificRoutes }]"
+  >
     <h1 class="page__header--title">
-      {{ title }}
+      {{ displayTitle }}
     </h1>
   </div>
 </template>
@@ -14,6 +17,24 @@ export default {
     title: {
       type: String,
       default: '',
+    },
+  },
+
+  computed: {
+    getSpecificRoutes() {
+      const routeNames = ['orders', 'checkout']
+      return routeNames.includes(this.$route.name)
+    },
+    displayTitle() {
+      if (this.$route.name === 'cart') {
+        if (!this.cart.length) {
+          return 'Empty Cart'
+        } else {
+          return `${this.title}(${this.getTotalCartItems})`
+        }
+      } else {
+        return this.title
+      }
     },
   },
 }

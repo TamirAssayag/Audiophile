@@ -1,6 +1,5 @@
 <template>
   <section class="error__container">
-    <PageHeader :title="'Error'" class="mb-0" />
     <div v-if="!loggedIn" class="container">
       <div class="checkout__cant-proceed">
         <span><strong>Dear Customer</strong>, our apologies,</span>
@@ -34,10 +33,8 @@
 </template>
 
 <script>
-import PageHeader from '../Layout/UI/PageHeader.vue'
 export default {
   name: 'CheckoutErrors',
-  components: { PageHeader },
 }
 </script>
 

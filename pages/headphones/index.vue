@@ -1,6 +1,5 @@
 <template>
   <div class="headphones">
-    <PageHeader :title="'Headphones'" />
     <div class="page__container">
       <template v-for="(product, i) in headphones">
         <ProductCard
@@ -18,10 +17,9 @@
 </template>
 
 <script>
-import PageHeader from '~/components/Layout/UI/PageHeader.vue'
 import ProductCard from '~/components/ProductCard/ProductCard.vue'
 export default {
-  components: { PageHeader, ProductCard },
+  components: { ProductCard },
 
   // transition: 'fade',
 
@@ -68,6 +66,11 @@ export default {
 
   head: {
     title: 'Headphones',
+  },
+
+  meta: {
+    hasPageHeader: true,
+    routeName: 'headphones',
   },
 
   computed: {

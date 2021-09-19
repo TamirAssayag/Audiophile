@@ -1,6 +1,5 @@
 <template>
   <div class="speakers">
-    <PageHeader :title="'speakers'" />
     <div class="page__container">
       <template v-for="(product, i) in speakers">
         <ProductCard
@@ -18,10 +17,9 @@
 </template>
 
 <script>
-import PageHeader from '../../components/Layout/UI/PageHeader.vue'
 import ProductCard from '~/components/ProductCard/ProductCard.vue'
 export default {
-  components: { PageHeader, ProductCard },
+  components: { ProductCard },
 
   asyncData(context) {
     if (process.env.NODE_ENV === 'development' || process.server) {
@@ -65,6 +63,11 @@ export default {
 
   head: {
     title: 'Speakers',
+  },
+
+  meta: {
+    hasPageHeader: true,
+    routeName: 'speakers',
   },
 
   computed: {

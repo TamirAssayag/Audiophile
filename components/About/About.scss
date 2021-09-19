@@ -20,13 +20,16 @@
   }
 
   &__text {
-    @include media('>=lg') {
-      justify-items: flex-start;
-    }
     @include media('>=md') {
       display: flex;
       align-items: center;
       flex-direction: column;
+    }
+
+    @include media('>=lg') {
+      justify-items: flex-start;
+      align-items: unset;
+      text-align: left;
     }
   }
 
