@@ -32,7 +32,7 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
+- Solution URL: [Solution URL](https://www.frontendmentor.io/solutions/fullstack-ecommerce-web-with-nuxtjs-headless-cms-netlify-functions-yD2PbMvgl)
 - Live Site URL: [Audiophile](https://audiophile-e.netlify.app/)
 
 ## My process
