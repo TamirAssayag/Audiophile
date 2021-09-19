@@ -108,11 +108,11 @@ nav {
             text-transform: uppercase;
             color: white;
           }
-
-          &__menu--btn {
-            display: none;
-          }
         }
+      }
+
+      &__menu--btn {
+        display: none;
       }
 
       &__right {
@@ -131,6 +131,10 @@ nav {
     height: 100%;
     max-height: 100%;
     padding: 0 1.5rem;
+    @include media('>=md') {
+      width: $md-width;
+      max-width: 100%;
+    }
   }
 
   .sign-up__login {
