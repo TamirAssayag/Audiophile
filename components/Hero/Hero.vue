@@ -2,13 +2,11 @@
   <main>
     <div class="hero">
       <div class="hero__container">
-        <client-only>
-          <v-img
-            :key="$screen.tablet + displayHeroImg"
-            :src="getImageUrl(displayHeroImg)"
-            class="hero__image"
-          ></v-img>
-        </client-only>
+        <NuxtImg
+          provider="static"
+          src="shared/hero-img.png"
+          class="hero__image"
+        />
         <div class="hero__wrapper">
           <div class="hero__header">
             <div class="hero__header__subtitle subtitle subtitle--white">
@@ -38,17 +36,5 @@
 import './Hero.scss'
 export default {
   name: 'Hero',
-
-  computed: {
-    displayHeroImg() {
-      if (this.$screen.desktop) {
-        return 'home/desktop/image-hero.jpg'
-      } else if (this.$screen.tablet) {
-        return 'home/tablet/image-header.jpg'
-      } else {
-        return 'home/mobile/image-header.jpg'
-      }
-    },
-  },
 }
 </script>

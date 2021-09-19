@@ -2,10 +2,7 @@
   <section class="about">
     <div class="about__container">
       <div class="about__image">
-        <v-img
-          :key="$screen.tablet + displayAboutImage"
-          :src="getImageUrl(displayAboutImage)"
-        ></v-img>
+        <NuxtImg provider="static" src="shared/tablet/image-best-gear.jpg" />
       </div>
       <div class="about__text">
         <div class="about__title">
@@ -30,19 +27,5 @@
 import './About.scss'
 export default {
   name: 'About',
-
-  computed: {
-    displayAboutImage() {
-      if (this.$screen.desktop) {
-        return 'shared/desktop/image-best-gear.jpg'
-      } else if (this.$screen.tablet) {
-        return 'shared/tablet/image-best-gear.jpg'
-      } else {
-        return 'shared/mobile/image-best-gear.jpg'
-      }
-    },
-  },
 }
 </script>
-
-<style lang="scss"></style>
