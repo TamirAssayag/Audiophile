@@ -110,28 +110,30 @@
       :class="['navbar', { 'z-index--150': $route.name === 'checkout' }]"
     >
       <v-app-bar absolute color="black" height="80" elevation="2" width="100%">
-        <v-btn icon title="Menu" aria-label="Menu" @click="drawer = !drawer">
-          <MenuSvg />
-        </v-btn>
-        <NuxtLink to="/">
-          <AudiophileLogo />
-        </NuxtLink>
-        <v-btn
-          :disabled="$route.name !== 'checkout' ? false : true"
-          icon
-          text
-          title="Cart"
-          aria-label="Cart"
-          class="cart__icon"
-          @click="toggleCartDialog"
-        >
-          <CartSvg />
-          <v-slide-x-reverse-transition v-if="cart.length" appear>
-            <div v-if="$route.name !== 'checkout'" class="cart__amount">
-              <h4 class="text--bold text--white">{{ getTotalCartItems }}</h4>
-            </div>
-          </v-slide-x-reverse-transition>
-        </v-btn>
+        <client-only>
+          <v-btn icon title="Menu" aria-label="Menu" @click="drawer = !drawer">
+            <MenuSvg />
+          </v-btn>
+          <NuxtLink to="/">
+            <AudiophileLogo />
+          </NuxtLink>
+          <v-btn
+            :disabled="$route.name !== 'checkout' ? false : true"
+            icon
+            text
+            title="Cart"
+            aria-label="Cart"
+            class="cart__icon"
+            @click="toggleCartDialog"
+          >
+            <CartSvg />
+            <v-slide-x-reverse-transition v-if="cart.length" appear>
+              <div v-if="$route.name !== 'checkout'" class="cart__amount">
+                <h4 class="text--bold text--white">{{ getTotalCartItems }}</h4>
+              </div>
+            </v-slide-x-reverse-transition>
+          </v-btn>
+        </client-only>
       </v-app-bar>
     </div>
     <v-bottom-sheet v-model="drawer" @keydown.esc="drawer = false">
