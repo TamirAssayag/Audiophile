@@ -1,7 +1,7 @@
 <template>
   <nav>
     <div
-      v-show="$screen.desktop"
+      v-if="$screen.desktop"
       :class="[
         'navbar navbar--desktop',
         { 'z-index--150': $route.name === 'checkout' },
@@ -9,7 +9,9 @@
     >
       <v-app-bar absolute color="black" height="80" elevation="2" width="100%">
         <div class="navbar__left">
-          <NuxtLink to="/"> <AudiophileLogo /> </NuxtLink>
+          <client-only>
+            <NuxtLink to="/"> <AudiophileLogo /> </NuxtLink>
+          </client-only>
 
           <ul class="nav__menu">
             <li
@@ -41,6 +43,7 @@
               >
             </div>
           </v-scroll-y-reverse-transition>
+
           <v-scroll-y-reverse-transition appear leave-absolute>
             <div v-if="loggedIn" class="logout mr-5">
               <v-menu
@@ -103,7 +106,7 @@
       </v-app-bar>
     </div>
     <div
-      v-show="!$screen.desktop"
+      v-else
       :class="['navbar', { 'z-index--150': $route.name === 'checkout' }]"
     >
       <v-app-bar absolute color="black" height="80" elevation="2" width="100%">
@@ -136,43 +139,47 @@
         v-if="!loggedIn"
         class="sign-up__login d-flex align-center flex-column pt-5"
       >
-        <NuxtLink to="/signup">
-          <v-btn class="btn btn--text" title="Sign up" aria-label="Sign up">
-            Sign Up
-          </v-btn>
-        </NuxtLink>
-        <NuxtLink to="/login">
-          <v-btn class="btn btn--text mt-1" title="Login" aria-label="Login">
-            Login
-          </v-btn>
-        </NuxtLink>
+        <clien-only>
+          <NuxtLink to="/signup">
+            <v-btn class="btn btn--text" title="Sign up" aria-label="Sign up">
+              Sign Up
+            </v-btn>
+          </NuxtLink>
+          <NuxtLink to="/login">
+            <v-btn class="btn btn--text mt-1" title="Login" aria-label="Login">
+              Login
+            </v-btn>
+          </NuxtLink>
+        </clien-only>
       </div>
       <v-slide-y-transition v-else appear mode="in-out">
         <div class="menu">
-          <v-avatar size="40px" color="primary">
-            <p class="text--white text--bold">{{ userCapitalLetters }}</p>
-          </v-avatar>
-          <div class="menu__actions">
+          <client-only>
+            <v-avatar size="40px" color="primary">
+              <p class="text--white text--bold">{{ userCapitalLetters }}</p>
+            </v-avatar>
+            <div class="menu__actions">
+              <v-btn
+                v-for="(item, index) in userActions"
+                :key="index"
+                elevation="0"
+                class="btn btn--border"
+                title="Logout"
+                aria-label="Logout"
+                :to="item.link"
+              >
+                {{ item.title }}
+              </v-btn>
+            </div>
             <v-btn
-              v-for="(item, index) in userActions"
-              :key="index"
-              elevation="0"
-              class="btn btn--border"
+              class="btn btn--text"
               title="Logout"
               aria-label="Logout"
-              :to="item.link"
+              @click="logOut"
             >
-              {{ item.title }}
+              Logout
             </v-btn>
-          </div>
-          <v-btn
-            class="btn btn--text"
-            title="Logout"
-            aria-label="Logout"
-            @click="logOut"
-          >
-            Logout
-          </v-btn>
+          </client-only>
         </div>
       </v-slide-y-transition>
       <div class="mobile__menu">
