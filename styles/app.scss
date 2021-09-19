@@ -31,12 +31,11 @@
     width: 100%;
     max-width: $md-width;
     min-width: calc(768px - 79px);
-    margin: auto;
+    margin: 0 auto;
   }
   @include media('>=lg') {
     width: 100%;
     max-width: $lg-width;
-    margin: auto;
   }
 }
 
