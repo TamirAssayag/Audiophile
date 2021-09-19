@@ -9,9 +9,7 @@
     >
       <v-app-bar absolute color="black" height="80" elevation="2" width="100%">
         <div class="navbar__left">
-          <client-only>
-            <NuxtLink to="/"> <AudiophileLogo /> </NuxtLink>
-          </client-only>
+          <NuxtLink to="/"> <AudiophileLogo /> </NuxtLink>
 
           <ul class="nav__menu">
             <li

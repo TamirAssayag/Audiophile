@@ -69,7 +69,7 @@
 
   @include media('>=lg') {
     height: 640px;
-    margin-bottom: calc(127px - 3rem);
+    margin-bottom: 127px;
     background-color: black;
     &__container {
       width: $lg-width;
