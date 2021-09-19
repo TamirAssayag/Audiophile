@@ -14,7 +14,7 @@
             />
           </template>
           <template #title>
-            <header>
+            <header v-if="item.title">
               <h1>{{ item.title }}</h1>
             </header>
           </template>
@@ -24,14 +24,13 @@
             </p>
           </template>
           <template #btn>
-            <NuxtLink v-if="item.link" :to="item.link">
-              <v-btn
-                elevation="0"
-                aria-label="See Product"
-                title="See Product"
-                :class="`btn ${item.btnStyle}`"
-                >SEE PRODUCT</v-btn
-              >
+            <NuxtLink
+              v-if="item.link"
+              :to="item.link"
+              aria-label="See Product"
+              title="See Product"
+              :class="`v-btn btn ${item.btnStyle}`"
+              >SEE PRODUCT
             </NuxtLink>
           </template>
         </Card>
@@ -49,14 +48,14 @@
               </header>
             </template>
             <template #btn>
-              <NuxtLink v-if="item.link" :to="item.link">
-                <v-btn
-                  elevation="0"
-                  :class="`btn ${item.btnStyle}`"
-                  aria-label="See Product"
-                  title="See Product"
-                  >SEE PRODUCT</v-btn
-                >
+              <NuxtLink
+                v-if="item.link"
+                :to="item.link"
+                elevation="0"
+                :class="`v-btn btn ${item.btnStyle}`"
+                aria-label="See Product"
+                title="See Product"
+                >SEE PRODUCT
               </NuxtLink>
             </template>
           </Card>

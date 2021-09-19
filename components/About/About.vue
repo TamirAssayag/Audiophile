@@ -6,7 +6,7 @@
       </div>
       <div class="about__text">
         <div class="about__title">
-          <h1>Bringing You The <span>Best</span> Audio Gear</h1>
+          <h2>Bringing You The <span>Best</span> Audio Gear</h2>
         </div>
         <div class="about__content">
           <p>

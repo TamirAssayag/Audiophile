@@ -57,7 +57,7 @@
   &__title {
     margin: 40px 0 32px;
 
-    h1 {
+    h2 {
       @include Title(black, 28px, 1px);
 
       @include media('>=md') {

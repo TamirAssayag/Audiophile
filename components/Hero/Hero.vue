@@ -5,6 +5,7 @@
         <NuxtImg
           provider="static"
           src="shared/hero-img.png"
+          alt="XX99 Mark II Headphones"
           class="hero__image"
         />
         <div class="hero__wrapper">
@@ -17,13 +18,13 @@
               Experience natural, lifelike audio and exceptional build quality
               made for the passionate music enthusiast.
             </div>
-            <NuxtLink to="/headphones/xx99-mk-ii">
-              <v-btn
-                class="hero__header__btn btn btn--orange"
-                aria-label="See Product"
-                title="See Product"
-                >See Product</v-btn
-              >
+            <NuxtLink
+              to="/headphones/xx99-mk-ii"
+              class="v-btn hero__header__btn btn btn--orange"
+              aria-label="See Product"
+              title="See Product"
+            >
+              See Product
             </NuxtLink>
           </div>
         </div>

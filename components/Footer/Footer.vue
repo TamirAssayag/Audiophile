@@ -11,9 +11,15 @@
         </div>
 
         <ul class="footer__menu">
-          <NuxtLink v-for="nav in navigation" :key="nav.link" :to="nav.link">
-            <li class="footer__menu--item">{{ nav.name }}</li>
-          </NuxtLink>
+          <li
+            v-for="nav in navigation"
+            :key="nav.link"
+            class="footer__menu--item"
+          >
+            <NuxtLink :to="nav.link">
+              {{ nav.name }}
+            </NuxtLink>
+          </li>
         </ul>
       </div>
 

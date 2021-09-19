@@ -10,10 +10,8 @@ he
       z-index="998"
       nudge-bottom="104"
       attach
-      :menu-props="{
-        top: false,
-        offsetY: true,
-      }"
+      offset-y
+      :top="false"
     >
       <div class="cart-modal__container">
         <div class="cart-modal__header">

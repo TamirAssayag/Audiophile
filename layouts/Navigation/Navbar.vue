@@ -14,31 +14,33 @@
           </client-only>
 
           <ul class="nav__menu">
-            <NuxtLink v-for="nav in navigation" :key="nav.link" :to="nav.link">
-              <li class="nav__menu--item">{{ nav.name }}</li>
-            </NuxtLink>
+            <li
+              v-for="nav in navigation"
+              :key="nav.link"
+              class="nav__menu--item"
+            >
+              <NuxtLink :to="nav.link">{{ nav.name }}</NuxtLink>
+            </li>
           </ul>
         </div>
 
         <div class="navbar__right d-flex align-center">
           <v-scroll-y-reverse-transition appear hide-on-leave group>
             <div v-if="!loggedIn" :key="loggedIn">
-              <NuxtLink to="/signup">
-                <v-btn
-                  class="btn btn--signup mr-2"
-                  title="Sign up"
-                  aria-label="Sign up"
-                  >Sign Up</v-btn
-                >
-              </NuxtLink>
-              <NuxtLink to="/login">
-                <v-btn
-                  class="btn btn--login mr-5"
-                  title="Login"
-                  aria-label="Login"
-                  >Login</v-btn
-                >
-              </NuxtLink>
+              <NuxtLink
+                class="v-btn btn btn--signup mr-2"
+                title="Sign up"
+                aria-label="Sign up"
+                to="/signup"
+                >Sign Up</NuxtLink
+              >
+              <NuxtLink
+                class="v-btn btn btn--login mr-5"
+                title="Login"
+                aria-label="Login"
+                to="/login"
+                >Login</NuxtLink
+              >
             </div>
           </v-scroll-y-reverse-transition>
           <v-scroll-y-reverse-transition appear leave-absolute>

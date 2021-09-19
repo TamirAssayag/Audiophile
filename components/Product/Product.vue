@@ -95,11 +95,20 @@
       <div v-if="productImageLength()" class="product__images">
         <div class="product__images__wrapper">
           <div class="product__images__wrapper--left">
-            <NuxtImg :src="data.content.product_images[0].image" />
-            <NuxtImg :src="data.content.product_images[1].image" />
+            <NuxtImg
+              :src="data.content.product_images[0].image"
+              alt="Product Image"
+            />
+            <NuxtImg
+              :src="data.content.product_images[1].image"
+              alt="Product Image"
+            />
           </div>
           <div class="product__images__wrapper--right">
-            <NuxtImg :src="data.content.product_images[2].image" />
+            <NuxtImg
+              :src="data.content.product_images[2].image"
+              alt="Product Image"
+            />
           </div>
         </div>
       </div>
