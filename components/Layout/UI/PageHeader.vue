@@ -22,7 +22,7 @@ export default {
 
   computed: {
     getSpecificRoutes() {
-      const routeNames = ['orders', 'checkout']
+      const routeNames = ['orders', 'checkout', 'login', 'signup']
       return routeNames.includes(this.$route.name)
     },
     displayTitle() {
