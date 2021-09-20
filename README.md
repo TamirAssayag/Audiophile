@@ -40,7 +40,6 @@ Users should be able to:
 
 - Semantic HTML5 markup
 - SASS - Syntactically Awesome Style Sheets
-- SASS custom properties
 - Flexbox
 - Mobile-first workflow
 - [Vue](https://vuejs.org/) - Framework
