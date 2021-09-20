@@ -9,7 +9,6 @@ This is a solution to the [Audiophile e-commerce website challenge on Frontend M
   - [Links](#links)
 - [My process](#my-process)
   - [Built with](#built-with)
-  - [What I learned](#what-i-learned)
 - [Author](#author)
 
 ## Overview
@@ -46,6 +45,7 @@ Users should be able to:
 - Mobile-first workflow
 - [Vue](https://vuejs.org/) - Framework
 - [NuxtJS](https://nuxtjs.org/) - The Intuitive Vue Framework
+- [Vuex](https://vuex.vuejs.org/) - Serves as a centralized store for all the components in an application.
 - [Vuetify](https://vuetifyjs.com/en/) - Material Design Framework
 - [Storyblok](https://www.storyblok.com/) - Headless CMS
 - [nuxt/axios](https://axios.nuxtjs.org/) - easy Axios integration with Nuxt.
