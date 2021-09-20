@@ -12,16 +12,15 @@
       />
     </div>
     <h1 class="title--uppercase text--center">{{ blok.name }}</h1>
-    <NuxtLink :to="blok.full_slug.replace('products', '')">
-      <v-btn
-        class="btn btn--orange"
-        elevation="0"
-        title="See Product"
-        aria-label="See Product"
-      >
-        See Product
-      </v-btn>
-    </NuxtLink>
+    <v-btn
+      class="btn btn--orange"
+      elevation="0"
+      title="See Product"
+      aria-label="See Product"
+      :to="blok.full_slug.replace('products', '')"
+    >
+      See Product
+    </v-btn>
   </div>
 </template>
 

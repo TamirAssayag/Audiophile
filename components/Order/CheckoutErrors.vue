@@ -5,14 +5,14 @@
         <span><strong>Dear Customer</strong>, our apologies,</span>
         <p class="mt-1 mb-4">
           If you have an account please
-          <NuxtLink to="login">
+          <NuxtLink to="login" aria-label="Login" title="Login">
             <strong class="text--underline">Login</strong></NuxtLink
           >
           to proceed your purchase,
         </p>
         <h3>
           Don't have an account?
-          <NuxtLink to="signup">
+          <NuxtLink to="signup" aria-label="Sign up" title="Sign up">
             <strong class="text--underline">Sign Up</strong></NuxtLink
           >
           here

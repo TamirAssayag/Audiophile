@@ -4,7 +4,7 @@
       <div class="footer__header">
         <div class="footer__logo">
           <client-only>
-            <NuxtLink to="/">
+            <NuxtLink to="/" aria-label="Audiophile" title="Audiophile">
               <AudiophileLogo />
             </NuxtLink>
           </client-only>
@@ -16,7 +16,7 @@
             :key="nav.link"
             class="footer__menu--item"
           >
-            <NuxtLink :to="nav.link">
+            <NuxtLink :to="nav.link" :aria-label="nav.name" :title="nav.name">
               {{ nav.name }}
             </NuxtLink>
           </li>

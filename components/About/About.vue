@@ -2,7 +2,11 @@
   <section class="about">
     <div class="about__container">
       <div class="about__image">
-        <NuxtImg provider="static" src="shared/tablet/image-best-gear.jpg" />
+        <NuxtImg
+          provider="static"
+          src="shared/tablet/image-best-gear.jpg"
+          alt="About"
+        />
       </div>
       <div class="about__text">
         <div class="about__title">

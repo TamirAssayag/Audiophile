@@ -1,6 +1,6 @@
 <template>
   <div class="goback">
-    <NuxtLink :to="path">
+    <NuxtLink :to="path" aria-label="Go Back" title="Go Back">
       <v-btn text class="btn btn--goback"> Go Back </v-btn>
     </NuxtLink>
   </div>

@@ -13,7 +13,9 @@
         </v-btn>
 
         <div class="navbar__left">
-          <NuxtLink to="/"> <AudiophileLogo /> </NuxtLink>
+          <NuxtLink to="/" aria-label="Audiophile">
+            <AudiophileLogo />
+          </NuxtLink>
 
           <ul class="nav__menu">
             <li
@@ -21,7 +23,12 @@
               :key="nav.link"
               class="nav__menu--item"
             >
-              <NuxtLink :to="nav.link">{{ nav.name }}</NuxtLink>
+              <NuxtLink
+                :to="nav.link"
+                :title="nav.name"
+                :aria-label="nav.name"
+                >{{ nav.name }}</NuxtLink
+              >
             </li>
           </ul>
         </div>

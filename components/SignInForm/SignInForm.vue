@@ -55,7 +55,11 @@
           <span class="">{{
             loginRoute ? "Don't have an account? " : 'Already have an account?'
           }}</span>
-          <NuxtLink :to="loginRoute ? '/signup' : '/login'">
+          <NuxtLink
+            :to="loginRoute ? '/signup' : '/login'"
+            :aria-label="loginRoute ? 'Sign Up Now' : 'Login'"
+            :title="loginRoute ? 'Sign Up Now' : 'Login'"
+          >
             <span class="text--bold text--underline">
               {{ loginRoute ? 'Sign Up Now' : 'Login' }}
             </span>

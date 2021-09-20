@@ -39,16 +39,15 @@
           </span>
         </div>
         <div class="product__button">
-          <NuxtLink :to="$route.path + '/' + data.slug">
-            <v-btn
-              class="btn btn--orange"
-              elevation="0"
-              aria-label="See Product"
-              title="See Product"
-            >
-              See Product
-            </v-btn>
-          </NuxtLink>
+          <v-btn
+            class="btn btn--orange"
+            elevation="0"
+            aria-label="See Product"
+            title="See Product"
+            :to="$route.path + '/' + data.slug"
+          >
+            See Product
+          </v-btn>
         </div>
       </div>
     </div>
