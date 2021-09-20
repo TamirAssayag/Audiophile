@@ -65,14 +65,3 @@ export default {
   },
 }
 </script>
-
-<style lang="scss">
-.page-enter-active,
-.page-leave-active {
-  transition: all 0.2s cubic-bezier(0.08, 0.48, 0.14, 0.53);
-}
-.page-enter,
-.page-leave-to {
-  opacity: 0.3;
-}
-</style>

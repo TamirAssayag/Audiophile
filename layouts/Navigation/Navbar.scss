@@ -56,6 +56,9 @@ nav {
     }
 
     @include media('>=md') {
+      &::after {
+        max-width: unset !important;
+      }
       .v-toolbar__content {
         justify-content: unset !important;
         gap: 1.6rem;
@@ -69,6 +72,7 @@ nav {
     @include media('>=lg') {
       &::after {
         width: 100%;
+        max-width: $lg-width !important;
       }
 
       .v-toolbar__content {

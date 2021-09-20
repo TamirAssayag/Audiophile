@@ -1,5 +1,5 @@
 <template>
-  <section class="product__page">
+  <div class="product__page">
     <GoBack />
     <Product :data="story" />
     <div class="product__page__maylike">
@@ -7,7 +7,7 @@
         <MayAlsoLike :key="rel.id + index" :blok="rel" />
       </template>
     </div>
-  </section>
+  </div>
 </template>
 
 <script>
