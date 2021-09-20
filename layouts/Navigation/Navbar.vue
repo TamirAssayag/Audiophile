@@ -99,22 +99,24 @@
             </client-only>
           </v-scroll-y-reverse-transition>
         </div>
-        <v-btn
-          :disabled="$route.name !== 'checkout' ? false : true"
-          icon
-          text
-          title="Cart"
-          aria-label="Cart"
-          class="cart__icon"
-          @click="toggleCartDialog"
-        >
-          <CartSvg />
-          <v-slide-x-reverse-transition v-if="cart.length" appear>
-            <div v-if="$route.name !== 'checkout'" class="cart__amount">
-              <h4 class="text--bold text--white">{{ getTotalCartItems }}</h4>
-            </div>
-          </v-slide-x-reverse-transition>
-        </v-btn>
+        <client-only>
+          <v-btn
+            :disabled="$route.name !== 'checkout' ? false : true"
+            icon
+            text
+            title="Cart"
+            aria-label="Cart"
+            class="cart__icon"
+            @click="toggleCartDialog"
+          >
+            <CartSvg />
+            <v-slide-x-reverse-transition v-if="cart.length" appear>
+              <div v-if="$route.name !== 'checkout'" class="cart__amount">
+                <h4 class="text--bold text--white">{{ getTotalCartItems }}</h4>
+              </div>
+            </v-slide-x-reverse-transition>
+          </v-btn>
+        </client-only>
       </v-app-bar>
     </div>
     <v-bottom-sheet v-model="drawer" @keydown.esc="drawer = false">
