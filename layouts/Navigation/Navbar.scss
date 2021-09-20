@@ -69,7 +69,6 @@ nav {
     @include media('>=lg') {
       &::after {
         width: 100%;
-        max-width: unset !important;
       }
 
       .v-toolbar__content {
