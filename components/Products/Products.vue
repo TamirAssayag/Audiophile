@@ -51,7 +51,6 @@
               <NuxtLink
                 v-if="item.link"
                 :to="item.link"
-                elevation="0"
                 :class="`v-btn btn ${item.btnStyle}`"
                 aria-label="See Product"
                 title="See Product"
