@@ -41,14 +41,15 @@
                 $ {{ grandTotal.toLocaleString() }}
               </h3>
             </div>
-            <v-btn
-              class="btn btn--orange"
+            <NuxtLink
+              to="/checkout"
+              class="v-btn btn btn--orange"
+              width="100%"
               elevation="0"
-              aria-label="Checkout"
               title="Checkout"
-              @click="$emit('onCheckout')"
-              >Checkout</v-btn
-            >
+              aria-label="Checkout"
+              >Checkout >
+            </NuxtLink>
           </div>
         </div>
       </v-expand-transition>
