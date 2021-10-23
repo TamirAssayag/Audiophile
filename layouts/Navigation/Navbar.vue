@@ -124,7 +124,7 @@
         v-if="!loggedIn"
         class="sign-up__login d-flex align-center flex-column pt-5"
       >
-        <clien-only>
+        <client-only>
           <div class="user__buttons">
             <v-btn
               class="btn btn--text"
@@ -143,7 +143,7 @@
               Login
             </v-btn>
           </div>
-        </clien-only>
+        </client-only>
       </div>
       <v-slide-y-transition v-else appear mode="in-out">
         <div class="menu">
