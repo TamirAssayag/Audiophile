@@ -19,6 +19,14 @@
 
     <footer>
       <Footer />
+      <div class="attribution">
+        Challenge by
+        <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+          >Frontend Mentor
+        </a>
+        | Coded by
+        <a href="https://tamirassayag.com" target="_blank">Tamir Assayag</a>.
+      </div>
     </footer>
   </v-app>
 </template>

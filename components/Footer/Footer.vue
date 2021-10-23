@@ -44,6 +44,7 @@
 
       <div class="footer__bottom">
         <div class="footer__copyright">Copyright 2021. All Rights Reserved</div>
+
         <client-only>
           <div v-show="!$screen.desktop" class="footer__social">
             <FacebookIcon />
