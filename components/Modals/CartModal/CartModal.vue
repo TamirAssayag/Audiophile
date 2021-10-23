@@ -56,15 +56,14 @@ he
               $ {{ grandTotal.toLocaleString() }}
             </h3>
           </div>
-          <NuxtLink to="/checkout">
-            <v-btn
-              class="btn btn--orange"
-              width="100%"
-              elevation="0"
-              title="Checkout"
-              aria-label="Checkout"
-              >Checkout</v-btn
-            >
+          <NuxtLink
+            to="/checkout"
+            class="v-btn btn btn--orange"
+            width="100%"
+            elevation="0"
+            title="Checkout"
+            aria-label="Checkout"
+            >Checkout >
           </NuxtLink>
         </div>
       </v-slide-y-transition>
