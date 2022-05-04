@@ -5,6 +5,7 @@ module.exports = {
     return {
       body: JSON.stringify({ data }),
       statusCode: success ? 200 : 500,
+      // headers: { 'access-control-allow-origin': '*' },
     }
   },
   bcryptPassword: (pass) => {

@@ -40,7 +40,7 @@ export default {
 
 <style lang="scss">
 .error__container {
-  height: 50vh;
+  height: calc(100vh - 28.8rem);
   display: flex;
   flex-direction: column;
   align-items: center;

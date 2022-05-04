@@ -64,7 +64,6 @@ export default {
     @include media('>=md') {
       min-height: unset;
       min-width: 0;
-      margin-bottom: 10rem;
     }
 
     @include media('>=lg') {

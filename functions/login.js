@@ -17,7 +17,10 @@ module.exports.handler = async (event, context) => {
     })
 
     if (!user) {
-      return helpers.createResponse({ errorMsg: 'User not found.' }, false)
+      return helpers.createResponse(
+        { errorMsg: 'Please provide a valid email address or password.' },
+        false
+      )
     }
     const result = bcrypt.compareSync(password, user.password)
     if (result) {

@@ -47,6 +47,7 @@
             elevation="0"
             :title="signUpRoute ? 'Sign Up' : 'Login'"
             :aria-label="signUpRoute ? 'Sign Up' : 'Login'"
+            :loading="isLoading"
           >
             {{ signUpRoute ? 'Sign Up' : 'Login' }}
           </v-btn>
@@ -93,6 +94,7 @@ export default {
       password: null,
     },
     errorMsg: '',
+    isLoading: false,
   }),
 
   computed: {
@@ -138,39 +140,51 @@ export default {
     ...mapActions({
       saveUser: 'user/saveUser',
     }),
-    async handleRegistration() {
-      this.$v.$touch()
-      if (this.$v.$invalid) return
-      if (this.$route.name === 'signup') {
-        const newUser = await this.createUser(this.dataForm).catch((err) => {
-          this.$root.$emit('snackbar', {
-            text: err.response.data.data.errorMsg,
-          })
-        })
-        if (newUser) {
-          this.$router.push({
-            name: 'index',
-          })
-        }
+
+    async handleSignup() {
+      try {
+        this.isLoading = true
+
+        const newUser = await this.createUser(this.dataForm)
+        this.$router.push({ name: 'index' })
         this.saveUser(newUser)
+
+        this.isLoading = false
+      } catch (error) {
+        this.errorMsg = error.response?.data?.data?.errorMsg
+      } finally {
+        this.isLoading = false
       }
-      if (this.$route.name === 'login') {
+    },
+
+    async handleLogin() {
+      try {
+        this.isLoading = true
         const userLogin = await this.loginUser({
           ...this.dataFormLogin,
           email: this.dataFormLogin.email,
-        }).catch((err) => {
-          this.$root.$emit('snackbar', {
-            text: err.response.data.data.errorMsg,
-          })
         })
-        if (userLogin) {
-          this.$router.push({
-            name: 'index',
-          })
-        } else {
-          this.errorMsg = 'Please provide a valid email address and password.'
-        }
         this.saveUser(userLogin)
+        this.$router.push({ name: 'index' })
+        this.isLoading = false
+        this.$root.$emit('snackbar', {
+          text: 'Logged in successfully 👋',
+        })
+      } catch (error) {
+        this.errorMsg = error.response?.data?.data?.errorMsg
+      } finally {
+        this.isLoading = false
+      }
+    },
+
+    async handleRegistration() {
+      this.$v.$touch()
+      if (this.$v.$invalid) return
+
+      if (this.$route.name === 'login') {
+        await this.handleLogin()
+      } else {
+        await this.handleSignup()
       }
     },
   },
